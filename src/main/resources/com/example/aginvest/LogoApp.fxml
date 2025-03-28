@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" maxWidth="360" spacing="15" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aginvest.LogoController">
+
+    <!-- Adiciona margens nas laterais -->
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+
+    <!-- Título -->
+    <Label alignment="CENTER" maxWidth="320" style="-fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0267ff; -fx-wrap-text: true;" text="Descubra o melhor caminho para seus investimentos" />
+
+    <!-- Subtítulo -->
+    <Label alignment="CENTER" maxWidth="320" style="-fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 14px; -fx-text-fill: #0267ff; -fx-wrap-text: true;" text="Conheça seu perfil de investidor e simule diferentes opções para fazer seu dinheiro render mais." />
+
+    <!-- Botão -->
+    <Button fx:id="comecarButton" onAction="#onclickcomecar" style="-fx-font-family: 'Lemon Milk Pro Variable'; -fx-background-color: #0267ff; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8 16 8 16;" text="Começar agora">
+        <graphic>
+            <ImageView>
+            </ImageView>
+        </graphic>
+    </Button>
+
+</VBox>

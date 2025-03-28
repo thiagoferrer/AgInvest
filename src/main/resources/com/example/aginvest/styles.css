@@ -1,0 +1,79 @@
+.root {
+    -fx-background-color: #f5f5f5;
+    -fx-padding: 20;
+    -fx-alignment: center;
+}
+
+.title {
+    -fx-font-family: "Lemon Milk Pro Variable";
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.subtitle {
+    -fx-font-family: "Lemon Milk Pro Variable";
+    -fx-font-size: 14px;
+    -fx-text-fill: #666666;
+    -fx-text-alignment: center;
+}
+
+.tab-button {
+    -fx-font-family: "Lemon Milk Pro Variable";
+    -fx-font-size: 14px;
+    -fx-background-color: #e0e0e0;
+    -fx-text-fill: #000000;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 40px;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.tab-button-selected {
+    -fx-font-family: "Lemon Milk Pro Variable";
+    -fx-font-size: 14px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 40px;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-border-color: #0267ff;
+    -fx-border-width: 2;
+}
+
+.field-label {
+    -fx-font-family: "Lemon Milk Pro Variable";
+    -fx-font-size: 14px;
+    -fx-text-fill: #000000;
+}
+
+.text-field {
+    -fx-font-family: "Lemon Milk Pro Variable";
+    -fx-font-size: 14px;
+    -fx-background-color: #e6f0fa;
+    -fx-pref-width: 300px;
+    -fx-pref-height: 40px;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.login-button {
+    -fx-font-family: "Lemon Milk Pro Variable";
+    -fx-font-size: 16px;
+    -fx-background-color: #000000;
+    -fx-text-fill: #ffffff;
+    -fx-pref-width: 300px;
+    -fx-pref-height: 50px;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.text-field:focused {
+    -fx-border-color: #0267ff;
+    -fx-border-width: 2;
+}
+
+.login-button:hover {
+    -fx-background-color: #0267ff;
+}
