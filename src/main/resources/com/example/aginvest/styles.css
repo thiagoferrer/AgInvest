@@ -77,3 +77,19 @@
 .login-button:hover {
     -fx-background-color: #0267ff;
 }
+
+.button-voltar {
+    -fx-background-color: #1E88E5;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 15;
+    -fx-background-radius: 5;
+}
+
+.button-voltar:hover {
+    -fx-background-color: #1565C0;
+}
+
+.button-voltar:pressed {
+    -fx-background-color: #0D47A1;
+}
