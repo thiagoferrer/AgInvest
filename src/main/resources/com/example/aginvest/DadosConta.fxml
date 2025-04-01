@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.Region?>
+
+<VBox fx:id="root" alignment="TOP_CENTER" spacing="16" styleClass="root" prefWidth="360" prefHeight="640" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aginvest.DadosDaContaController">
+    <!-- Cabeçalho -->
+    <HBox style="-fx-background-color: #1E88E5; -fx-padding: 10 16 10 16; -fx-alignment: CENTER_LEFT;" prefHeight="56">
+        <!-- Título com número 7 verde -->
+        <HBox alignment="CENTER_LEFT" spacing="0">
+            <Label text="Invest" style="-fx-font-family: 'Arial'; -fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #FFFFFF;" />
+            <Label text="7" style="-fx-font-family: 'Arial'; -fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" />
+        </HBox>
+
+        <!-- Espaço flexível para empurrar os itens para a direita -->
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <!-- Opções à direita -->
+        <HBox spacing="12" alignment="CENTER_RIGHT">
+            <VBox alignment="CENTER" spacing="0">
+                <Button fx:id="homeButton" text="🏠" onAction="#onClickHome" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20; -fx-min-width: 48; -fx-min-height: 48;" />
+                <Label text="Home" style="-fx-font-family: 'Arial'; -fx-text-fill: white; -fx-font-size: 11;" />
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="0">
+                <Button fx:id="faqButton" text="❓" onAction="#onClickFaq" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20; -fx-min-width: 48; -fx-min-height: 48;" />
+                <Label text="FAQ" style="-fx-font-family: 'Arial'; -fx-text-fill: white; -fx-font-size: 11;" />
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="0">
+                <Button fx:id="contaButton" text="👤" onAction="#onClickConta" style="-fx-background-color: transparent; -fx-text-fill: #4CAF50; -fx-font-size: 20; -fx-min-width: 48; -fx-min-height: 48;" />
+                <Label text="Conta" style="-fx-font-family: 'Arial'; -fx-text-fill: white; -fx-font-size: 11;" />
+            </VBox>
+        </HBox>
+    </HBox>
+
+    <!-- Conteúdo Principal -->
+    <VBox spacing="16" style="-fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 2);" prefWidth="328" VBox.vgrow="ALWAYS">
+        <padding>
+            <Insets top="16" right="16" bottom="24" left="16"/>
+        </padding>
+
+        <!-- Título -->
+        <Label text="Dados da Conta" style="-fx-font-family: 'Arial'; -fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #000000;" />
+
+        <!-- Campos de Informação -->
+        <VBox spacing="8" style="-fx-border-color: #1E88E5; -fx-border-radius: 10; -fx-border-width: 1; -fx-padding: 10;" prefWidth="296">
+            <Label fx:id="nomeLabel" text="Nome Completo: Fulano da Silva" style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #000000;" />
+            <Label fx:id="emailLabel" text="E-mail: fulsilva@gmail.com" style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #000000;" />
+            <Label fx:id="aniversarioLabel" text="Aniversário: 01.01.2000" style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #000000;" />
+            <Label fx:id="generoLabel" text="Gênero: Masculino" style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #000000;" />
+            <Label fx:id="enderecoLabel" text="Endereço: Rua tal, nº - Jd qualquer, SP - 12960-780" style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #000000;" />
+            <Label fx:id="cpfLabel" text="CPF: 487.789.459-09" style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #000000;" />
+            <Label fx:id="perfilLabel" text="Perfil Investidor: Conservador" style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #000000;" />
+        </VBox>
+
+        <!-- Espaço flexível para empurrar os botões para o final -->
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <!-- Botões de Ação -->
+        <HBox spacing="16" alignment="CENTER">
+            <Button fx:id="voltarButton" onAction="#onClickVoltar" text="Voltar" style="-fx-background-color: #1E88E5; -fx-text-fill: #FFFFFF; -fx-font-family: 'Arial'; -fx-font-size: 14; -fx-background-radius: 20; -fx-min-width: 140; -fx-min-height: 48;" />
+            <Button fx:id="editarButton" onAction="#onClickEditar" text="Editar dados" style="-fx-background-color: #4CAF50; -fx-text-fill: #FFFFFF; -fx-font-family: 'Arial'; -fx-font-size: 14; -fx-background-radius: 20; -fx-min-width: 140; -fx-min-height: 48;" />
+        </HBox>
+    </VBox>
+
+    <!-- CSS Reference -->
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+</VBox>

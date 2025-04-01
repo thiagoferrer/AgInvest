@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.aginvest.FaqController"
+      prefHeight="640"
+      prefWidth="360"
+      style="-fx-background-color: #F5F5F5;"
+      spacing="0">
+
+    <!-- Cabeçalho Fixo -->
+    <HBox style="-fx-background-color: #1E88E5; -fx-padding: 10 20 10 20; -fx-alignment: CENTER_LEFT;" prefHeight="56">
+        <!-- Título com número 7 verde -->
+        <HBox alignment="CENTER_LEFT" spacing="0">
+            <Label text="Invest" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #FFFFFF;" />
+            <Label text="7" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" />
+        </HBox>
+
+        <!-- Espaço flexível para empurrar os itens para a direita -->
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <!-- Opções à direita -->
+        <HBox spacing="15" alignment="CENTER_RIGHT">
+            <VBox alignment="CENTER" spacing="0">
+                <Button fx:id="homeButton" text="🏠" onAction="#onClickHome"
+                        style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-min-width: 40; -fx-min-height: 40;"/>
+                <Label text="Home" style="-fx-text-fill: white; -fx-font-size: 11px;"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="0">
+                <Button fx:id="faqButton" text="❓" onAction="#onClickFaq"
+                        style="-fx-background-color: transparent; -fx-text-fill: #4CAF50; -fx-font-size: 20px; -fx-min-width: 40; -fx-min-height: 40;"/>
+                <Label text="FAQ" style="-fx-text-fill: white; -fx-font-size: 11px;"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="0">
+                <Button fx:id="contaButton" text="👤" onAction="#onClickConta"
+                        style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-min-width: 40; -fx-min-height: 40;"/>
+                <Label text="Conta" style="-fx-text-fill: white; -fx-font-size: 11px;"/>
+            </VBox>
+        </HBox>
+    </HBox>
+
+    <!-- Área de Conteúdo com Rolagem -->
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                style="-fx-background: #F5F5F5; -fx-border-color: transparent;">
+        <VBox style="-fx-background-color: #F5F5F5;" spacing="16">
+            <padding>
+                <Insets top="24" right="16" bottom="24" left="16"/>
+            </padding>
+
+            <!-- Título FAQ -->
+            <Label text="Perguntas Frequentes"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1E88E5;" />
+
+            <!-- Lista de FAQs -->
+            <VBox fx:id="faqContainer" spacing="8" style="-fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0.2, 0, 1);">
+                <padding>
+                    <Insets top="16" right="16" bottom="16" left="16"/>
+                </padding>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</VBox>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Separator?>
+
+<VBox alignment="TOP_CENTER" spacing="16" styleClass="root" prefWidth="360" prefHeight="640" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aginvest.AcoesController">
+    <!-- Cabeçalho Atualizado -->
+    <HBox style="-fx-background-color: #1E88E5; -fx-padding: 10 20 10 20; -fx-alignment: CENTER_LEFT;" prefHeight="56">
+        <!-- Título com número 7 verde -->
+        <HBox alignment="CENTER_LEFT" spacing="0">
+            <Label text="Invest" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #FFFFFF;" />
+            <Label text="7" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" />
+        </HBox>
+
+        <!-- Espaço flexível -->
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <!-- Opções à direita -->
+        <HBox spacing="15" alignment="CENTER_RIGHT">
+            <VBox alignment="CENTER" spacing="0">
+                <Button fx:id="homeButton" text="🏠" onAction="#onClickHome"
+                        style="-fx-background-color: transparent; -fx-text-fill: #4CAF50; -fx-font-size: 20px; -fx-min-width: 40; -fx-min-height: 40;"/>
+                <Label text="Home" style="-fx-text-fill: white; -fx-font-size: 11px;"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="0">
+                <Button fx:id="faqButton" text="❓" onAction="#onClickFaq"
+                        style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-min-width: 40; -fx-min-height: 40;"/>
+                <Label text="FAQ" style="-fx-text-fill: white; -fx-font-size: 11px;"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="0">
+                <Button fx:id="contaButton" text="👤" onAction="#onClickConta"
+                        style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-min-width: 40; -fx-min-height: 40;"/>
+                <Label text="Conta" style="-fx-text-fill: white; -fx-font-size: 11px;"/>
+            </VBox>
+        </HBox>
+    </HBox>
+
+    <!-- Conteúdo Principal -->
+    <VBox spacing="16" style="-fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 2);">
+        <padding>
+            <Insets top="16" right="16" bottom="24" left="16" />
+        </padding>
+
+        <!-- Cabeçalho da Seção -->
+        <VBox spacing="8">
+            <Label text="Simulador de Ações" styleClass="title" />
+            <Label text="Calcule o rendimento potencial de suas ações" styleClass="subtitle" style="-fx-wrap-text: true;" />
+        </VBox>
+
+        <Separator style="-fx-background-color: #EEEEEE;" />
+
+        <!-- Seleção de Ação -->
+        <VBox spacing="8">
+            <Label text="Selecione a Ação" styleClass="field-label" />
+            <ComboBox fx:id="acaoComboBox" styleClass="combo-box" promptText="Selecione uma ação" />
+        </VBox>
+
+        <!-- Campos de Entrada -->
+        <VBox spacing="8">
+            <Label text="Capital Inicial (R$)" styleClass="field-label" />
+            <TextField fx:id="capitalInicialField" promptText="0,00" styleClass="text-field" />
+        </VBox>
+
+        <!-- Grupo de campos lado a lado -->
+        <HBox spacing="8" alignment="CENTER">
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Prazo (meses)" styleClass="field-label" />
+                <TextField fx:id="prazoField" promptText="Ex: 12" styleClass="text-field" />
+            </VBox>
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Taxa anual (%)" styleClass="field-label" />
+                <TextField fx:id="taxaField" promptText="Ex: 10" styleClass="text-field" />
+            </VBox>
+        </HBox>
+
+        <Separator style="-fx-background-color: #EEEEEE;" />
+
+        <!-- Resultados (inicialmente invisível) -->
+        <VBox fx:id="resultadoContainer" spacing="8" visible="false">
+            <Label text="Resultado da Simulação" styleClass="title" />
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Valor Final:" styleClass="field-label" />
+                <Label fx:id="valorFinalLabel" style="-fx-font-weight: bold; -fx-text-fill: #1E88E5;" />
+            </HBox>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Rendimento:" styleClass="field-label" />
+                <Label fx:id="rendimentoLabel" style="-fx-font-weight: bold; -fx-text-fill: #4CAF50;" />
+            </HBox>
+        </VBox>
+
+        <!-- Botões de Ação -->
+        <HBox spacing="16" alignment="CENTER" VBox.vgrow="ALWAYS">
+            <VBox.margin>
+                <Insets top="24" />
+            </VBox.margin>
+            <Button fx:id="voltarButton" onAction="#onClickVoltar" text="Voltar" styleClass="button-voltar" prefWidth="140" prefHeight="48" />
+            <Button fx:id="calcularButton" onAction="#onClickCalcular" text="Calcular" styleClass="button-calcular" prefWidth="140" prefHeight="48" />
+        </HBox>
+    </VBox>
+
+    <!-- Referência ao arquivo CSS -->
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+</VBox>
