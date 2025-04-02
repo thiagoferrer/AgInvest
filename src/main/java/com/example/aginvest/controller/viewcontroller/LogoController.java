@@ -22,7 +22,7 @@ public class LogoController {
     private void onclickcomecar() {
         try {
             // Carrega o arquivo FXML da tela de login
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Login.fxml"));
             if (loader.getLocation() == null) {
                 System.err.println("Erro: Login.fxml não encontrado!");
                 return;
@@ -30,7 +30,7 @@ public class LogoController {
             Scene loginScene = new Scene(loader.load(), 360, 640); // Define as dimensões diretamente
 
             // Carrega o CSS para estilizar a tela de login
-            String css = getClass().getResource("styles.css").toExternalForm();
+            String css = getClass().getResource("/com/example/aginvest/styles.css").toExternalForm();
             if (css == null) {
                 System.err.println("Erro: styles.css não encontrado!");
             } else {
