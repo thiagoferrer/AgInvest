@@ -1,108 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.aginvest.HomeController"
-      alignment="TOP_CENTER" style="-fx-background-color: #FFFFFF;">
-
-    <!-- Cabeçalho Fixo - Versão Corrigida mantendo seus botões originais -->
-    <HBox style="-fx-background-color: #1E88E5; -fx-padding: 10 20 10 20; -fx-alignment: CENTER_LEFT;" prefHeight="56">
-        <!-- Título com número 7 verde -->
-        <HBox alignment="CENTER_LEFT" spacing="0">
-            <Label text="Invest" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #FFFFFF;" />
-            <Label text="7" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" />
-        </HBox>
-
-        <!-- Espaço flexível para empurrar os itens para a direita -->
-        <Region HBox.hgrow="ALWAYS"/>
-
-        <!-- Opções à direita -->
-        <HBox spacing="15" alignment="CENTER_RIGHT">
-            <VBox alignment="CENTER" spacing="0">
-                <Button fx:id="homeButton" text="🏠" onAction="#onclickcomecar"
-                        style="-fx-background-color: transparent; -fx-text-fill: #4CAF50; -fx-font-size: 20px; -fx-min-width: 40; -fx-min-height: 40;"/>
-                <Label text="Home" style="-fx-text-fill: white; -fx-font-size: 11px;"/>
-            </VBox>
-
-            <VBox alignment="CENTER" spacing="0">
-                <Button fx:id="faqButton" text="❓" onAction="#onClickFaq"
-                        style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-min-width: 40; -fx-min-height: 40;"/>
-                <Label text="FAQ" style="-fx-text-fill: white; -fx-font-size: 11px;"/>
-            </VBox>
-
-            <VBox alignment="CENTER" spacing="0">
-                <Button fx:id="contaButton" text="👤" onAction="#onClickConta"
-                        style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20px; -fx-min-width: 40; -fx-min-height: 40;"/>
-                <Label text="Conta" style="-fx-text-fill: white; -fx-font-size: 11px;"/>
-            </VBox>
-        </HBox>
+<VBox alignment="CENTER" spacing="8" style="-fx-background-color: #FFFFFF; -fx-padding: 0 10 0 10;" prefWidth="360" prefHeight="640" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aginvest.HomeController">
+    <!-- Cabeçalho -->
+    <HBox alignment="CENTER" style="-fx-background-color: #1E88E5;" prefHeight="40">
+        <Label text="Invest7" style="-fx-font-family: 'Arial'; -fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #FFFFFF; -fx-padding: 0 0 0 10;" />
+        <HBox HBox.hgrow="ALWAYS" />
+        <Button fx:id="comecarButton" onAction="#onclickcomecar" text="🏠" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+        <Button fx:id="faqButton" onAction="#onClickFaq" text="❓" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+        <Button fx:id="contaButton" onAction="#onClickConta" text="👤" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-padding: 0 10 0 0;" />
     </HBox>
 
-    <!-- CONTEÚDO PRINCIPAL -->
-    <VBox alignment="CENTER" spacing="16" style="-fx-padding: 16 24;">
-        <!-- Títulos centralizados -->
-        <VBox alignment="CENTER" spacing="8">
-            <Label text="Bem Vindo, Fulano!" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
-            <Label text="Seu perfil é: Conservador" style="-fx-font-size: 16px;" />
-        </VBox>
+    <!-- Título e Subtítulo -->
+    <Label text="Bem Vindo, Fulano!" style="-fx-font-family: 'Arial'; -fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #000000; -fx-padding: 10 0 0 0;" />
+    <Label text="Seu perfil é: Conservador" style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #666666;" />
+    <Label text="Simulações disponíveis:" style="-fx-font-family: 'Arial'; -fx-font-size: 12; -fx-text-fill: #666666; -fx-padding: 5 0 5 0;" />
 
-        <Separator style="-fx-pref-width: 200;" />
+    <!-- Grid de Botões -->
+    <GridPane hgap="10" vgap="10" alignment="CENTER">
+        <Button fx:id="perfilButton" onAction="#onClickPerfil" prefWidth="150" prefHeight="150" style="-fx-background-color: #8A4AF3; -fx-text-fill: #FFFFFF; -fx-font-family: 'Arial'; -fx-font-size: 14; -fx-background-radius: 10;">
+            <text>👥 De Perfil</text>
+            <GridPane.columnIndex>0</GridPane.columnIndex>
+            <GridPane.rowIndex>0</GridPane.rowIndex>
+        </Button>
 
-        <Label text="Simulações disponíveis:" style="-fx-font-size: 16px;" />
+        <Button fx:id="rendaFixaButton" onAction="#onClickRendaFixa" prefWidth="150" prefHeight="150" style="-fx-background-color: #4CAF50; -fx-text-fill: #FFFFFF; -fx-font-family: 'Arial'; -fx-font-size: 14; -fx-background-radius: 10;">
+            <text>💵 Renda Fixa</text>
+            <GridPane.columnIndex>1</GridPane.columnIndex>
+            <GridPane.rowIndex>0</GridPane.rowIndex>
+        </Button>
 
-        <!-- BOTÕES CENTRALIZADOS -->
-        <VBox alignment="CENTER" spacing="8">
-            <!-- Botão De Perfil -->
-            <Button fx:id="perfilButton" onAction="#onClickPerfil"
-                    style="-fx-background-color: #8A4AF3; -fx-text-fill: white; -fx-min-width: 280px; -fx-min-height: 50px; -fx-alignment: CENTER;">
-                <contentDisplay>GRAPHIC_ONLY</contentDisplay>
-                <graphic>
-                    <HBox alignment="CENTER" spacing="10">
-                        <Text text="👥" style="-fx-font-size: 20px; -fx-fill: white;" />
-                        <Label text="De Perfil" style="-fx-text-fill: white; -fx-font-size: 14px;" />
-                    </HBox>
-                </graphic>
-            </Button>
+        <Button fx:id="acoesButton" onAction="#onClickAcoes" prefWidth="150" prefHeight="150" style="-fx-background-color: #FF9800; -fx-text-fill: #FFFFFF; -fx-font-family: 'Arial'; -fx-font-size: 14; -fx-background-radius: 10;">
+            <text>📈 Ações</text>
+            <GridPane.columnIndex>0</GridPane.columnIndex>
+            <GridPane.rowIndex>1</GridPane.rowIndex>
+        </Button>
 
-            <!-- Botão Renda Fixa -->
-            <Button fx:id="rendaFixaButton" onAction="#onClickRendaFixa"
-                    style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-min-width: 280px; -fx-min-height: 50px; -fx-alignment: CENTER;">
-                <contentDisplay>GRAPHIC_ONLY</contentDisplay>
-                <graphic>
-                    <HBox alignment="CENTER" spacing="10">
-                        <Text text="💵" style="-fx-font-size: 20px; -fx-fill: white;" />
-                        <Label text="Renda Fixa" style="-fx-text-fill: white; -fx-font-size: 14px;" />
-                    </HBox>
-                </graphic>
-            </Button>
-
-            <!-- Botão Ações -->
-            <Button fx:id="acoesButton" onAction="#onClickAcoes"
-                    style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-min-width: 280px; -fx-min-height: 50px; -fx-alignment: CENTER;">
-                <contentDisplay>GRAPHIC_ONLY</contentDisplay>
-                <graphic>
-                    <HBox alignment="CENTER" spacing="10">
-                        <Text text="📈" style="-fx-font-size: 20px; -fx-fill: white;" />
-                        <Label text="Ações" style="-fx-text-fill: white; -fx-font-size: 14px;" />
-                    </HBox>
-                </graphic>
-            </Button>
-
-            <!-- Botão Fundo Imobiliário -->
-            <Button fx:id="fundoImobiliarioButton" onAction="#onClickFundoImobiliario"
-                    style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-min-width: 280px; -fx-min-height: 50px; -fx-alignment: CENTER;">
-                <contentDisplay>GRAPHIC_ONLY</contentDisplay>
-                <graphic>
-                    <HBox alignment="CENTER" spacing="10">
-                        <Text text="🏢" style="-fx-font-size: 20px; -fx-fill: white;" />
-                        <Label text="Fundo Imobiliário" style="-fx-text-fill: white; -fx-font-size: 14px;" />
-                    </HBox>
-                </graphic>
-            </Button>
-        </VBox>
-    </VBox>
+        <Button fx:id="fundoImobiliarioButton" onAction="#onClickFundoImobiliario" prefWidth="150" prefHeight="150" style="-fx-background-color: #2196F3; -fx-text-fill: #FFFFFF; -fx-font-family: 'Arial'; -fx-font-size: 14; -fx-background-radius: 10;">
+            <text>🏢 Fundo Imobiliário</text>
+            <GridPane.columnIndex>1</GridPane.columnIndex>
+            <GridPane.rowIndex>1</GridPane.rowIndex>
+        </Button>
+    </GridPane>
 </VBox>

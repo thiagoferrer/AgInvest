@@ -48,7 +48,7 @@ public class HomeController {
     // Método para o botão "FAQ"
     @FXML
     public void onClickFaq() {
-        loadNewScreen("Faq.fxml", "FAQ - Invest7", faqButton);
+        loadNewScreen("FAQ.fxml", "FAQ - Invest7", faqButton);
     }
 
     // Método para o botão "Conta"
@@ -78,7 +78,7 @@ public class HomeController {
     // Método para o botão "Fundo Imobiliário"
     @FXML
     public void onClickFundoImobiliario() {
-        loadNewScreen("Fiis.fxml", "Fundo Imobiliário - Invest7", fundoImobiliarioButton);
+        loadNewScreen("FundoImobiliario.fxml", "Fundo Imobiliário - Invest7", fundoImobiliarioButton);
     }
 
     // Método auxiliar para carregar novas telas
