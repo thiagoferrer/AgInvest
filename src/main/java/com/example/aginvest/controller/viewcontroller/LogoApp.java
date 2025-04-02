@@ -1,4 +1,4 @@
-package com.example.aginvest;
+package com.example.aginvest.controller.viewcontroller;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +17,7 @@ public class LogoApp extends Application {
     public void start(Stage stage) throws IOException {
         try {
             // Tente usar o caminho absoluto do recurso
-            URL fxmlUrl = getClass().getResource("LogoApp.fxml");
+            URL fxmlUrl = getClass().getResource("/com/example/aginvest/LogoApp.fxml");
 
             if (fxmlUrl == null) {
                 System.err.println("FXML file not found!");
