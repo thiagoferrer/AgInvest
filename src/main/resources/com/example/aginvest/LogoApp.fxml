@@ -7,7 +7,7 @@
 
 <VBox alignment="CENTER" maxWidth="360" spacing="16" style="-fx-background-color: white;"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.aginvest.LogoController">
+      fx:controller="com.example.aginvest.controller.viewcontroller.LogoController">
 
     <padding>
         <Insets bottom="16" left="16" right="16" top="16" />

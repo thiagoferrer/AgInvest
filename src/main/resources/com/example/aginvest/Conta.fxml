@@ -10,7 +10,7 @@
 <?import java.net.URL?>
 
 <?import javafx.scene.layout.Region?>
-<VBox alignment="TOP_CENTER" spacing="16" styleClass="root" prefWidth="360" prefHeight="640" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aginvest.ContaController">
+<VBox alignment="TOP_CENTER" spacing="16" styleClass="root" prefWidth="360" prefHeight="640" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aginvest.controller.viewcontroller.ContaController">
     <!-- Header with navigation buttons -->
     <HBox style="-fx-background-color: #1E88E5; -fx-padding: 10 20 10 20; -fx-alignment: CENTER_LEFT;" prefHeight="56">
         <!-- Título com número 7 verde -->
