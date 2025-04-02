@@ -11,7 +11,7 @@ import java.net.URL;
 
 import static javafx.application.Application.launch;
 
-public class MainApp extends Application {
+public class LogoApp extends Application {
     // Método start() modificado
     @Override
     public void start(Stage stage) throws IOException {
