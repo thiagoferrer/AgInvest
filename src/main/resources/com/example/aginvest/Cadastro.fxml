@@ -2,67 +2,110 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      alignment="TOP_CENTER" spacing="10" prefWidth="360" prefHeight="640" style="-fx-background-color: #ffffff;">
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<ScrollPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.aginvest.controller.viewcontroller.CadastroController"
+            prefWidth="360" prefHeight="640" fitToWidth="true" style="-fx-background-color: #FFFFFF;">
 
-    <!-- Título -->
-    <Label text="Bem-vindo"
-           style="-fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0267ff;"
-           VBox.vgrow="NEVER" alignment="CENTER" padding="10 0 0 0"/>
+    <content>
+        <VBox alignment="CENTER" spacing="16" style="-fx-padding: 16;">
 
-    <!-- Subtítulo -->
-    <Label text="Entre com sua conta ou crie uma nova para continuar"
-           style="-fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 14px; -fx-text-fill: #000000;"
-           wrapText="true" alignment="CENTER" padding="0 20 0 20"/>
+            <!-- Logotipo -->
+            <Label text="Invest7" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #1E90FF;" />
 
-    <!-- Abas Entrar/Cadastrar -->
-    <HBox alignment="CENTER" spacing="10" padding="10 0 0 0">
-        <Button text="Entrar"
-                style="-fx-background-color: #f0f0f0; -fx-text-fill: #000000; -fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 14px;"
-                prefWidth="150" prefHeight="40"/>
-        <Button text="Cadastrar"
-                style="-fx-background-color: #ffffff; -fx-text-fill: #0267ff; -fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 14px; -fx-border-color: #0267ff; -fx-border-width: 1;"
-                prefWidth="150" prefHeight="40"/>
-    </HBox>
+            <!-- Campo Nome Completo -->
+            <VBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Nome Completo" style="-fx-font-size: 16; -fx-text-fill: #666;" />
+                <TextField fx:id="nomeField" promptText="Ex: Maria Silva"
+                           style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
+                                  -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
+            </VBox>
 
-    <!-- Campo Nome -->
-    <Label text="Nome completo"
-           style="-fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 14px; -fx-text-fill: #000000;"
-           padding="20 0 5 0"/>
-    <TextField promptText="Seu nome"
-               style="-fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 14px; -fx-background-color: #f0f0f0; -fx-border-color: #d3d3d3; -fx-border-radius: 5;"
-               prefWidth="300" prefHeight="40"/>
+            <!-- Campo CPF -->
+            <VBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="CPF" style="-fx-font-size: 16; -fx-text-fill: #666;" />
+                <TextField fx:id="cpfField" promptText="Ex: 567.978.654-89"
+                           style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
+                                  -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
+            </VBox>
 
-    <!-- Campo Email -->
-    <Label text="Email" style="-fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 14px; -fx-text-fill: #000000;"
-           padding="10 0 5 0"/>
-    <TextField promptText="seu@email.com"
-               style="-fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 14px; -fx-background-color: #f0f0f0; -fx-border-color: #d3d3d3; -fx-border-radius: 5;"
-               prefWidth="300" prefHeight="40"/>
+            <!-- Campos Gênero e Data de Nascimento (lado a lado) -->
+            <HBox spacing="16" alignment="CENTER">
+                <!-- Gênero -->
+                <VBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Gênero" style="-fx-font-size: 16; -fx-text-fill: #666;" />
+                    <ComboBox fx:id="generoCombo" promptText="Escolha"
+                              style="-fx-pref-height: 48; -fx-pref-width: 140; -fx-background-color: #FFFFFF;
+                                     -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Masculino" />
+                                <String fx:value="Feminino" />
+                                <String fx:value="Outro" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </VBox>
 
-    <!-- Campo Senha -->
-    <Label text="Senha" style="-fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 14px; -fx-text-fill: #000000;"
-           padding="10 0 5 0"/>
-    <PasswordField promptText=""
-                   style="-fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 14px; -fx-background-color: #f0f0f0; -fx-border-color: #d3d3d3; -fx-border-radius: 5;"
-                   prefWidth="300" prefHeight="40"/>
+                <!-- Data de Nascimento -->
+                <VBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Data de Nascimento" style="-fx-font-size: 16; -fx-text-fill: #666;" />
+                    <TextField fx:id="dataNascimentoField" promptText="dd/mm/aaaa"
+                               style="-fx-pref-height: 48; -fx-pref-width: 140; -fx-background-color: #FFFFFF;
+                                      -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                </VBox>
+            </HBox>
 
-    <!-- Campo Confirmar Senha -->
-    <Label text="Confirmar senha"
-           style="-fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 14px; -fx-text-fill: #000000;"
-           padding="10 0 5 0"/>
-    <PasswordField promptText=""
-                   style="-fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 14px; -fx-background-color: #f0f0f0; -fx-border-color: #d3d3d3; -fx-border-radius: 5;"
-                   prefWidth="300" prefHeight="40"/>
+            <!-- Campo E-mail -->
+            <VBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="E-mail" style="-fx-font-size: 16; -fx-text-fill: #666;" />
+                <TextField fx:id="emailField" promptText="Ex: mariasilva@gmail.com"
+                           style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
+                                  -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
+            </VBox>
 
-    <!-- Botão Cadastrar -->
-    <Button text="Cadastrar"
-            style="-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 14px; -fx-background-radius: 5;"
-            prefWidth="300" prefHeight="50" VBox.vgrow="NEVER" alignment="CENTER" padding="20 0 0 0"/>
+            <!-- Campo Endereço -->
+            <VBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Endereço" style="-fx-font-size: 16; -fx-text-fill: #666;" />
+                <TextField fx:id="enderecoField" promptText="Ex: Rua Um, 90, Bairro Dois, Campinas, SP"
+                           style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
+                                  -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
+            </VBox>
 
-</VBox>
+            <!-- Campo CEP -->
+            <VBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="CEP" style="-fx-font-size: 16; -fx-text-fill: #666;" />
+                <TextField fx:id="cepField" promptText="Ex: 13980-763"
+                           style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
+                                  -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
+            </VBox>
+
+            <!-- Campo Senha -->
+            <VBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Senha" style="-fx-font-size: 16; -fx-text-fill: #666;" />
+                <PasswordField fx:id="senhaField" promptText="******"
+                               style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
+                                      -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
+            </VBox>
+
+            <!-- Botões Voltar e Cadastrar -->
+            <HBox spacing="16" alignment="CENTER">
+                <Button fx:id="voltarButton" text="Voltar" onAction="#handleVoltar"
+                        style="-fx-background-color: #1E90FF; -fx-text-fill: white; -fx-font-size: 16;
+                               -fx-pref-height: 48; -fx-padding: 0 24 0 24; -fx-background-radius: 8;" />
+                <Button fx:id="cadastrarButton" text="Cadastrar" onAction="#handleCadastrar"
+                        style="-fx-background-color: #32CD32; -fx-text-fill: white; -fx-font-size: 16;
+                               -fx-pref-height: 48; -fx-padding: 0 24 0 24; -fx-background-radius: 8;" />
+            </HBox>
+
+        </VBox>
+    </content>
+</ScrollPane>

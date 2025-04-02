@@ -2,56 +2,89 @@ package com.example.aginvest.controller.viewcontroller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Stack;
 
 public class LogoController {
+    private static final String APP_TITLE = "Invest7";
+    private static final double WINDOW_WIDTH = 360;
+    private static final double WINDOW_HEIGHT = 640;
+
+    // Pilha para armazenar o histórico de navegação
+    private static Stack<Scene> sceneHistory = new Stack<>();
+
+    @FXML private Button cadastroButton;
+    @FXML private Button loginButton;
+    @FXML private Button simulacaoButton;
+    @FXML private Button voltarButton; // Novo botão adicionado
+
 
     @FXML
-    private Button comecarButton;
-
-    @FXML
-    private void initialize() {
-        // Configurações iniciais, se necessário
-        // Exemplo: comecarButton.setDisable(true); // Desativa o botão até uma condição
+    private void handleCadastro() {
+        loadScene("/com/example/aginvest/Cadastro.fxml", "Cadastro");
     }
 
     @FXML
-    private void onclickcomecar() {
+    private void handleLogin() {
+        loadScene("/com/example/aginvest/Login.fxml", "Login");
+    }
+
+    @FXML
+    private void handleSimulacao() {
+        loadScene("/com/example/aginvest/SimuPrevia.fxml", "Simulação Prévia");
+    }
+
+    @FXML
+    private void handleVoltar() {
+        if (!sceneHistory.isEmpty()) {
+            Scene previousScene = sceneHistory.pop();
+            Stage stage = (Stage) voltarButton.getScene().getWindow();
+            stage.setScene(previousScene);
+        } else {
+            showAlert("Aviso", "Não há página anterior",
+                    "Você já está na página inicial.", Alert.AlertType.INFORMATION);
+        }
+    }
+
+    private void loadScene(String fxmlPath, String screenTitle) {
         try {
-            // Carrega o arquivo FXML da tela de login
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            // Salvar a cena atual no histórico antes de mudar
+            Stage currentStage = (Stage) cadastroButton.getScene().getWindow();
+            sceneHistory.push(currentStage.getScene());
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             if (loader.getLocation() == null) {
-                System.err.println("Erro: Login.fxml não encontrado!");
-                return;
-            }
-            Scene loginScene = new Scene(loader.load(), 360, 640); // Define as dimensões diretamente
-
-            // Carrega o CSS para estilizar a tela de login
-            String css = getClass().getResource("styles.css").toExternalForm();
-            if (css == null) {
-                System.err.println("Erro: styles.css não encontrado!");
-            } else {
-                loginScene.getStylesheets().add(css);
+                throw new IOException("Arquivo FXML não encontrado: " + fxmlPath);
             }
 
-            // Obtém o Stage atual (janela) a partir do botão
-            Stage stage = (Stage) comecarButton.getScene().getWindow();
-
-            // Define a nova cena (tela de login) no Stage
-            stage.setScene(loginScene);
-            stage.setTitle("Tela de Login");
-            stage.setWidth(360);  // Largura
-            stage.setHeight(640); // Altura
-            stage.centerOnScreen(); // Centraliza a janela
-            stage.show();
+            Parent root = loader.load();
+            Scene newScene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
+            currentStage.setScene(newScene);
+            currentStage.setTitle(APP_TITLE + " - " + screenTitle);
+            currentStage.show();
 
         } catch (IOException e) {
-            e.printStackTrace();
-            System.err.println("Erro ao carregar a tela de login: " + e.getMessage());
-            // Aqui você pode adicionar um alerta para o usuário, se desejar
+            showError("Erro ao carregar tela",
+                    "Erro ao carregar " + screenTitle + ": " + e.getMessage());
         }
+    }
+
+    private void showError(String title, String message) {
+        showAlert(title, null, message, Alert.AlertType.ERROR);
+    }
+
+    private void showAlert(String title, String header, String content, Alert.AlertType type) {
+        System.out.println(title + ": " + content);
+
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
