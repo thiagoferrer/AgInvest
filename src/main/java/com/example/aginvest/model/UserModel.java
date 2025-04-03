@@ -23,6 +23,8 @@
             this.genero = genero;
             this.id_perfil = id_perfil;
         }
+
+
         public UserModel(int id_user, String nome, String genero, String endereco, String dt_nasc) {
             this.id_user = id_user;
             this.nome = nome;
