@@ -1,5 +1,3 @@
-package com.example.aginvest.controller.viewcontroller;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -33,3 +31,4 @@ public class LoginController {
         // Adicione aqui a lógica para recuperação de senha
     }
 }
+

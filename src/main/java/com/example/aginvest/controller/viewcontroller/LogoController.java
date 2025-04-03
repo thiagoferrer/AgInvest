@@ -53,14 +53,7 @@ public class LogoController {
 
     private void loadScene(String fxmlPath, String screenTitle) {
         try {
-            // Salvar a cena atual no histórico antes de mudar
-            Stage currentStage = (Stage) cadastroButton.getScene().getWindow();
-            sceneHistory.push(currentStage.getScene());
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            if (loader.getLocation() == null) {
-                throw new IOException("Arquivo FXML não encontrado: " + fxmlPath);
-            }
+          
 
             Parent root = loader.load();
             Scene newScene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
