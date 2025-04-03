@@ -1,69 +1,89 @@
 package com.example.aginvest.controller.viewcontroller;
 
+
+import com.example.aginvest.controller.user.UserController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+
 import java.io.IOException;
 
+
 public class LoginController {
+    @FXML
+    private Button fazerLogin;
+
 
     @FXML
-    private TextField emailField;
+    private TextField emailFieldLogin;
+
 
     @FXML
-    private TextField passwordField;
+    private TextField senhaFielLogin;
 
-    @FXML
-    private Button signInButton;
 
-    @FXML
-    private Hyperlink forgotPasswordLink;
-
-    @FXML
-    private void handleSignIn() {
-        String email = emailField.getText();
-        String password = passwordField.getText();
-
-        // Validação simples: verifica se os campos estão vazios
-        if (email.isEmpty() || password.isEmpty()) {
-            System.out.println("Erro: Por favor, preencha todos os campos.");
-            return;
-        }
-
-        System.out.println("Botão Sign In clicado! E-mail: " + email + ", Senha: " + password);
-
-        // Navegação para a tela Home.fxml
+    public void realizarLogin(){
         try {
-            // Carrega o arquivo Home.fxml
-            FXMLLoader loader = new FXMLLoader();
-            // Ajusta o caminho para o local correto
-            loader.setLocation(getClass().getResource("/com/example/aginvest/Home.fxml"));
-            if (loader.getLocation() == null) {
-                throw new IOException("Não foi possível encontrar o arquivo Home.fxml no caminho especificado.");
+            String email = emailFieldLogin.getText().trim();
+            String senha = senhaFielLogin.getText().trim();
+
+
+            if (email.isEmpty() || senha.isEmpty()) {
+                // Mostrar alerta para o usuário
+                System.err.println("Email e senha são obrigatórios!");
+                return;
             }
-            Scene homeScene = new Scene(loader.load(), 360, 640);
 
-            // Obtém o stage atual a partir de um dos nós da cena (neste caso, emailField)
-            Stage stage = (Stage) emailField.getScene().getWindow();
 
-            // Define a nova cena no stage
-            stage.setScene(homeScene);
-            stage.setTitle("Invest7 - Home");
-            stage.show();
-        } catch (IOException e) {
+            UserController userLogin = new UserController();
+            String loginRealizado = userLogin.login(email, senha);
+
+
+            if (loginRealizado != null) {
+
+                carregarTelaPrincipal();
+            } else {
+                // Mostrar mensagem de erro de login
+                System.err.println("Login falhou! Verifique suas credenciais.");
+            }
+        } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Erro ao carregar a tela Home: " + e.getMessage());
+            System.err.println("Erro durante o login: " + e.getMessage());
         }
     }
 
-    @FXML
-    private void handleForgotPassword() {
-        System.out.println("Link Esqueci a senha clicado!");
-        // Adicione aqui a lógica para recuperação de senha
+
+    private void carregarTelaPrincipal() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Home.fxml"));
+            Scene mainScene = new Scene(loader.load(), 360, 640);
+
+
+            // Aplicar CSS se necessário
+            String css = getClass().getResource("/com/example/aginvest/styles.css").toExternalForm();
+            if (css != null) {
+                mainScene.getStylesheets().add(css);
+            }
+
+
+            Stage stage = (Stage) fazerLogin.getScene().getWindow();
+            stage.setScene(mainScene);
+            stage.setTitle("Tela Principal");
+            stage.setWidth(360);
+            stage.setHeight(640);
+            stage.centerOnScreen();
+            stage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Erro ao carregar tela principal: " + e.getMessage());
+        }
     }
 }

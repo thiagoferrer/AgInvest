@@ -19,13 +19,13 @@
             <Label text="7" style="-fx-text-fill: #1FCE52; -fx-font-size: 20; -fx-font-weight: bold;" />
         </HBox>
         <HBox HBox.hgrow="ALWAYS" />
-        <Button text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
         <Button text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-        <Button text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
     </HBox>
 
     <!-- Título e Subtítulo -->
-    <Label text="BEM VINDO, FULANO!" style="-fx-text-fill: #333333;">
+    <Label fx:id="bemVindoLabel" style="-fx-text-fill: #333333;">
         <font>
             <Font name="Roboto Medium" size="20" />
         </font>
@@ -33,7 +33,7 @@
             <Insets top="16" right="16" bottom="0" left="16" />
         </padding>
     </Label>
-    <Label text="Seu perfil é: Conservador" style="-fx-text-fill: #0267FF;">
+    <Label fx:id="perfilConservador" style="-fx-text-fill: #0267FF;">
         <font>
             <Font name="Roboto Regular" size="16" />
         </font>

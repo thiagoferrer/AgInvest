@@ -24,7 +24,7 @@
             <!-- Campo Nome Completo -->
             <VBox spacing="8" alignment="CENTER_LEFT">
                 <Label text="Nome Completo" style="-fx-font-size: 16; -fx-text-fill: #666;" />
-                <TextField fx:id="nomeField" promptText="Ex: Maria Silva"
+                <TextField fx:id="nomeFieldCadastro" promptText="Ex: Maria Silva"
                            style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
                                   -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
             </VBox>
@@ -32,7 +32,7 @@
             <!-- Campo CPF -->
             <VBox spacing="8" alignment="CENTER_LEFT">
                 <Label text="CPF" style="-fx-font-size: 16; -fx-text-fill: #666;" />
-                <TextField fx:id="cpfField" promptText="Ex: 567.978.654-89"
+                <TextField fx:id="cpfFieldCadastro" promptText="Ex: 567.978.654-89"
                            style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
                                   -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
             </VBox>
@@ -42,7 +42,7 @@
                 <!-- Gênero -->
                 <VBox spacing="8" alignment="CENTER_LEFT">
                     <Label text="Gênero" style="-fx-font-size: 16; -fx-text-fill: #666;" />
-                    <ComboBox fx:id="generoCombo" promptText="Escolha"
+                    <ComboBox fx:id="generoComboCadastro" promptText="Escolha"
                               style="-fx-pref-height: 48; -fx-pref-width: 140; -fx-background-color: #FFFFFF;
                                      -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;">
                         <items>
@@ -58,7 +58,7 @@
                 <!-- Data de Nascimento -->
                 <VBox spacing="8" alignment="CENTER_LEFT">
                     <Label text="Data de Nascimento" style="-fx-font-size: 16; -fx-text-fill: #666;" />
-                    <TextField fx:id="dataNascimentoField" promptText="dd/mm/aaaa"
+                    <TextField fx:id="dataNascimentoFieldCadastro" promptText="aaaa/mm/dd"
                                style="-fx-pref-height: 48; -fx-pref-width: 140; -fx-background-color: #FFFFFF;
                                       -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
                 </VBox>
@@ -67,7 +67,7 @@
             <!-- Campo E-mail -->
             <VBox spacing="8" alignment="CENTER_LEFT">
                 <Label text="E-mail" style="-fx-font-size: 16; -fx-text-fill: #666;" />
-                <TextField fx:id="emailField" promptText="Ex: mariasilva@gmail.com"
+                <TextField fx:id="emailFieldCadastro" promptText="Ex: mariasilva@gmail.com"
                            style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
                                   -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
             </VBox>
@@ -83,7 +83,7 @@
             <!-- Campo CEP -->
             <VBox spacing="8" alignment="CENTER_LEFT">
                 <Label text="CEP" style="-fx-font-size: 16; -fx-text-fill: #666;" />
-                <TextField fx:id="cepField" promptText="Ex: 13980-763"
+                <TextField fx:id="cepFieldCadastro" promptText="Ex: 13980-763"
                            style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
                                   -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
             </VBox>
@@ -91,7 +91,7 @@
             <!-- Campo Senha -->
             <VBox spacing="8" alignment="CENTER_LEFT">
                 <Label text="Senha" style="-fx-font-size: 16; -fx-text-fill: #666;" />
-                <PasswordField fx:id="senhaField" promptText="******"
+                <PasswordField fx:id="senhaFieldCadastro" promptText="******"
                                style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
                                       -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
             </VBox>

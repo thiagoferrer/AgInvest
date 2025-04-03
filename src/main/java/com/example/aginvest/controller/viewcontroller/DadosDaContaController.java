@@ -1,5 +1,7 @@
 package com.example.aginvest.controller.viewcontroller;
 
+import com.example.aginvest.controller.user.UserController;
+import com.example.aginvest.model.UserModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -38,10 +40,15 @@ public class DadosDaContaController {
     // Botões de ação
     @FXML
     private Button voltarButton;
+
+
     @FXML
-    private Button editarButton;
+    public void initialize() {
+        setDados(); // Chama o método para carregar os dados
+    }
 
     // Método para o botão "Home"
+
     @FXML
     public void onClickHome() {
         try {
@@ -73,7 +80,7 @@ public class DadosDaContaController {
     @FXML
     public void onClickConta() {
         try {
-            java.net.URL fxmlLocation = getClass().getResource("Conta.fxml");
+            java.net.URL fxmlLocation = getClass().getResource("/com/example/aginvest/Conta.fxml");
             if (fxmlLocation == null) {
                 throw new IOException("Não foi possível encontrar o arquivo Conta.fxml");
             }
@@ -94,7 +101,7 @@ public class DadosDaContaController {
     @FXML
     public void onClickVoltar() {
         try {
-            java.net.URL fxmlLocation = getClass().getResource("Conta.fxml");
+            java.net.URL fxmlLocation = getClass().getResource("/com/example/aginvest/Conta.fxml");
             if (fxmlLocation == null) {
                 throw new IOException("Não foi possível encontrar o arquivo Conta.fxml");
             }
@@ -111,35 +118,21 @@ public class DadosDaContaController {
         }
     }
 
-    // Método para o botão "Editar dados"
-    @FXML
-    public void onClickEditar() {
-        try {
-            java.net.URL fxmlLocation = getClass().getResource("EditarDados.fxml");
-            if (fxmlLocation == null) {
-                throw new IOException("Não foi possível encontrar o arquivo EditarDados.fxml");
-            }
-            FXMLLoader loader = new FXMLLoader(fxmlLocation);
-            Parent root = loader.load();
-            Scene editarDadosScene = new Scene(root);
-            Stage stage = (Stage) editarButton.getScene().getWindow();
-            stage.setScene(editarDadosScene);
-            stage.setTitle("Editar Dados - Invest7");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar a tela Editar Dados: " + e.getMessage());
-        }
-    }
 
     // Método para atualizar os dados exibidos (opcional, caso os dados sejam dinâmicos)
-    public void setDados(String nome, String email, String aniversario, String genero, String endereco, String cpf, String perfil) {
-        nomeLabel.setText("Nome Completo: " + nome);
-        emailLabel.setText("E-mail: " + email);
-        aniversarioLabel.setText("Aniversário: " + aniversario);
-        generoLabel.setText("Gênero: " + genero);
-        enderecoLabel.setText("Endereço: " + endereco);
-        cpfLabel.setText("CPF: " + cpf);
-        perfilLabel.setText("Perfil Investidor: " + perfil);
+    public void setDados()
+    {
+
+        UserController userController = new UserController();
+
+        UserModel user = userController.lerUser();
+
+        nomeLabel.setText("Nome Completo: " + user.getNome());
+        emailLabel.setText("E-mail: " + user.getEmail());
+        aniversarioLabel.setText("Data nascimento: " + user.getDt_nasc());
+        generoLabel.setText("Gênero: " + user.getGenero());
+        enderecoLabel.setText("Endereço: " + user.getEndereco());
+        cpfLabel.setText("CPF: " + user.getCpf());
+        perfilLabel.setText("Perfil Investidor: " + user.getDescricao_perfil());
     }
 }

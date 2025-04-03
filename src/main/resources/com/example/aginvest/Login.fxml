@@ -20,7 +20,7 @@
     <!-- Campo E-mail -->
     <VBox spacing="8" alignment="CENTER_LEFT">
         <Label text="E-mail" style="-fx-font-size: 16; -fx-text-fill: #666;" />
-        <TextField fx:id="emailField" promptText="E-mail"
+        <TextField fx:id="emailFieldLogin" promptText="E-mail"
                    style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
                           -fx-border-color: #87CEFA; -fx-border-radius: 8; -fx-background-radius: 8;" />
     </VBox>
@@ -28,18 +28,18 @@
     <!-- Campo Senha -->
     <VBox spacing="8" alignment="CENTER_LEFT">
         <Label text="Senha" style="-fx-font-size: 16; -fx-text-fill: #666;" />
-        <TextField fx:id="passwordField" promptText="Senha"
+        <TextField fx:id="senhaFielLogin" promptText="Senha"
                    style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
                           -fx-border-color: #87CEFA; -fx-border-radius: 8; -fx-background-radius: 8;" />
     </VBox>
 
     <!-- Botão Sign In -->
-    <Button fx:id="signInButton" text="Sign In" onAction="#handleSignIn"
+    <Button fx:id="fazerLogin" text="Sign In" onAction="#realizarLogin"
             style="-fx-background-color: #1E90FF; -fx-text-fill: white; -fx-font-size: 16;
                    -fx-pref-width: 200; -fx-pref-height: 48; -fx-background-radius: 8;" />
 
     <!-- Link Esqueci a senha -->
-    <Hyperlink fx:id="forgotPasswordLink" text="Esqueci a senha" onAction="#handleForgotPassword"
+    <Hyperlink fx:id="forgotPasswordLink" text="Esqueci a senha"
                style="-fx-font-size: 14; -fx-text-fill: #1E90FF; -fx-border-color: transparent;" />
 
 </VBox>
