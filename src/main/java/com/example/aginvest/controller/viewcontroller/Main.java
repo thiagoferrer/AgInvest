@@ -14,6 +14,15 @@ import static javafx.application.Application.launch;
 public class Main extends Application {
     // Método start() modificado
     @Override
+    public void init() {
+        // Inicialização, se necessário
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
     public void start(Stage stage) throws IOException {
         try {
             // Tente usar o caminho absoluto do recurso

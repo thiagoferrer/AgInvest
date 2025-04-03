@@ -30,6 +30,7 @@ public class SimuPreviaController {
 
     @FXML
     private void handleCalcular() {
+
     }
 
     @FXML
