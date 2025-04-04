@@ -28,20 +28,18 @@ public class ContaController {
     @FXML
     private void initialize() {
         System.out.println("ContaController inicializado");
-        // Verifique se todos os botões foram injetados corretamente
-        if (dadosDacontaButton == null) {
-            System.err.println("Erro: dadosDacontaButton não foi injetado!");
-        }
+        // Configurações adicionais podem ser feitas aqui
     }
 
+    // Métodos de navegação
     @FXML
     private void onClickHome() {
-        carregarTela("/com/example/aginvest/home.fxml", "Home - Invest7");
+        carregarTela(homeButton, "/com/example/aginvest/home.fxml", "Home - Invest7");
     }
 
     @FXML
     private void onClickFaq() {
-        carregarTela("/com/example/aginvest/faq.fxml", "FAQ - Invest7");
+        carregarTela(faqButton, "/com/example/aginvest/faq.fxml", "FAQ - Invest7");
     }
 
     @FXML
@@ -51,17 +49,17 @@ public class ContaController {
 
     @FXML
     private void onClickDadosConta() {
-        carregarTela("/com/example/aginvest/dadosconta.fxml", "Dados da Conta - Invest7");
+        carregarTela(dadosDacontaButton, "/com/example/aginvest/dadosconta.fxml", "Dados da Conta - Invest7");
     }
 
     @FXML
     private void onClickAtualizacaoConta() {
-        carregarTela("/com/example/aginvest/atualizacaoconta.fxml", "Atualizar Dados - Invest7");
+        carregarTela(atualizacaoContaButton, "/com/example/aginvest/atualizacaoconta.fxml", "Atualizar Dados - Invest7");
     }
 
     @FXML
     private void onClickRefazerQuiz() {
-        carregarTela("/com/example/aginvest/quiz.fxml", "Questionário - Invest7");
+        carregarTela(refazerQuizButton, "/com/example/aginvest/quiz.fxml", "Questionário - Invest7");
     }
 
     @FXML
@@ -84,15 +82,15 @@ public class ContaController {
 
     @FXML
     private void onClickBackToHome() {
-        carregarTela("/com/example/aginvest/home.fxml", "Home - Invest7");
+        carregarTela(backButton, "/com/example/aginvest/home.fxml", "Home - Invest7");
     }
 
-    private void carregarTela(String fxmlPath, String titulo) {
+    private void carregarTela(Button botaoOrigem, String fxmlPath, String titulo) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
 
-            Stage stage = (Stage) homeButton.getScene().getWindow();
+            Stage stage = (Stage) botaoOrigem.getScene().getWindow();
             stage.setTitle(titulo);
             stage.setScene(new Scene(root));
             stage.show();
