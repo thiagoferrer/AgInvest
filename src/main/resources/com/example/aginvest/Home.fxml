@@ -61,7 +61,7 @@
             <graphic>
                 <VBox alignment="CENTER" spacing="8">
                     <Label text="🏠" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF;" />
-                    <Label text="Fundo Imobiliário" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center;" />
+                    <Label text="FIIs" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center;" />
                 </VBox>
             </graphic>
             <GridPane.columnIndex>0</GridPane.columnIndex>
@@ -100,5 +100,8 @@
             <GridPane.columnIndex>1</GridPane.columnIndex>
             <GridPane.rowIndex>1</GridPane.rowIndex>
         </Button>
+
+        //ADICIONAR calculadora de perfil se der:
+        //ADICIONAR visualização de preço das ações se der:
     </GridPane>
 </VBox>
