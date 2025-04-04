@@ -39,6 +39,9 @@ public class HomeController {
     private Button contaButton;
 
     @FXML
+    private Button faqButton;
+
+    @FXML
     private Button homeButton;
 
     @FXML
@@ -96,6 +99,96 @@ public class HomeController {
             } catch (IOException e) {
                 e.printStackTrace();
                 System.out.println("Erro ao clicar no botao de menu de dados do usuario");
+            }
+        });
+
+        faqButton.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Faq.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de FAQ");
+            }
+        });
+
+        btnFAQ.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Faq.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de FAQ");
+            }
+        });
+
+        btnFundoImobiliario.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Fiis.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de FAQ");
+            }
+        });
+
+        btnRendaFixa.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/RendaFixa.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de FAQ");
+            }
+        });
+
+        btnAcoes.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Acoes.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de FAQ");
             }
         });
 

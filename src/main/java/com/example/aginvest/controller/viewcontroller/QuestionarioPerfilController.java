@@ -86,9 +86,9 @@ public class QuestionarioPerfilController {
         if (user != null) {
             boolean userCreate = userController.criarUser(
                     user.getNome(),
-                    user.getEmail(),
-                    user.getEndereco(),
                     user.getCpf(),
+                    user.getEndereco(),
+                    user.getEmail(),
                     user.getSenhaHash(),
                     user.getGenero(),
                     user.getDt_nasc(),

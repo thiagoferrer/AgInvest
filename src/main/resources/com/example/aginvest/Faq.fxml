@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+
+<VBox alignment="CENTER" spacing="16" maxWidth="360" prefHeight="568"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.aginvest.controller.viewcontroller.FaqController"
+      style="-fx-padding: 16; -fx-background-color: #F8F9FA;">
+
+    <!-- Cabeçalho -->
+    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;">
+        <HBox alignment="CENTER_LEFT" spacing="0">
+            <Label text="Invest" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20; -fx-font-weight: bold;" />
+            <Label text="7" style="-fx-text-fill: #1FCE52; -fx-font-size: 20; -fx-font-weight: bold;" />
+        </HBox>
+        <HBox HBox.hgrow="ALWAYS" />
+        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+        <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+    </HBox>
+
+    <!-- Título FAQ -->
+    <Label text="FAQ" style="-fx-text-fill: #007BFF; -fx-font-size: 20; -fx-font-weight: bold; -fx-padding: 8 0;"/>
+
+    <!-- Accordion para as perguntas -->
+    <Accordion fx:id="faqAccordion" maxWidth="328" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 2);"/>
+
+    <!-- Botão Voltar -->
+    <Button text="Voltar" onAction="#goBack"
+            style="-fx-background-color: #007BFF; -fx-text-fill: WHITE; -fx-font-size: 16;
+                   -fx-padding: 12 32; -fx-background-radius: 8; -fx-min-height: 48;"/>
+</VBox>

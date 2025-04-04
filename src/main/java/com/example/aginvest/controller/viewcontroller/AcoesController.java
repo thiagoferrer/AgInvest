@@ -3,6 +3,7 @@ package com.example.aginvest.controller.viewcontroller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -32,60 +33,47 @@ public class AcoesController {
     @FXML
     private Button calcularButton;
 
-    // Método para o botão "Home"
     @FXML
-    public void onClickHome() {
-        try {
-            java.net.URL fxmlLocation = getClass().getResource("Home.fxml");
-            if (fxmlLocation == null) {
-                throw new IOException("Não foi possível encontrar o arquivo Home.fxml");
+    private void onClickHome() {
+        carregarTela("/com/example/aginvest/home.fxml", "Home - Invest7");
+    }
+
+    @FXML
+    public void initialize() {
+        faqButton.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Faq.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de FAQ");
             }
-            FXMLLoader loader = new FXMLLoader(fxmlLocation);
-            Parent root = loader.load();
-            Scene homeScene = new Scene(root);
-            Stage stage = (Stage) homeButton.getScene().getWindow();
-            stage.setScene(homeScene);
-            stage.setTitle("Home - Invest7");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar a tela Home: " + e.getMessage());
-        }
-    }
+        });
+        contaButton.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Conta.fxml"));
+                Parent root = loader.load();
 
-    // Método para o botão "FAQ"
-    @FXML
-    public void onClickFaq() {
-        System.out.println("Botão FAQ clicado!");
-        // Adicione lógica para navegar para a tela de FAQ
-    }
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-    // Método para o botão "Conta"
-    @FXML
-    public void onClickConta() {
-        System.out.println("Botão Conta clicado!");
-        // Adicione lógica para navegar para a tela de Conta
-    }
-
-    // Método para o botão "Voltar"
-    @FXML
-    public void onClickVoltar() {
-        try {
-            java.net.URL fxmlLocation = getClass().getResource("Home.fxml");
-            if (fxmlLocation == null) {
-                throw new IOException("Não foi possível encontrar o arquivo Home.fxml");
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de dados do usuario");
             }
-            FXMLLoader loader = new FXMLLoader(fxmlLocation);
-            Parent root = loader.load();
-            Scene homeScene = new Scene(root);
-            Stage stage = (Stage) voltarButton.getScene().getWindow();
-            stage.setScene(homeScene);
-            stage.setTitle("Home - Invest7");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar a tela Home: " + e.getMessage());
-        }
+        });
     }
 
     // Método para o botão "Calcular"
@@ -98,5 +86,20 @@ public class AcoesController {
 
         System.out.println("Capital Inicial: " + capitalInicial);
         System.out.println("Prazo: " + prazo + " meses");
+    }
+
+    private void carregarTela(String fxmlPath, String titulo) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) homeButton.getScene().getWindow();
+            stage.setTitle(titulo);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

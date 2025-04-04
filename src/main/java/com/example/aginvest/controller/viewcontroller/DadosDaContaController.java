@@ -4,6 +4,7 @@ import com.example.aginvest.controller.user.UserController;
 import com.example.aginvest.model.UserModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -41,60 +42,49 @@ public class DadosDaContaController {
     @FXML
     private Button voltarButton;
 
+    @FXML
+    private void onClickHome() {
+        carregarTela("/com/example/aginvest/home.fxml", "Home - Invest7");
+    }
 
     @FXML
     public void initialize() {
-        setDados(); // Chama o método para carregar os dados
-    }
+        setDados();
+        contaButton.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Conta.fxml"));
+                Parent root = loader.load();
 
-    // Método para o botão "Home"
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-    @FXML
-    public void onClickHome() {
-        try {
-            java.net.URL fxmlLocation = getClass().getResource("Home.fxml");
-            if (fxmlLocation == null) {
-                throw new IOException("Não foi possível encontrar o arquivo Home.fxml");
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de dados do usuario");
             }
-            FXMLLoader loader = new FXMLLoader(fxmlLocation);
-            Parent root = loader.load();
-            Scene homeScene = new Scene(root);
-            Stage stage = (Stage) homeButton.getScene().getWindow();
-            stage.setScene(homeScene);
-            stage.setTitle("Home - Invest7");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar a tela Home: " + e.getMessage());
-        }
-    }
+        });
 
-    // Método para o botão "FAQ"
-    @FXML
-    public void onClickFaq() {
-        System.out.println("Botão FAQ clicado!");
-        // Adicione lógica para navegar para a tela de FAQ (ex.: FAQ.fxml)
-    }
+        faqButton.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Faq.fxml"));
+                Parent root = loader.load();
 
-    // Método para o botão "Conta"
-    @FXML
-    public void onClickConta() {
-        try {
-            java.net.URL fxmlLocation = getClass().getResource("/com/example/aginvest/Conta.fxml");
-            if (fxmlLocation == null) {
-                throw new IOException("Não foi possível encontrar o arquivo Conta.fxml");
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de FAQ");
             }
-            FXMLLoader loader = new FXMLLoader(fxmlLocation);
-            Parent root = loader.load();
-            Scene contaScene = new Scene(root);
-            Stage stage = (Stage) contaButton.getScene().getWindow();
-            stage.setScene(contaScene);
-            stage.setTitle("Configurações de Conta - Invest7");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar a tela Configurações de Conta: " + e.getMessage());
-        }
+        });
     }
 
     // Método para o botão "Voltar"
@@ -118,7 +108,6 @@ public class DadosDaContaController {
         }
     }
 
-
     // Método para atualizar os dados exibidos (opcional, caso os dados sejam dinâmicos)
     public void setDados()
     {
@@ -134,5 +123,20 @@ public class DadosDaContaController {
         enderecoLabel.setText("Endereço: " + user.getEndereco());
         cpfLabel.setText("CPF: " + user.getCpf());
         perfilLabel.setText("Perfil Investidor: " + user.getDescricao_perfil());
+    }
+
+    private void carregarTela(String fxmlPath, String titulo) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) homeButton.getScene().getWindow();
+            stage.setTitle(titulo);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -10,33 +10,15 @@
 
 <VBox fx:id="root" alignment="TOP_CENTER" spacing="16" styleClass="root" prefWidth="360" prefHeight="640" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aginvest.controller.viewcontroller.DadosDaContaController">
     <!-- Cabeçalho -->
-    <HBox style="-fx-background-color: #1E88E5; -fx-padding: 10 16 10 16; -fx-alignment: CENTER_LEFT;" prefHeight="56">
-        <!-- Título com número 7 verde -->
+    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;">
         <HBox alignment="CENTER_LEFT" spacing="0">
-            <Label text="Invest" style="-fx-font-family: 'Arial'; -fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #FFFFFF;" />
-            <Label text="7" style="-fx-font-family: 'Arial'; -fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" />
+            <Label text="Invest" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20; -fx-font-weight: bold;" />
+            <Label text="7" style="-fx-text-fill: #1FCE52; -fx-font-size: 20; -fx-font-weight: bold;" />
         </HBox>
-
-        <!-- Espaço flexível para empurrar os itens para a direita -->
-        <Region HBox.hgrow="ALWAYS"/>
-
-        <!-- Opções à direita -->
-        <HBox spacing="12" alignment="CENTER_RIGHT">
-            <VBox alignment="CENTER" spacing="0">
-                <Button fx:id="homeButton" text="🏠" onAction="#onClickHome" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20; -fx-min-width: 48; -fx-min-height: 48;" />
-                <Label text="Home" style="-fx-font-family: 'Arial'; -fx-text-fill: white; -fx-font-size: 11;" />
-            </VBox>
-
-            <VBox alignment="CENTER" spacing="0">
-                <Button fx:id="faqButton" text="❓" onAction="#onClickFaq" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 20; -fx-min-width: 48; -fx-min-height: 48;" />
-                <Label text="FAQ" style="-fx-font-family: 'Arial'; -fx-text-fill: white; -fx-font-size: 11;" />
-            </VBox>
-
-            <VBox alignment="CENTER" spacing="0">
-                <Button fx:id="contaButton" text="👤" onAction="#onClickConta" style="-fx-background-color: transparent; -fx-text-fill: #4CAF50; -fx-font-size: 20; -fx-min-width: 48; -fx-min-height: 48;" />
-                <Label text="Conta" style="-fx-font-family: 'Arial'; -fx-text-fill: white; -fx-font-size: 11;" />
-            </VBox>
-        </HBox>
+        <HBox HBox.hgrow="ALWAYS" />
+        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+        <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
     </HBox>
 
     <!-- Conteúdo Principal -->

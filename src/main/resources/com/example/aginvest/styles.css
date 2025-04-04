@@ -77,3 +77,19 @@
 .login-button:hover {
     -fx-background-color: #0267ff;
 }
+
+.accordion .titled-pane .title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-font-family: "Roboto";
+}
+
+.accordion .titled-pane .content {
+    -fx-background-color: #F5F5F5;
+    -fx-padding: 8;
+}
+
+.accordion .titled-pane .arrow {
+    -fx-background-color: #007BFF;
+}

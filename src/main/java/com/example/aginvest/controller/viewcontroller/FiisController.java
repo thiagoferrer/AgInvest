@@ -2,12 +2,14 @@ package com.example.aginvest.controller.viewcontroller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class FiisController {
@@ -42,21 +44,50 @@ public class FiisController {
     @FXML
     private Button calcularButton;
 
-    // Método para o botão "Home"
     @FXML
-    public void onClickHome() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
-            Parent root = loader.load();
-            Scene homeScene = new Scene(root);
-            Stage stage = (Stage) homeButton.getScene().getWindow();
-            stage.setScene(homeScene);
-            stage.setTitle("Home - Invest7");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar a tela Home: " + e.getMessage());
-        }
+    private void onClickHome() {
+        carregarTela("/com/example/aginvest/home.fxml", "Home - Invest7");
+    }
+
+
+    // Método de inicialização
+    @FXML
+    public void initialize() {
+        contaButton.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Conta.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de dados do usuario");
+            }
+        });
+
+        faqButton.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Faq.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de FAQ");
+            }
+        });
     }
 
     // Método para o botão "FAQ"
@@ -121,6 +152,21 @@ public class FiisController {
     public void onNaoReinvestirSelected() {
         if (naoReinvestirCheckBox.isSelected()) {
             reinvestirCheckBox.setSelected(false);
+        }
+    }
+
+    private void carregarTela(String fxmlPath, String titulo) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) homeButton.getScene().getWindow();
+            stage.setTitle(titulo);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
