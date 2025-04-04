@@ -57,11 +57,6 @@ public class UserController {
     public void logout() {
         // Limpa a sessão do usuário
         UserSession.clear();
-/*
-        MenuInicial menuInicial = new MenuInicial();
-        menuInicial.exibirMenuInicial();
-
- */
     }
 
 

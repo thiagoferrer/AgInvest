@@ -19,6 +19,9 @@
     <!-- Logotipo -->
     <Label text="Invest7" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #1E90FF; -fx-padding: 24 0 16 0;" />
 
+    <!-- Mensagem de erro -->
+    <Label fx:id="errorMessage" style="-fx-text-fill: #FF0000; -fx-font-size: 14;" visible="false" />
+
     <!-- ScrollPane para o formulário -->
     <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-padding: 0 8 0 8;">
         <VBox alignment="CENTER" spacing="16" style="-fx-padding: 0 8 16 8;">

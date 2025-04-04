@@ -5,7 +5,7 @@
         int id_user, id_perfil;
 
         //model para update
-        public UserModel(String nome,String endereco, String email, String genero, String dt_nasc) {
+        public UserModel(String nome,String endereco, String genero, String dt_nasc) {
             this.nome = nome;
             this.endereco = endereco;
             this.dt_nasc = dt_nasc;
@@ -66,13 +66,6 @@
         public UserModel(String nome, String senha) {
             this.nome = nome;
             this.senha = senha;
-        }
-
-        public UserModel(String nome, String endereco, String genero, String dataNasc) {
-            this.nome = nome;
-            this.endereco = endereco;
-            this.genero = genero;
-            this.dt_nasc = dt_nasc;
         }
 
 

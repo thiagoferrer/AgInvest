@@ -1,64 +1,70 @@
 package com.example.aginvest.controller.viewcontroller;
 
-
 import com.example.aginvest.controller.user.UserController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
 import java.io.IOException;
-
 
 public class LoginController {
     @FXML
     private Button fazerLogin;
 
-
     @FXML
     private TextField emailFieldLogin;
-
 
     @FXML
     private TextField senhaFielLogin;
 
+    @FXML
+    private Label errorMessage; // Novo campo para a mensagem de erro
 
-    public void realizarLogin(){
+    public void realizarLogin() {
         try {
+            // Limpa os estilos de erro antes de validar
+            clearErrorStyles();
+
             String email = emailFieldLogin.getText().trim();
             String senha = senhaFielLogin.getText().trim();
 
-
             if (email.isEmpty() || senha.isEmpty()) {
-                // Mostrar alerta para o usuário
-                System.err.println("Email e senha são obrigatórios!");
+                showError("Email e senha são obrigatórios!");
                 return;
             }
 
+            if (!email.contains("@") || !email.contains(".")) {
+                showError("Por favor, insira um email válido!");
+                return;
+            }
 
             UserController userLogin = new UserController();
             String loginRealizado = userLogin.login(email, senha);
 
-
             if (loginRealizado != null) {
-
                 carregarTelaPrincipal();
             } else {
-                // Mostrar mensagem de erro de login
-                System.err.println("Login falhou! Verifique suas credenciais.");
+                showError("Login falhou! Verifique suas credenciais.");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("Erro durante o login: " + e.getMessage());
+            showError("Erro durante o login: " + e.getMessage());
         }
     }
 
+    private void showError(String message) {
+        errorMessage.setText(message);
+        errorMessage.setVisible(true);
+
+        // Aplica borda vermelha nos campos
+        emailFieldLogin.setStyle("-fx-border-color: #FF0000; -fx-border-radius: 8;");
+        senhaFielLogin.setStyle("-fx-border-color: #FF0000; -fx-border-radius: 8;");
+    }
 
     private void carregarTelaPrincipal() {
         try {
@@ -71,7 +77,13 @@ public class LoginController {
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Erro ao carregar tela principal: " + e.getMessage());
+            showError("Erro ao carregar tela principal: " + e.getMessage());
         }
+    }
+
+    private void clearErrorStyles() {
+        errorMessage.setVisible(false);
+        emailFieldLogin.setStyle("-fx-border-color: #87CEFA; -fx-border-radius: 8;");
+        senhaFielLogin.setStyle("-fx-border-color: #87CEFA; -fx-border-radius: 8;");
     }
 }
