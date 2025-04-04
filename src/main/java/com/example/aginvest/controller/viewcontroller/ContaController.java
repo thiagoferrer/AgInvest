@@ -97,6 +97,7 @@ public class ContaController {
             stage.setScene(new Scene(root));
             stage.show();
 
+
         } catch (IOException e) {
             mostrarAlerta("Erro", "Não foi possível carregar a tela: " + fxmlPath + "\nErro: " + e.getMessage());
             e.printStackTrace();
