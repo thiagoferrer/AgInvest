@@ -141,22 +141,13 @@ public class CadastroController {
     private void carregarTelaQuestionario(UserModel user) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/QuestionarioPerfil.fxml"));
-            Scene mainScene = new Scene(loader.load(), 360, 640);
+            Parent root = loader.load();
 
             QuestionarioPerfilController controller = loader.getController();
             controller.setUser(user);
 
-            String css = getClass().getResource("/com/example/aginvest/styles.css").toExternalForm();
-            if (css != null) {
-                mainScene.getStylesheets().add(css);
-            }
-
             Stage stage = (Stage) cadastrarButton.getScene().getWindow();
-            stage.setScene(mainScene);
-            stage.setTitle("Tela Principal");
-            stage.setWidth(360);
-            stage.setHeight(640);
-            stage.centerOnScreen();
+            stage.setScene(new Scene(root));
             stage.show();
 
             // Opcional: feche a janela atual se necessário
