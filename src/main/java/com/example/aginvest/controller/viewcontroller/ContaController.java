@@ -1,5 +1,6 @@
 package com.example.aginvest.controller.viewcontroller;
 
+import com.example.aginvest.controller.user.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,9 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Optional;
 
 public class ContaController {
 
@@ -54,7 +57,7 @@ public class ContaController {
 
     @FXML
     private void onClickAtualizacaoConta() {
-        carregarTela(atualizacaoContaButton, "/com/example/aginvest/atualizacaoconta.fxml", "Atualizar Dados - Invest7");
+        carregarTela(atualizacaoContaButton, "/com/example/aginvest/AtualizarDados.fxml", "Atualizar Dados - Invest7");
     }
 
     @FXML
@@ -62,6 +65,27 @@ public class ContaController {
         carregarTela(refazerQuizButton, "/com/example/aginvest/quiz.fxml", "Questionário - Invest7");
     }
 
+    @FXML private void onClickSairConta(){
+        // 1. Mostra um diálogo de confirmação
+        Alert confirmacao = new Alert(AlertType.CONFIRMATION);
+        confirmacao.setTitle("Confirmar Saída");
+        confirmacao.setHeaderText(null);
+        confirmacao.setContentText("Tem certeza que deseja sair da sua conta?");
+
+        // 2. Espera pela resposta do usuário
+        Optional<ButtonType> resultado = confirmacao.showAndWait();
+
+        // 3. Se o usuário confirmar, executa o logout e redireciona
+        if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+            // Chama o método de logout do UserController
+            UserController userController = new UserController();
+            userController.logout();
+
+            // Redireciona para a tela de login
+            carregarTela(contaButton, "/com/example/aginvest/login.fxml", "Login - Invest7");
+
+        }
+    }
     @FXML
     private void onClickDeletarConta() {
         try {
@@ -75,7 +99,7 @@ public class ContaController {
             stage.showAndWait();
 
         } catch (IOException e) {
-            mostrarAlerta("Erro", "Não foi possível abrir a tela de deletar conta: " + e.getMessage());
+            mostrarAlerta("Erro", "Não foi possível abrir a tela de deletar conta: " + e.getMessage(), AlertType.INFORMATION);
             e.printStackTrace();
         }
     }
@@ -96,12 +120,12 @@ public class ContaController {
             stage.show();
 
         } catch (IOException e) {
-            mostrarAlerta("Erro", "Não foi possível carregar a tela: " + fxmlPath + "\nErro: " + e.getMessage());
+            mostrarAlerta("Erro", "Não foi possível carregar a tela: " + fxmlPath + "\nErro: " + e.getMessage(), AlertType.INFORMATION);
             e.printStackTrace();
         }
     }
 
-    private void mostrarAlerta(String titulo, String mensagem) {
+    private void mostrarAlerta(String titulo, String mensagem, AlertType information) {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle(titulo);
         alert.setHeaderText(null);

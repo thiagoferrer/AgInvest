@@ -52,6 +52,9 @@
 
         <Button fx:id="deletarContaButton" onAction="#onClickDeletarConta" text="Deletar conta" prefWidth="300" prefHeight="48"
                 style="-fx-background-color: #FF4C4C; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+
+        <Button fx:id="logoutButton" onAction="#onClickSairConta" text="LOGOUT" prefWidth="300" prefHeight="48"
+                style="-fx-background-color: #000000; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
     </VBox>
 
     <!-- Botão Voltar -->

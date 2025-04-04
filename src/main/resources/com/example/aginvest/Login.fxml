@@ -17,6 +17,9 @@
     <!-- Título -->
     <Label text="Login" style="-fx-font-size: 20; -fx-text-fill: #666;" />
 
+    <!-- Mensagem de Erro (inicialmente invisível) -->
+    <Label fx:id="errorMessage" style="-fx-text-fill: #FF0000; -fx-font-size: 14;" visible="false" />
+
     <!-- Campo E-mail -->
     <VBox spacing="8" alignment="CENTER_LEFT">
         <Label text="E-mail" style="-fx-font-size: 16; -fx-text-fill: #666;" />

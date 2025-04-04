@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
-<?import java.net.URL?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
 
-<VBox fx:id="root" alignment="TOP_CENTER" spacing="16" styleClass="root" prefWidth="360" prefHeight="640"
-      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.aginvest.controller.viewcontroller.DadosDaContaController">
+<VBox alignment="CENTER" spacing="0" prefWidth="360" prefHeight="640" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.aginvest.controller.viewcontroller.DadosDaContaController"
+      style="-fx-background-color: #F8F9FA;">
 
-    <!-- Cabeçalho -->
+    <!-- Barra de Navegação Superior (idêntica à tela de cadastro) -->
     <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;">
         <HBox alignment="CENTER_LEFT" spacing="0">
             <Label text="Invest" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20; -fx-font-weight: bold;" />
@@ -24,49 +22,46 @@
         <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
     </HBox>
 
-    <!-- Conteúdo Principal -->
-    <VBox spacing="16" style="-fx-background-color: white; -fx-background-radius: 8;
-                              -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 2);" prefWidth="328" VBox.vgrow="ALWAYS">
-        <padding>
-            <Insets top="16" right="16" bottom="24" left="16"/>
-        </padding>
+    <!-- Área rolável principal (mesmo padrão da tela de cadastro) -->
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                style="-fx-background: #F8F9FA; -fx-background-color: transparent;"
+                VBox.vgrow="ALWAYS">
 
-        <!-- Título -->
-        <Label text="Dados da Conta" style="-fx-font-family: 'Arial'; -fx-font-size: 20;
-                                             -fx-font-weight: bold; -fx-text-fill: #000000;" />
+        <VBox spacing="16" alignment="CENTER" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-padding: 24 16 24 16;" minWidth="360">
 
-        <!-- Informações da Conta -->
-        <VBox spacing="8" style="-fx-border-color: #1E88E5; -fx-border-radius: 10; -fx-border-width: 1;
-                                 -fx-padding: 10;" prefWidth="296">
-            <Label fx:id="nomeLabel" text="Nome Completo: Fulano da Silva"
-                   style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #000000;" wrapText="true" />
-            <Label fx:id="emailLabel" text="E-mail: fulsilva@gmail.com"
-                   style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #000000;" wrapText="true" />
-            <Label fx:id="aniversarioLabel" text="Aniversário: 01.01.2000"
-                   style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #000000;" wrapText="true" />
-            <Label fx:id="generoLabel" text="Gênero: Masculino"
-                   style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #000000;" wrapText="true" />
-            <Label fx:id="enderecoLabel" text="Endereço: Rua tal, nº - Jd qualquer, SP - 12960-780"
-                   style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #000000;" wrapText="true" />
-            <Label fx:id="cpfLabel" text="CPF: 487.789.459-09"
-                   style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #000000;" wrapText="true" />
-            <Label fx:id="perfilLabel" text="Perfil Investidor: Conservador"
-                   style="-fx-font-family: 'Arial'; -fx-font-size: 14; -fx-text-fill: #000000;" wrapText="true" />
+            <!-- Título Centralizado -->
+            <Label text="Dados da Conta"
+                   style="-fx-text-fill: #2E86AB; -fx-font-weight: bold; -fx-font-size: 20;"/>
+
+            <!-- Separador visual -->
+            <Rectangle height="1" fill="#EEEEEE" width="328"/>
+
+            <!-- Container das Informações (ajustado para ocupar a largura total) -->
+            <VBox spacing="12" style="-fx-padding: 16; -fx-min-width: 320;">
+                <Label fx:id="nomeLabel" text="Nome Completo: leozinho"
+                       style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true;"/>
+                <Label fx:id="emailLabel" text="E-mail: leo@leo.com"
+                       style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true;"/>
+                <Label fx:id="aniversarioLabel" text="Data de Nascimento: 20/04/0001"
+                       style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true;"/>
+                <Label fx:id="generoLabel" text="Gênero: Masculino"
+                       style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true;"/>
+                <Label fx:id="enderecoLabel" text="Endereço: rua agimania"
+                       style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true;"/>
+                <Label fx:id="cpfLabel" text="CPF: 480.693.851-38"
+                       style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true;"/>
+                <Label fx:id="perfilLabel" text="Perfil Investidor: Arrojado"
+                       style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true;"/>
+            </VBox>
+
+            <!-- Botão Voltar (mesmo estilo da tela de cadastro) -->
+            <Button fx:id="voltarButton" text="Voltar" onAction="#onClickVoltar"
+                    style="-fx-background-color: #1E90FF; -fx-text-fill: white; -fx-font-size: 16;
+                           -fx-pref-height: 48; -fx-min-width: 200; -fx-background-radius: 8;">
+                <padding>
+                    <Insets left="24.0" right="24.0" top="8.0" bottom="8.0"/>
+                </padding>
+            </Button>
         </VBox>
-
-        <!-- Espaço flexível -->
-        <Region VBox.vgrow="ALWAYS"/>
-
-        <!-- Botão Voltar -->
-        <HBox spacing="16" alignment="CENTER">
-            <Button fx:id="voltarButton" onAction="#onClickVoltar" text="Voltar"
-                    style="-fx-background-color: #1E88E5; -fx-text-fill: #FFFFFF; -fx-font-family: 'Arial';
-                           -fx-font-size: 14; -fx-background-radius: 20; -fx-min-width: 140; -fx-min-height: 48;" />
-        </HBox>
-    </VBox>
-
-    <!-- Referência ao CSS -->
-    <stylesheets>
-        <URL value="@styles.css" />
-    </stylesheets>
+    </ScrollPane>
 </VBox>
