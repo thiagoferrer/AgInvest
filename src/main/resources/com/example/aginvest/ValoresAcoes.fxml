@@ -48,7 +48,7 @@
                 <Label fx:id="acao1Ticker" text="" style="-fx-text-fill: #FFFFFF; -fx-font-size: 16; -fx-font-weight: bold;" />
                 <Label fx:id="acao1Preco" text="" style="-fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
                 <Label fx:id="acao1Maxima" text="" style="-fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-                <Label fx:id="acao1Variacao" text="+2.5%" style="-fx-text-fill: #1FCE52; -fx-font-size: 14;" />
+                <Label fx:id="acao1Variacao" text="" style="-fx-text-fill: #1FCE52; -fx-font-size: 14;" />
             </VBox>
 
             <!-- Ação 2 -->

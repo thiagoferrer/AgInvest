@@ -17,9 +17,9 @@
             <Label text="7" style="-fx-text-fill: #1FCE52; -fx-font-size: 20; -fx-font-weight: bold;" />
         </HBox>
         <HBox HBox.hgrow="ALWAYS" />
-        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-        <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
     </HBox>
 
     <!-- Área rolável principal (mesmo padrão da tela de cadastro) -->
@@ -57,7 +57,7 @@
             <!-- Botão Voltar (mesmo estilo da tela de cadastro) -->
             <Button fx:id="voltarButton" text="Voltar" onAction="#onClickVoltar"
                     style="-fx-background-color: #1E90FF; -fx-text-fill: white; -fx-font-size: 16;
-                           -fx-pref-height: 48; -fx-min-width: 200; -fx-background-radius: 8;">
+                           -fx-pref-height: 48; -fx-min-width: 200; -fx-background-radius: 8; -fx-cursor: hand;">
                 <padding>
                     <Insets left="24.0" right="24.0" top="8.0" bottom="8.0"/>
                 </padding>

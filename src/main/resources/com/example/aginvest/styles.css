@@ -93,3 +93,9 @@
 .accordion .titled-pane .arrow {
     -fx-background-color: #007BFF;
 }
+
+<!-- Estilo para o botão de mazoinha -->
+
+.button-hover {
+    -fx-cursor: hand;
+}

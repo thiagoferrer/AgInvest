@@ -22,16 +22,20 @@
     <!-- Botões Cadastro e Login (lado a lado) -->
     <HBox alignment="CENTER" spacing="16">
         <Button fx:id="cadastroButton" text="Cadastro" onAction="#handleCadastro"
+
                 style="-fx-background-color: #1E90FF; -fx-text-fill: white; -fx-font-size: 16;-fx-font-weight: bold;
-                       -fx-pref-height: 48; -fx-pref-width: 100; -fx-padding: 12; -fx-background-radius: 8;" />
+                       -fx-pref-height: 48; -fx-pref-width: 100; -fx-padding: 12; -fx-background-radius: 8;  -fx-cursor: hand;" />
         <Button fx:id="loginButton" text="Login" onAction="#handleLogin"
                 style="-fx-background-color: #41C769; -fx-text-fill: white; -fx-font-size: 16;-fx-font-weight: bold;
-                       -fx-pref-height: 48; -fx-pref-width: 100; -fx-padding: 12; -fx-background-radius: 8;" />
+                       -fx-pref-height: 48; -fx-pref-width: 100; -fx-padding: 12; -fx-background-radius: 8;-fx-cursor: hand;" />
+
     </HBox>
 
     <!-- Botão Simulação Prévia -->
     <Button fx:id="simulacaoButton" text="Simulação Prévia" onAction="#handleSimulacao"
+
             style="-fx-background-color: #67A4FF; -fx-text-fill: white; -fx-font-size: 16;-fx-font-weight: bold;  -fx-padding: 12;
-                   -fx-pref-width: 210; -fx-pref-height: 48; -fx-background-radius: 8;" />
+                   -fx-pref-width: 210; -fx-pref-height: 48; -fx-background-radius: 8;-fx-cursor: hand;" />
+
 
 </VBox>
