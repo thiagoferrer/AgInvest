@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.PasswordField?>
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.aginvest.controller.viewcontroller.LoginController"
       alignment="CENTER" spacing="24" prefWidth="360" prefHeight="640"
@@ -31,8 +32,8 @@
     <!-- Campo Senha -->
     <VBox spacing="8" alignment="CENTER_LEFT">
         <Label text="Senha" style="-fx-font-size: 16; -fx-text-fill: #666;" />
-        <TextField fx:id="senhaFielLogin" promptText="Senha"
-                   style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
+        <PasswordField fx:id="senhaFielLogin" promptText="Senha"
+                       style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
                           -fx-border-color: #87CEFA; -fx-border-radius: 8; -fx-background-radius: 8;" />
     </VBox>
 
