@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -50,58 +51,72 @@
         </padding>
     </Label>
 
-    <!-- Grid de Botões -->
-    <GridPane hgap="16" vgap="24" alignment="CENTER" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 2);"
-              VBox.vgrow="ALWAYS">
-        <padding>
-            <Insets top="24" right="16" bottom="24" left="16" />
-        </padding>
-        <!-- Botão 1: Fundo Imobiliário -->
-        <Button fx:id="btnFundoImobiliario" prefWidth="120" prefHeight="150" style="-fx-background-color: #66B3FF; -fx-background-radius: 12; -fx-text-fill: #FFFFFF;">
-            <graphic>
-                <VBox alignment="CENTER" spacing="8">
-                    <Label text="🏠" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF;" />
-                    <Label text="FIIs" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center;" />
-                </VBox>
-            </graphic>
-            <GridPane.columnIndex>0</GridPane.columnIndex>
-            <GridPane.rowIndex>0</GridPane.rowIndex>
-        </Button>
-        <!-- Botão 2: Renda Fixa -->
-        <Button fx:id="btnRendaFixa" prefWidth="120" prefHeight="150" style="-fx-background-color: #66CC99; -fx-background-radius: 12; -fx-text-fill: #FFFFFF;">
-            <graphic>
-                <VBox alignment="CENTER" spacing="8">
-                    <Label text="💵" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF;" />
-                    <Label text="Renda Fixa" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center;" />
-                </VBox>
-            </graphic>
-            <GridPane.columnIndex>1</GridPane.columnIndex>
-            <GridPane.rowIndex>0</GridPane.rowIndex>
-        </Button>
-        <!-- Botão 3: Ações -->
-        <Button fx:id="btnAcoes" prefWidth="120" prefHeight="150" style="-fx-background-color: #FF9933; -fx-background-radius: 12; -fx-text-fill: #FFFFFF;">
-            <graphic>
-                <VBox alignment="CENTER" spacing="8">
-                    <Label text="📈" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF;" />
-                    <Label text="Ações" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center;" />
-                </VBox>
-            </graphic>
-            <GridPane.columnIndex>0</GridPane.columnIndex>
-            <GridPane.rowIndex>1</GridPane.rowIndex>
-        </Button>
-        <!-- Botão 4: FAQ -->
-        <Button fx:id="btnFAQ" prefWidth="120" prefHeight="150" style="-fx-background-color: #CC99CC; -fx-background-radius: 12; -fx-text-fill: #FFFFFF;">
-            <graphic>
-                <VBox alignment="CENTER" spacing="8">
-                    <Label text="❓" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF;" />
-                    <Label text="FAQ" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center;" />
-                </VBox>
-            </graphic>
-            <GridPane.columnIndex>1</GridPane.columnIndex>
-            <GridPane.rowIndex>1</GridPane.rowIndex>
-        </Button>
+    <!-- ScrollPane para o Grid de Botões -->
+    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-padding: 0 16 16 16;">
+        <GridPane hgap="16" vgap="24" alignment="CENTER" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 2);">
+            <padding>
+                <Insets top="24" right="16" bottom="24" left="16" />
+            </padding>
+            <!-- Linha 1 -->
+            <!-- Botão 1: Fundo Imobiliário -->
+            <Button fx:id="btnFundoImobiliario" prefWidth="120" prefHeight="150" style="-fx-background-color: #66B3FF; -fx-background-radius: 12; -fx-text-fill: #FFFFFF;">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="8">
+                        <Label text="🏠" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF;" />
+                        <Label text="FIIs" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center;" />
+                    </VBox>
+                </graphic>
+                <GridPane.columnIndex>0</GridPane.columnIndex>
+                <GridPane.rowIndex>0</GridPane.rowIndex>
+            </Button>
+            <!-- Botão 2: Renda Fixa -->
+            <Button fx:id="btnRendaFixa" prefWidth="120" prefHeight="150" style="-fx-background-color: #66CC99; -fx-background-radius: 12; -fx-text-fill: #FFFFFF;">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="8">
+                        <Label text="💵" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF;" />
+                        <Label text="Renda Fixa" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center;" />
+                    </VBox>
+                </graphic>
+                <GridPane.columnIndex>1</GridPane.columnIndex>
+                <GridPane.rowIndex>0</GridPane.rowIndex>
+            </Button>
 
-        //ADICIONAR calculadora de perfil se der:
-        //ADICIONAR visualização de preço das ações se der:
-    </GridPane>
+            <!-- Linha 2 -->
+            <!-- Botão 3: Ações -->
+            <Button fx:id="btnAcoes" prefWidth="120" prefHeight="150" style="-fx-background-color: #FF9933; -fx-background-radius: 12; -fx-text-fill: #FFFFFF;">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="8">
+                        <Label text="📈" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF;" />
+                        <Label text="Ações" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center;" />
+                    </VBox>
+                </graphic>
+                <GridPane.columnIndex>0</GridPane.columnIndex>
+                <GridPane.rowIndex>1</GridPane.rowIndex>
+            </Button>
+            <!-- Botão 4: Valores Ações -->
+            <Button fx:id="btnValoresAcoes" onAction="#onClickValoresAcoes" prefWidth="120" prefHeight="150" style="-fx-background-color: #FF6666; -fx-background-radius: 12; -fx-text-fill: #FFFFFF;">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="8">
+                        <Label text="💰" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF;" />
+                        <Label text="Valores Ações" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center;" />
+                    </VBox>
+                </graphic>
+                <GridPane.columnIndex>1</GridPane.columnIndex>
+                <GridPane.rowIndex>1</GridPane.rowIndex>
+            </Button>
+
+            <!-- Linha 3 (opcional para futuras expansões) -->
+            <!-- Botão 5: FAQ -->
+            <Button fx:id="btnFAQ" prefWidth="120" prefHeight="150" style="-fx-background-color: #CC99CC; -fx-background-radius: 12; -fx-text-fill: #FFFFFF;">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="8">
+                        <Label text="❓" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF;" />
+                        <Label text="FAQ" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center;" />
+                    </VBox>
+                </graphic>
+                <GridPane.columnIndex>0</GridPane.columnIndex>
+                <GridPane.rowIndex>2</GridPane.rowIndex>
+            </Button>
+        </GridPane>
+    </ScrollPane>
 </VBox>

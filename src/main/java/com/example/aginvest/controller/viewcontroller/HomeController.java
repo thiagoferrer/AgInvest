@@ -49,6 +49,8 @@ public class HomeController {
         carregarTela("/com/example/aginvest/home.fxml", "Home - Invest7");
     }
 
+    @FXML private void onClickValoresAcoes(){ carregarTela("/com/example/aginvest/ValoresAcoes.fxml", "Acoes - Inves7");}
+
     @FXML
     public void initialize() {
         UserDAO userDAO= new UserDAO();
