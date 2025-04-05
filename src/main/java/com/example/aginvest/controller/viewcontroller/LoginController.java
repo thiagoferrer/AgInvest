@@ -17,6 +17,9 @@ public class LoginController {
     private Button fazerLogin;
 
     @FXML
+    private Button voltarButton;
+
+    @FXML
     private TextField emailFieldLogin;
 
     @FXML
@@ -85,5 +88,21 @@ public class LoginController {
         errorMessage.setVisible(false);
         emailFieldLogin.setStyle("-fx-border-color: #87CEFA; -fx-border-radius: 8;");
         senhaFielLogin.setStyle("-fx-border-color: #87CEFA; -fx-border-radius: 8;");
+    }
+
+    @FXML
+    private void handleVoltar() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Logo.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) voltarButton.getScene().getWindow();
+            Scene scene = new Scene(root, 360, 640);
+            stage.setScene(scene);
+            stage.setTitle("Invest7");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showError("Erro ao carregar a tela inicial: " + e.getMessage());
+        }
     }
 }

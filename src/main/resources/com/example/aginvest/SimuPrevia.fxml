@@ -7,77 +7,89 @@
 
 <ScrollPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.aginvest.controller.viewcontroller.SimuPreviaController"
-            prefWidth="360" prefHeight="640" fitToWidth="true" style="-fx-background-color: #FFFFFF;">
+            prefWidth="360" prefHeight="640"
+            maxWidth="360" maxHeight="640"
+            minWidth="360" minHeight="640"
+
+            fitToWidth="true" style="-fx-background-color: #FFFFFF;">
+    <!-- Cabeçalho -->
 
     <content>
-        <VBox alignment="CENTER" spacing="16" style="-fx-padding: 16;">
+        <VBox alignment="CENTER" spacing="16" style="-fx-padding: 16;-fx-background-color: #FFFFFF;">
 
-            <!-- Cabeçalho -->
             <Label text="Invest7" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #1E90FF;" />
-            <Label text="Simulação Prévia" style="-fx-font-size: 20; -fx-text-fill: #333333;" />
+            <Label text="Simulação Prévia" style="-fx-font-size: 20;-fx-font-weight: bold;
+             -fx-text-fill: #666666; -fx-label-padding: 0 8" />
 
             <!-- Descrição -->
             <Label text="Calcule quanto seu dinheiro pode render simulando um investimento em CDB, Tesouro Direto Prefixado, Tesouro Direto IPCA+ e Tesouro Direto Selic."
-                   style="-fx-font-size: 14; -fx-text-fill: #6C757D; -fx-wrap-text: true; -fx-max-width: 300;" />
+                   style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-wrap-text: true;
+                    -fx-max-width: 300; " />
 
             <!-- Formulário -->
+            <VBox style="-fx-padding: 8 10">
             <VBox spacing="8" alignment="CENTER_LEFT">
                 <!-- Capital Inicial -->
-                <Label text="Capital Inicial" style="-fx-font-size: 16; -fx-text-fill: #666;" />
+                <Label text="Capital Inicial" style="-fx-font-size: 16; -fx-text-fill: #666666;" />
                 <TextField fx:id="capitalInicialField" promptText="R$ 0,00"
-                           style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
-                                  -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                           style="-fx-pref-height: 36; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
+                                  -fx-border-color: #3585FF;  -fx-text-fill: #3585FF;-fx-border-radius: 10;
+                                  -fx-background-radius: 10; -fx-font-size: 14;" />
             </VBox>
 
             <VBox spacing="8" alignment="CENTER_LEFT">
                 <!-- Aporte Mensal -->
-                <Label text="Aporte Mensal" style="-fx-font-size: 16; -fx-text-fill: #666;" />
+                <Label text="Aporte Mensal" style="-fx-font-size: 16; -fx-text-fill: #666666;" />
                 <TextField fx:id="aporteMensalField" promptText="R$ 0,00"
-                           style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
-                                  -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                           style="-fx-pref-height: 36; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
+                                  -fx-border-color: #3585FF;  -fx-text-fill: #3585FF;-fx-border-radius: 10;
+                                  -fx-background-radius: 10; -fx-font-size: 14;" />
             </VBox>
 
             <VBox spacing="8" alignment="CENTER_LEFT">
                 <!-- Prazo -->
                 <Label text="Prazo (em meses)" style="-fx-font-size: 16; -fx-text-fill: #666;" />
                 <TextField fx:id="prazoField" promptText="Prazo (meses)"
-                           style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
-                                  -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                           style="-fx-pref-height: 36; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
+                                  -fx-border-color: #3585FF;  -fx-text-fill: #3585FF;-fx-border-radius: 10;
+                                  -fx-background-radius: 10; -fx-font-size: 14;" />
+            </VBox>
             </VBox>
 
             <!-- Índices -->
-            <VBox spacing="8" alignment="CENTER_LEFT">
-                <!-- Selic -->
-                <Label text="Selic a.a" style="-fx-font-size: 16; -fx-text-fill: #666;" />
-                <TextField fx:id="selicField" promptText="13.15%"
-                           style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
-                                  -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
-            </VBox>
-
-            <VBox spacing="8" alignment="CENTER_LEFT">
-                <!-- CDI -->
-                <Label text="CDI a.a" style="-fx-font-size: 16; -fx-text-fill: #666;" />
-                <TextField fx:id="cdiField" promptText="14.15%"
-                           style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
-                                  -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
-            </VBox>
-
-            <VBox spacing="8" alignment="CENTER_LEFT">
-                <!-- IPCA -->
-                <Label text="IPCA a.a" style="-fx-font-size: 16; -fx-text-fill: #666;" />
-                <TextField fx:id="ipcaField" promptText="5.19%"
-                           style="-fx-pref-height: 48; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
-                                  -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-background-radius: 8;" />
+            <VBox spacing="12" prefWidth="300">
+                <HBox spacing="8" alignment="CENTER" style="-fx-padding: 8">
+                    <VBox alignment="CENTER" spacing="4" prefWidth="96"
+                          style="-fx-background-color: #E6F0FF; -fx-background-radius: 10;
+                          -fx-border-radius: 10; -fx-border-color: #3585FF; -fx-padding: 8">
+                        <Label text="Selic (a.a)" style="-fx-text-fill: #4D4D4D; -fx-font-size: 14;-fx-font-weight: bold;"/>
+                        <Label text="13.15%" style="-fx-text-fill: #666666; -fx-font-size: 14; " />
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="4" prefWidth="96"
+                          style="-fx-background-color: #E6F0FF; -fx-background-radius: 10;
+                          -fx-border-radius: 10;-fx-border-color: #3585FF;-fx-padding: 8">
+                        <Label text="CDI (a.a)" style="-fx-text-fill: #4D4D4D; -fx-font-size: 14;-fx-font-weight: bold;" />
+                        <Label text="14.15%" style="-fx-text-fill: #666666; -fx-font-size: 14; " />
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="4" prefWidth="96"
+                          style="-fx-background-color: #E6F0FF; -fx-background-radius: 10;
+                          -fx-border-radius: 10;-fx-border-color: #3585FF;-fx-padding: 8">
+                        <Label text="IPCA (a.a)" style="-fx-text-fill: #4D4D4D; -fx-font-size: 14;-fx-font-weight: bold;" />
+                        <Label text="5.19%" style="-fx-text-fill: #666666; -fx-font-size: 14; " />
+                    </VBox>
+                </HBox>
             </VBox>
 
             <!-- Botões -->
             <HBox spacing="16" alignment="CENTER">
                 <Button fx:id="voltarButton" text="Voltar" onAction="#handleVoltar"
                         style="-fx-background-color: #1E90FF; -fx-text-fill: white; -fx-font-size: 16;
-                               -fx-pref-height: 48; -fx-padding: 0 24 0 24; -fx-background-radius: 8;" />
+                               -fx-pref-height: 48; -fx-padding: 0 24 0 24; -fx-background-radius: 8;
+                               -fx-font-weight: bold" />
                 <Button fx:id="calcularButton" text="Calcular" onAction="#handleCalcular"
                         style="-fx-background-color: #32CD32; -fx-text-fill: white; -fx-font-size: 16;
-                               -fx-pref-height: 48; -fx-padding: 0 24 0 24; -fx-background-radius: 8;" />
+                               -fx-pref-height: 48; -fx-padding: 0 24 0 24; -fx-background-radius: 8;
+                               -fx-font-weight: bold" />
             </HBox>
         </VBox>
     </content>
