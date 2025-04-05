@@ -17,9 +17,9 @@
             <Label text="7" style="-fx-text-fill: #1FCE52; -fx-font-size: 20; -fx-font-weight: bold;" />
         </HBox>
         <HBox HBox.hgrow="ALWAYS" />
-        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-        <Button fx:id="faqButton" onAction="#onClickFaq" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-        <Button fx:id="contaButton" onAction="#onClickConta" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="faqButton" onAction="#onClickFaq" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="contaButton" onAction="#onClickConta" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
     </HBox>
 
     <!-- Título -->
@@ -57,11 +57,11 @@
 
         <Button fx:id="deletarContaButton" text="Deletar conta" onAction="#onClickDeletarConta"
                 prefWidth="300" prefHeight="48"
-                style="-fx-background-color: #FF4C4C; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+                style="-fx-background-color: #FF4C4C; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
 
         <Button fx:id="voltarButton" text="Voltar" onAction="#onClickVoltar"
                 prefWidth="300" prefHeight="48"
-                style="-fx-background-color: #D3D3D3; -fx-background-radius: 12; -fx-text-fill: #333333; -fx-font-size: 14;" />
+                style="-fx-background-color: #D3D3D3; -fx-background-radius: 12; -fx-text-fill: #333333; -fx-font-size: 14; -fx-cursor: hand;" />
     </VBox>
 
     <!-- Espaço inferior opcional -->

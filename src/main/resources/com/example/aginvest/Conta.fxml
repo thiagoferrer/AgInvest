@@ -20,9 +20,9 @@
             <Label text="7" style="-fx-text-fill: #1FCE52; -fx-font-size: 20; -fx-font-weight: bold;" />
         </HBox>
         <HBox HBox.hgrow="ALWAYS" />
-        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-        <Button fx:id="faqButton" onAction="#onClickFaq" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="faqButton" onAction="#onClickFaq" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
     </HBox>
 
     <!-- Título -->
@@ -42,24 +42,24 @@
         </padding>
 
         <Button fx:id="dadosDacontaButton" onAction="#onClickDadosConta" text="Dados da conta" prefWidth="300" prefHeight="48"
-                style="-fx-background-color: #66B3FF; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+                style="-fx-background-color: #66B3FF; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
 
         <Button fx:id="atualizacaoContaButton" onAction="#onClickAtualizacaoConta" text="Atualizar dados" prefWidth="300" prefHeight="48"
-                style="-fx-background-color: #66CC99; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+                style="-fx-background-color: #66CC99; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
 
         <Button fx:id="refazerQuizButton" onAction="#onClickRefazerQuiz" text="Refazer questionário" prefWidth="300" prefHeight="48"
-                style="-fx-background-color: #FF9933; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+                style="-fx-background-color: #FF9933; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
 
         <Button fx:id="deletarContaButton" onAction="#onClickDeletarConta" text="Deletar conta" prefWidth="300" prefHeight="48"
-                style="-fx-background-color: #FF4C4C; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+                style="-fx-background-color: #FF4C4C; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
 
         <Button fx:id="logoutButton" onAction="#onClickSairConta" text="LOGOUT" prefWidth="300" prefHeight="48"
-                style="-fx-background-color: #000000; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+                style="-fx-background-color: #000000; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14;-fx-cursor: hand;" />
     </VBox>
 
     <!-- Botão Voltar -->
     <Button fx:id="backButton" text="Voltar" onAction="#onClickBackToHome" prefWidth="140" prefHeight="48"
-            style="-fx-background-color: #D3D3D3; -fx-background-radius: 12; -fx-text-fill: #333333; -fx-font-size: 14;">
+            style="-fx-background-color: #D3D3D3; -fx-background-radius: 12; -fx-text-fill: #333333; -fx-font-size: 14; -fx-cursor: hand;">
         <padding>
             <Insets top="16" />
         </padding>

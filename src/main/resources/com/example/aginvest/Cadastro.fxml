@@ -101,9 +101,9 @@
     <HBox spacing="24" alignment="CENTER" style="-fx-padding: 16;">
         <Button fx:id="voltarButton" text="Voltar" onAction="#handleVoltar"
                 style="-fx-background-color: #1E90FF; -fx-text-fill: white; -fx-font-size: 16;
-                       -fx-pref-height: 48; -fx-pref-width: 120; -fx-background-radius: 8;" />
+                       -fx-pref-height: 48; -fx-pref-width: 120; -fx-background-radius: 8; -fx-cursor: hand;" />
         <Button fx:id="cadastrarButton" text="Cadastrar" onAction="#handleCadastrar"
                 style="-fx-background-color: #32CD32; -fx-text-fill: white; -fx-font-size: 16;
-                       -fx-pref-height: 48; -fx-pref-width: 120; -fx-background-radius: 8;" />
+                       -fx-pref-height: 48; -fx-pref-width: 120; -fx-background-radius: 8; -fx-cursor: hand;" />
     </HBox>
 </VBox>
