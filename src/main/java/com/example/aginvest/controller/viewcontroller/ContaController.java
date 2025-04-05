@@ -72,16 +72,12 @@ public class ContaController {
         confirmacao.setHeaderText(null);
         confirmacao.setContentText("Tem certeza que deseja sair da sua conta?");
 
-        // 2. Espera pela resposta do usuário
         Optional<ButtonType> resultado = confirmacao.showAndWait();
 
-        // 3. Se o usuário confirmar, executa o logout e redireciona
         if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
-            // Chama o método de logout do UserController
             UserController userController = new UserController();
             userController.logout();
 
-            // Redireciona para a tela de login
             carregarTela(contaButton, "/com/example/aginvest/login.fxml", "Login - Invest7");
 
         }
@@ -92,11 +88,10 @@ public class ContaController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/deletarconta.fxml"));
             Parent root = loader.load();
 
-            Stage stage = new Stage();
+            Stage stage = (Stage) deletarContaButton.getScene().getWindow();
             stage.setTitle("Deletar Conta - Invest7");
             stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
+            stage.show();
 
         } catch (IOException e) {
             mostrarAlerta("Erro", "Não foi possível abrir a tela de deletar conta: " + e.getMessage(), AlertType.INFORMATION);

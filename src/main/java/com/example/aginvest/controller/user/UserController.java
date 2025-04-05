@@ -80,12 +80,16 @@ public class UserController {
     }
 
     public boolean deletarConta(String email, String senha){
-        boolean existe = false;
-        UserDAO user = new UserDAO();
-        UserController userCreate = new UserController();
-        existe = userCreate.verificaEmail(email);
-        if (existe) {
-            user.deletarBanco(new UserModel(email));
+        UserDAO userDAO = new UserDAO();
+        UserModel user = userDAO.findUserByEmail(new UserModel(email));
+
+        if (user == null) {
+            return false;
+        }
+
+        if (BCrypt.verifyer().verify(senha.toCharArray(), user.getSenha()).verified) {
+            int userId = UserSession.getLoggedInUserId();
+            userDAO.deletarBanco(new UserModel(userId));
             return true;
         } else {
             return false;

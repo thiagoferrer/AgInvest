@@ -7,85 +7,69 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import java.net.URL?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.layout.Region?>
-<VBox alignment="TOP_CENTER" spacing="16" styleClass="root" prefWidth="360" prefHeight="640" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aginvest.controller.viewcontroller.FiisController">
-    <!-- Cabeçalho Atualizado -->
-    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;">
+<?import javafx.scene.control.RadioButton?>
+<VBox alignment="TOP_CENTER" spacing="16" prefWidth="360" prefHeight="640"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.aginvest.controller.viewcontroller.FiisController"
+      style="-fx-background-color: #FFFFFF;">
+
+    <!-- TOPO azul com título -->
+    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16;">
         <HBox alignment="CENTER_LEFT" spacing="0">
             <Label text="Invest" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20; -fx-font-weight: bold;" />
-            <Label text="7" style="-fx-text-fill: #1FCE52; -fx-font-size: 20; -fx-font-weight: bold;" />
         </HBox>
         <HBox HBox.hgrow="ALWAYS" />
-        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-        <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF;" />
+        <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF;" />
+        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF;" />
     </HBox>
 
-    <!-- Conteúdo Principal com Padding -->
-    <VBox spacing="16" style="-fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 2);">
-        <padding>
-            <Insets top="16" right="16" bottom="24" left="16" />
-        </padding>
+    <!-- TÍTULO -->
+    <Label text="Simulador de FIIs" style="-fx-font-size: 20; -fx-text-fill: #333333; -fx-font-weight: bold;">
+        <padding><Insets top="24" bottom="0" /></padding>
+    </Label>
 
-        <!-- Cabeçalho da Seção -->
-        <VBox spacing="8">
-            <Label text="Simulador de FIIs" styleClass="title" />
-            <Label text="Fundos de Investimento Imobiliário" styleClass="subtitle" style="-fx-wrap-text: true;" />
+    <!-- Subtítulo ou descrição futura -->
+    <Label text="depois escrever algo" style="-fx-text-fill: #666666; -fx-font-size: 12;" />
+
+    <!-- FORMULÁRIO -->
+    <VBox spacing="12" alignment="TOP_CENTER" style="-fx-padding: 16 16 0 16;">
+
+        <VBox spacing="4" alignment="TOP_LEFT">
+            <Label text="Aporte Mensal" style="-fx-text-fill: #333333; -fx-font-weight: bold;" />
+            <TextField fx:id="aporteMensalField" promptText="R$ 0,00"
+                       style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #1E90FF;" />
         </VBox>
 
-        <!-- Divider -->
-        <Rectangle height="1" fill="#EEEEEE" width="328" />
-
-        <!-- Campos de Entrada com Layout Melhorado -->
-        <VBox spacing="8">
-            <Label text="Capital Inicial" styleClass="field-label" />
-            <TextField fx:id="capitalInicialField" promptText="R$ 0,00" styleClass="text-field" />
+        <VBox spacing="4" alignment="TOP_LEFT">
+            <Label text="Quantidade de Cotas" style="-fx-text-fill: #333333; -fx-font-weight: bold;" />
+            <TextField fx:id="quantidadeCotasField" promptText="Cotas"
+                       style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #1E90FF;" />
         </VBox>
 
-        <VBox spacing="8">
-            <Label text="Aporte Mensal" styleClass="field-label" />
-            <TextField fx:id="aporteMensalField" promptText="R$ 0,00" styleClass="text-field" />
+        <VBox spacing="4" alignment="TOP_LEFT">
+            <Label text="Prazo (em meses)" style="-fx-text-fill: #333333; -fx-font-weight: bold;" />
+            <TextField fx:id="prazoField" promptText="Meses"
+                       style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #1E90FF;" />
         </VBox>
 
-        <HBox spacing="8" alignment="CENTER">
-            <VBox spacing="8">
-                <Label text="Quantidade de Cotas" styleClass="field-label" />
-                <TextField fx:id="quantidadeCotasField" promptText="Quantidade de Cotas" styleClass="text-field" />
-            </VBox>
-            <VBox spacing="8">
-                <Label text="Prazo (em meses)" styleClass="field-label" />
-                <TextField fx:id="prazoField" promptText="Prazo (em meses)" styleClass="text-field" />
-            </VBox>
-        </HBox>
-
-        <!-- Reinvestir Dividendos -->
-        <VBox spacing="8">
-            <Label text="Reinvestir Dividendos" styleClass="field-label" />
-            <HBox spacing="20" alignment="CENTER">
-                <CheckBox fx:id="reinvestirCheckBox" text="Sim" styleClass="check-box" />
-                <CheckBox fx:id="naoReinvestirCheckBox" text="Não" styleClass="check-box" />
+        <VBox spacing="4" alignment="TOP_LEFT">
+            <Label text="Reinvestir Dividendos" style="-fx-text-fill: #333333; -fx-font-weight: bold;" />
+            <HBox spacing="20">
+                <RadioButton fx:id="reinvestirSimRadio" text="Sim" />
+                <RadioButton fx:id="reinvestirNaoRadio" text="Não"/>
             </HBox>
         </VBox>
 
-        <!-- Divider -->
-        <Rectangle height="1" fill="#EEEEEE" width="328" />
-
-        <!-- Botões de Ação na parte inferior do card -->
-        <HBox spacing="16" alignment="CENTER" VBox.vgrow="ALWAYS">
-            <VBox.margin>
-                <Insets top="24" />
-            </VBox.margin>
-            <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar" styleClass="button-voltar" prefWidth="140" prefHeight="48" />
-            <Button fx:id="calcularButton" onAction="#onClickCalcular" text="Calcular" styleClass="button-calcular" prefWidth="140" prefHeight="48" />
+        <!-- BOTÕES -->
+        <HBox spacing="16" alignment="CENTER" style="-fx-padding: 20 0 0 0;">
+            <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar" prefWidth="140" prefHeight="48"
+                    style="-fx-background-color: #66B3FF; -fx-background-radius: 30; -fx-text-fill: white; -fx-font-size: 14;" />
+            <Button fx:id="calcularButton" onAction="#onClickCalcular" text="Calcular" prefWidth="140" prefHeight="48"
+                    style="-fx-background-color: #1FCE52; -fx-background-radius: 30; -fx-text-fill: white; -fx-font-size: 14;" />
         </HBox>
     </VBox>
 
-    <!-- Referência ao arquivo CSS -->
-    <stylesheets>
-        <URL value="@styles.css" />
-    </stylesheets>
 </VBox>

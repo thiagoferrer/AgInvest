@@ -6,14 +6,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import java.net.URL?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" spacing="16" styleClass="root" prefWidth="360" prefHeight="640" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aginvest.controller.viewcontroller.RendaFixaController">
-    <!-- Cabeçalho Atualizado -->
+<VBox alignment="TOP_CENTER" spacing="16" prefWidth="360" prefHeight="640"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.aginvest.controller.viewcontroller.RendaFixaController"
+      style="-fx-background-color: #F8F9FA;">
+
+    <!-- Barra de Navegação Superior (same as Conta.fxml) -->
     <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;">
         <HBox alignment="CENTER_LEFT" spacing="0">
             <Label text="Invest" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20; -fx-font-weight: bold;" />
@@ -22,65 +22,74 @@
         <HBox HBox.hgrow="ALWAYS" />
         <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
         <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+        <Button fx:id="contaButton"  text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
     </HBox>
 
-    <!-- Conteúdo Principal com Padding -->
-    <VBox spacing="16" style="-fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 2);">
+    <!-- Título e Descrição -->
+    <Label text="Simulador de Renda Fixa" style="-fx-text-fill: #333333;">
+        <font>
+            <Font name="Roboto Medium" size="20" />
+        </font>
         <padding>
-            <Insets top="16" right="16" bottom="24" left="16" />
+            <Insets top="24" bottom="8" />
+        </padding>
+    </Label>
+
+    <!-- Card Principal -->
+    <VBox spacing="12" alignment="CENTER" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);">
+        <padding>
+            <Insets top="24" right="16" bottom="24" left="16" />
         </padding>
 
-        <!-- Cabeçalho da Seção -->
-        <VBox spacing="8">
-            <Label text="Simulador de Renda Fixa" styleClass="title" />
-            <Label text="CDB, CRI/CRA, LCI/LCA e Tesouro Direto" styleClass="subtitle" style="-fx-wrap-text: true;" />
+        <!-- Capital Inicial -->
+        <VBox spacing="8" prefWidth="300">
+            <Label text="Capital Inicial" style="-fx-text-fill: #333333; -fx-font-size: 14;" />
+            <TextField fx:id="capitalInicialField" promptText="R$ 0,00" prefHeight="48"
+                       style="-fx-background-radius: 8; -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-font-size: 14;" />
         </VBox>
 
-        <!-- Divider -->
-        <Rectangle height="1" fill="#EEEEEE" width="328" />
-
-        <!-- Campos de Entrada com Layout Melhorado -->
-        <VBox spacing="8">
-            <Label text="Capital Inicial" styleClass="field-label" />
-            <TextField fx:id="capitalInicialField" promptText="R$ 0,00" styleClass="text-field" />
+        <!-- Aporte Mensal -->
+        <VBox spacing="8" prefWidth="300">
+            <Label text="Aporte Mensal" style="-fx-text-fill: #333333; -fx-font-size: 14;" />
+            <TextField fx:id="aporteMensalField" promptText="R$ 0,00" prefHeight="48"
+                       style="-fx-background-radius: 8; -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-font-size: 14;" />
         </VBox>
 
-        <VBox spacing="8">
-            <Label text="Aporte Mensal" styleClass="field-label" />
-            <TextField fx:id="aporteMensalField" promptText="R$ 0,00" styleClass="text-field" />
+        <!-- Prazo -->
+        <VBox spacing="8" prefWidth="300">
+            <Label text="Prazo (em meses)" style="-fx-text-fill: #333333; -fx-font-size: 14;" />
+            <TextField fx:id="prazoField" promptText="Ex: 36" prefHeight="48"
+                       style="-fx-background-radius: 8; -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-font-size: 14;" />
         </VBox>
 
-        <VBox spacing="8">
-            <Label text="Prazo (em meses)" styleClass="field-label" />
-            <TextField fx:id="prazoField" promptText="Ex: 36" styleClass="text-field" />
-        </VBox>
-
-        <!-- Divider -->
-        <Rectangle height="1" fill="#EEEEEE" width="328" />
-
-        <!-- Índices com Chips de Material Design -->
-        <VBox spacing="8">
-            <Label text="Selecione o Índice" styleClass="field-label" />
-            <HBox spacing="8" alignment="CENTER_LEFT">
-                <Button fx:id="selicButton" text="Selic 13.15%" styleClass="tab-button-selected" />
-                <Button fx:id="cdiButton" text="CDI 14.15%" styleClass="tab-button" />
-                <Button fx:id="ipcaButton" text="IPCA 5.19%" styleClass="tab-button" />
+        <!-- Taxas Exibidas -->
+        <VBox spacing="12" prefWidth="300">
+            <HBox spacing="8" alignment="CENTER">
+                <VBox alignment="CENTER" spacing="4" prefWidth="96" style="-fx-background-color: #F1F3F5; -fx-background-radius: 8;">
+                    <Label text="Selic (a.a)" style="-fx-text-fill: #666666; -fx-font-size: 12;" />
+                    <Label text="13.15%" style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold;" />
+                </VBox>
+                <VBox alignment="CENTER" spacing="4" prefWidth="96" style="-fx-background-color: #F1F3F5; -fx-background-radius: 8;">
+                    <Label text="CDI (a.a)" style="-fx-text-fill: #666666; -fx-font-size: 12;" />
+                    <Label text="14.15%" style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold;" />
+                </VBox>
+                <VBox alignment="CENTER" spacing="4" prefWidth="96" style="-fx-background-color: #F1F3F5; -fx-background-radius: 8;">
+                    <Label text="IPCA (a.a)" style="-fx-text-fill: #666666; -fx-font-size: 12;" />
+                    <Label text="5.19%" style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold;" />
+                </VBox>
             </HBox>
         </VBox>
 
-        <!-- Botões de Ação na parte inferior do card -->
-        <HBox spacing="16" alignment="CENTER" VBox.vgrow="ALWAYS">
-            <VBox.margin>
-                <Insets top="24" />
-            </VBox.margin>
-            <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar" styleClass="button-voltar" prefWidth="140" prefHeight="48" />
-            <Button fx:id="calcularButton" onAction="#onClickCalcular" text="Calcular" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-family: 'Lemon Milk Pro Variable'; -fx-font-size: 16; -fx-font-weight: bold; -fx-background-radius: 5;" prefWidth="140" prefHeight="48" />
+        <!-- Botões -->
+        <HBox spacing="16" alignment="CENTER">
+            <Button fx:id="voltarButton" onAction="#onClickHome" text="← Voltar" prefWidth="140" prefHeight="48"
+                    style="-fx-background-color: #D3D3D3; -fx-background-radius: 12; -fx-text-fill: #333333; -fx-font-size: 14;">
+                <padding>
+                    <Insets top="16" />
+                </padding>
+            </Button>
+            <Button fx:id="calcularButton" onAction="#onClickCalcular" text="Calcular" prefWidth="140" prefHeight="48"
+                    style="-fx-background-color: #1FCE52; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-font-weight: bold;" />
         </HBox>
     </VBox>
-
-    <!-- Referência ao arquivo CSS -->
-    <stylesheets>
-        <URL value="@styles.css" />
-    </stylesheets>
 </VBox>

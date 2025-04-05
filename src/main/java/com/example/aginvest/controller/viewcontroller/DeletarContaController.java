@@ -1,5 +1,6 @@
 package com.example.aginvest.controller.viewcontroller;
 
+import com.example.aginvest.controller.user.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,10 +16,24 @@ public class DeletarContaController {
     @FXML private Button homeButton;
     @FXML private Button faqButton;
     @FXML private Button contaButton;
+    @FXML private Label emailErroLabel;
+    @FXML private Label senhaErroLabel;
+    @FXML private Label erroGeralLabel;
 
     @FXML
     private void initialize() {
         System.out.println("DeletarContaController inicializado");
+
+        // Limpar mensagens de erro quando o usuário começar a digitar
+        emailField.textProperty().addListener((obs, oldVal, newVal) -> {
+            emailErroLabel.setVisible(false);
+            erroGeralLabel.setVisible(false);
+        });
+
+        senhaField.textProperty().addListener((obs, oldVal, newVal) -> {
+            senhaErroLabel.setVisible(false);
+            erroGeralLabel.setVisible(false);
+        });
     }
 
     @FXML
@@ -38,28 +53,57 @@ public class DeletarContaController {
 
     @FXML
     private void onClickDeletarConta() {
-        if (!validarCampos()) {
-            mostrarAlerta("Erro de Validação",
-                    "Por favor, preencha todos os campos corretamente.",
-                    Alert.AlertType.WARNING);
-            return;
-        }
+        try {
+            // Resetar mensagens de erro
+            emailErroLabel.setVisible(false);
+            senhaErroLabel.setVisible(false);
+            erroGeralLabel.setVisible(false);
 
-        boolean confirmacao = mostrarConfirmacao("Confirmação",
-                "Tem certeza que deseja deletar sua conta permanentemente?\n" +
-                        "Todos os seus dados serão perdidos e esta ação não pode ser desfeita.");
+            String email = emailField.getText().trim();
+            String senha = senhaField.getText().trim();
 
-        if (confirmacao) {
-            if (deletarConta(emailField.getText(), senhaField.getText())) {
-                mostrarAlerta("Conta Deletada",
-                        "Sua conta foi removida com sucesso.",
-                        Alert.AlertType.INFORMATION);
-                carregarTela("/com/example/aginvest/login.fxml", "AgInvest - Login");
-            } else {
-                mostrarAlerta("Falha na Exclusão",
-                        "Não foi possível deletar a conta. Verifique suas credenciais.",
-                        Alert.AlertType.ERROR);
+            // Validação dos campos
+            boolean camposValidos = true;
+
+            if (email.isEmpty()) {
+                emailErroLabel.setText("E-mail é obrigatório");
+                emailErroLabel.setVisible(true);
+                camposValidos = false;
+            } else if (!email.matches("^[\\w.-]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+                emailErroLabel.setText("E-mail inválido");
+                emailErroLabel.setVisible(true);
+                camposValidos = false;
             }
+
+            if (senha.isEmpty()) {
+                senhaErroLabel.setText("Senha é obrigatória");
+                senhaErroLabel.setVisible(true);
+                camposValidos = false;
+            }
+
+            if (!camposValidos) {
+                return;
+            }
+
+            // Confirmação antes de deletar
+            if (!mostrarConfirmacao("Confirmação", "Tem certeza que deseja deletar sua conta permanentemente?")) {
+                return;
+            }
+
+            UserController userController = new UserController();
+            boolean userDeletado = userController.deletarConta(email, senha);
+
+            if (userDeletado) {
+                mostrarAlerta("Sucesso", "Conta deletada com sucesso!", Alert.AlertType.INFORMATION);
+                carregarTela("/com/example/aginvest/Logo.fxml", "Logo - Invest7");
+            } else {
+                erroGeralLabel.setText("Falha ao deletar conta. Verifique seus dados.");
+                erroGeralLabel.setVisible(true);
+            }
+        } catch (Exception e) {
+            System.err.println("Erro ao deletar conta: " + e.getMessage());
+            erroGeralLabel.setText("Erro ao processar solicitação: " + e.getMessage());
+            erroGeralLabel.setVisible(true);
         }
     }
 
@@ -69,44 +113,19 @@ public class DeletarContaController {
         stage.close();
     }
 
-    private boolean validarCampos() {
-        String email = emailField.getText().trim();
-        String password = senhaField.getText().trim();
-
-        return !email.isEmpty() &&
-                !password.isEmpty() &&
-                email.matches("^[\\w.-]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-    }
-
-    private boolean deletarConta(String email, String password) {
-        try {
-            // Simulação de operação demorada
-            Thread.sleep(1500);
-
-            // Aqui você implementaria a lógica real de deleção
-            // Retornaria true se a deleção foi bem-sucedida
-            return true;
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            return false;
-        }
-    }
-
     private void carregarTela(String fxmlPath, String titulo) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
 
-            // Obtém a janela atual e a usa para a nova cena
             Stage stage = (Stage) homeButton.getScene().getWindow();
             stage.setTitle(titulo);
             stage.setScene(new Scene(root));
             stage.show();
 
         } catch (IOException e) {
-            mostrarAlerta("Erro",
-                    "Não foi possível carregar a tela: " + e.getMessage(),
-                    Alert.AlertType.ERROR);
+            erroGeralLabel.setText("Não foi possível carregar a tela: " + e.getMessage());
+            erroGeralLabel.setVisible(true);
         }
     }
 

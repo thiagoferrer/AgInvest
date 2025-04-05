@@ -44,22 +44,75 @@ public class UserDAO {
     }
 
 
-    public boolean deletarBanco(UserModel userD){
-        String sql = "DELETE FROM usuarios WHERE email = ?";
-        try (Connection conn = ConnectionFactory.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+    public boolean deletarBanco(UserModel userD) {
+        Connection conn = null;
+        try {
+            conn = ConnectionFactory.getConnection();
+            conn.setAutoCommit(false);
 
-            stmt.setString(1, userD.getEmail());
-            int linhasAfetadas = stmt.executeUpdate();
 
-            return linhasAfetadas >0 ;
+            deletarHistoricoAcoes(conn, userD.getId_user());
+            deletarHistoricoFiis(conn, userD.getId_user());
+            deletarHistoricoRenda(conn, userD.getId_user());
 
-        } catch (SQLException e) {  // Captura apenas SQLException
-            System.err.println("Erro ao exluir usuarios: " + e.getMessage());
+
+            String sql = "DELETE FROM usuarios WHERE id_user = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, userD.getId_user());
+                int linhasAfetadas = stmt.executeUpdate();
+
+                if (linhasAfetadas > 0) {
+                    conn.commit(); // Confirma a transação
+                    return true;
+                } else {
+                    conn.rollback(); // Desfaz em caso de erro
+                    return false;
+                }
+            }
+        } catch (SQLException e) {
+            try {
+                if (conn != null) {
+                    conn.rollback(); // Desfaz em caso de erro
+                }
+            } catch (SQLException ex) {
+                System.err.println("Erro ao fazer rollback: " + ex.getMessage());
+            }
+            System.err.println("Erro ao deletar usuário: " + e.getMessage());
             return false;
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.setAutoCommit(true); // Restaura o auto-commit
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Erro ao fechar conexão: " + e.getMessage());
+            }
         }
     }
 
+    private void deletarHistoricoAcoes(Connection conn, int userId) throws SQLException {
+        String sql = "DELETE FROM acoes_hist WHERE id_user = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, userId);
+            stmt.executeUpdate();
+        }
+    }
+    private void deletarHistoricoFiis(Connection conn, int userId) throws SQLException {
+        String sql = "DELETE FROM fiis_hist WHERE id_user = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, userId);
+            stmt.executeUpdate();
+        }
+    }
+
+    private void deletarHistoricoRenda(Connection conn, int userId) throws SQLException {
+        String sql = "DELETE FROM rf_hist WHERE id_user = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, userId);
+            stmt.executeUpdate();
+        }
+    }
 
     public UserModel findUserByEmail(UserModel userL) {
         String sql = "SELECT id_user, email, senha FROM usuarios WHERE email = ?";
