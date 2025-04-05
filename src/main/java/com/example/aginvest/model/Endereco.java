@@ -1,10 +1,15 @@
 package com.example.aginvest.model;
 
+import com.google.gson.annotations.Expose;
+
 public class Endereco {
     private String cep;
+    @Expose
     private String logradouro; // Rua
     private String complemento;
+    @Expose
     private String bairro;
+    @Expose
     private String localidade; // Cidade
     private String uf;
     private String ibge;
@@ -12,6 +17,7 @@ public class Endereco {
     private String ddd;
     private String siafi;
 
+    public Endereco() {}
     public String getCep() {
         return cep;
     }

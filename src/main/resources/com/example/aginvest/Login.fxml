@@ -23,7 +23,7 @@
     <Label text="Invest7" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #1E90FF;" />
 
     <!-- Título -->
-    <Label text="Login" style="-fx-font-size: 20;  -fx-font-weight: medium ;-fx-text-fill: #666666;" />
+    <Label text="Login" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #666666;" />
 
     <!-- Mensagem de Erro (inicialmente invisível) -->
     <Label fx:id="errorMessage" style="-fx-text-fill: #FF0000; -fx-font-size: 14;" visible="false" />
@@ -33,16 +33,14 @@
      -fx-border-color: #9AC2FF; -fx-border-radius: 10; ">
     <!-- Campo E-mail -->
     <VBox spacing="8" alignment="CENTER_LEFT" >
-        <Label text="E-mail" style="-fx-font-size: 16; -fx-font-weight: medium;
-         -fx-text-fill: #1B76FF;-fx-label-padding: 8 0" />
+        <Label text="E-mail" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #1B76FF;-fx-label-padding: 8 0" />
         <TextField fx:id="emailFieldLogin" promptText="E-mail"
                    style="-fx-pref-height: 48; -fx-pref-width: 200; -fx-background-color: #FFFFFF;
                           -fx-border-color: #9AC2FF; -fx-border-radius: 8; -fx-background-radius: 8;" />
     </VBox>
     <!-- Campo Senha -->
     <VBox spacing="8" alignment="CENTER_LEFT">
-        <Label text="Senha" style="-fx-font-size: 16; -fx-text-fill: #1B76FF;
-        -fx-font-weight: medium; ;-fx-label-padding: 8 0" />
+        <Label text="Senha" style="-fx-font-size: 16; -fx-text-fill: #1B76FF; -fx-font-weight: bold; -fx-label-padding: 8 0" />
         <TextField fx:id="senhaFielLogin" promptText="Senha"
                    style="-fx-pref-height: 48; -fx-pref-width: 200; -fx-background-color: #FFFFFF;
                           -fx-border-color: #9AC2FF; -fx-border-radius: 8; -fx-background-radius: 8;" />
@@ -61,4 +59,5 @@
     <Hyperlink fx:id="forgotPasswordLink" text="Esqueci a senha"
                style="-fx-font-size: 14; -fx-text-fill: #1E90FF; -fx-border-color: transparent;" />
 
+</VBox>
 </VBox>

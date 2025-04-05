@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,42 +23,8 @@ public class ValoresAcoesController {
     @FXML private Button contaButton;
     @FXML private Button backButton;
 
-    // Labels das ações
-    @FXML private Label acao1Ticker;
-    @FXML private Label acao1Preco;
-    @FXML private Label acao1Maxima;
-    @FXML private Label acao1Variacao;
-
-    @FXML private Label acao2Ticker;
-    @FXML private Label acao2Preco;
-    @FXML private Label acao2Maxima;
-    @FXML private Label acao2Variacao;
-
-    @FXML private Label acao3Ticker;
-    @FXML private Label acao3Preco;
-    @FXML private Label acao3Maxima;
-    @FXML private Label acao3Variacao;
-
-    @FXML private Label acao4Ticker;
-    @FXML private Label acao4Preco;
-    @FXML private Label acao4Maxima;
-    @FXML private Label acao4Variacao;
-
-    @FXML private Label acao5Ticker;
-    @FXML private Label acao5Preco;
-    @FXML private Label acao5Maxima;
-    @FXML private Label acao5Variacao;
-
-    @FXML private Label acao6Ticker;
-    @FXML private Label acao6Preco;
-    @FXML private Label acao6Maxima;
-    @FXML private Label acao6Variacao;
-
-    // Arrays para facilitar o acesso aos componentes
-    private Label[] tickerLabels;
-    private Label[] precoLabels;
-    private Label[] maximaLabels;
-    private Label[] variacaoLabels;
+    // Container para as ações
+    @FXML private VBox acoesContainer;
 
     @FXML
     private void onClickHome() {
@@ -80,12 +48,6 @@ public class ValoresAcoesController {
 
     @FXML
     private void initialize() {
-        // Inicializa os arrays
-        tickerLabels = new Label[]{acao1Ticker, acao2Ticker, acao3Ticker, acao4Ticker, acao5Ticker, acao6Ticker};
-        precoLabels = new Label[]{acao1Preco, acao2Preco, acao3Preco, acao4Preco, acao5Preco, acao6Preco};
-        maximaLabels = new Label[]{acao1Maxima, acao2Maxima, acao3Maxima, acao4Maxima, acao5Maxima, acao6Maxima};
-        variacaoLabels = new Label[]{acao1Variacao, acao2Variacao, acao3Variacao, acao4Variacao, acao5Variacao, acao6Variacao};
-
         try {
             setDados();
         } catch (Exception e) {
@@ -127,25 +89,54 @@ public class ValoresAcoesController {
             return;
         }
 
-        // Preenche os dados para cada ação
-        for (int i = 0; i < Math.min(acoes.size(), 6); i++) {
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(16);
+        gridPane.setVgap(16);
+        gridPane.setAlignment(javafx.geometry.Pos.CENTER);
+
+        int colunas = 2; // Sempre 2 colunas
+        int linhas = (int) Math.ceil((double) acoes.size() / colunas);
+
+        for (int i = 0; i < acoes.size(); i++) {
             ValoresAcoes acao = acoes.get(i);
+            int linha = i / colunas;
+            int coluna = i % colunas;
 
-            // Formata os valores
-            String precoFormatado = String.format("Preço: R$%.2f", acao.getRegularMarketPrice());
-            String maximaFormatada = String.format("Máxima: R$%.2f", acao.getRegularMarketDayHigh());
-            String variacaoFormatada = String.format("Variação: %.2f%%", acao.getRegularMarketChange());
-
-            // Define a cor da variação
-            String corVariacao = acao.getRegularMarketChange() >= 0 ? "#1FCE52" : "#FF4C4C";
-            String estiloVariacao = "-fx-text-fill: " + corVariacao + "; -fx-font-size: 14;";
-
-            // Atualiza os labels
-            tickerLabels[i].setText(acao.getSymbol());
-            precoLabels[i].setText(precoFormatado);
-            maximaLabels[i].setText(maximaFormatada);
-            variacaoLabels[i].setText(variacaoFormatada);
-            variacaoLabels[i].setStyle(estiloVariacao);
+            VBox cardAcao = criarCardAcao(acao);
+            gridPane.add(cardAcao, coluna, linha);
         }
+
+        acoesContainer.getChildren().add(gridPane);
+    }
+
+    private VBox criarCardAcao(ValoresAcoes acao) {
+        VBox card = new VBox(8);
+        card.setPrefWidth(140);
+        card.setPrefHeight(140);
+        card.setAlignment(javafx.geometry.Pos.CENTER);
+        card.setStyle("-fx-background-color: #1E90FF; -fx-background-radius: 12;");
+
+        // Formata os valores
+        String precoFormatado = String.format("Preço: R$%.2f", acao.getRegularMarketPrice());
+        String maximaFormatada = String.format("Máxima: R$%.2f", acao.getRegularMarketDayHigh());
+        String variacaoFormatada = String.format("Variação: %.2f%%", acao.getRegularMarketChange());
+
+        // Define a cor da variação
+        String corVariacao = acao.getRegularMarketChange() >= 0 ? "#1FCE52" : "#FF4C4C";
+
+        Label tickerLabel = new Label(acao.getSymbol());
+        tickerLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-size: 16; -fx-font-weight: bold;");
+
+        Label precoLabel = new Label(precoFormatado);
+        precoLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-size: 14;");
+
+        Label maximaLabel = new Label(maximaFormatada);
+        maximaLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-size: 14;");
+
+        Label variacaoLabel = new Label(variacaoFormatada);
+        variacaoLabel.setStyle("-fx-text-fill: " + corVariacao + "; -fx-font-size: 14;");
+
+        card.getChildren().addAll(tickerLabel, precoLabel, maximaLabel, variacaoLabel);
+        return card;
     }
 }
