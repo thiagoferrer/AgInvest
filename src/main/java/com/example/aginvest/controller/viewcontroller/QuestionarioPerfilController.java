@@ -4,6 +4,7 @@ import com.example.aginvest.controller.user.UserController;
 import com.example.aginvest.model.UserModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -163,24 +164,12 @@ public class QuestionarioPerfilController {
     private void carregarTelaHome() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Home.fxml"));
-            Scene mainScene = new Scene(loader.load(), 360, 640);
-
-
-            // Aplicar CSS se necessário
-            String css = getClass().getResource("/com/example/aginvest/styles.css").toExternalForm();
-            if (css != null) {
-                mainScene.getStylesheets().add(css);
-            }
+            Parent root = loader.load();
 
 
             Stage stage = (Stage) finalizarCadastro.getScene().getWindow();
-            stage.setScene(mainScene);
-            stage.setTitle("Tela Principal");
-            stage.setWidth(360);
-            stage.setHeight(640);
-            stage.centerOnScreen();
+            stage.setScene(new Scene(root));
             stage.show();
-
 
         } catch (IOException e) {
             e.printStackTrace();

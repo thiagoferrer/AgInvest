@@ -129,12 +129,6 @@ public class CadastroController {
                 return;
             }
 
-            // Validação de senha
-            if (senha.length() < 6) {
-                showError("A senha deve ter pelo menos 6 caracteres!");
-                senhaFieldCadastro.setStyle("-fx-border-color: #FF0000; -fx-border-radius: 8;");
-                return;
-            }
 
             // Se todas as validações passarem, cria o usuário
             HashSenha senhacrip = new HashSenha();

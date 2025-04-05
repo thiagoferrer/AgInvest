@@ -23,7 +23,7 @@ public class ViaCep {
 
         // Enviando a requisição e capturando a resposta
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
+        System.out.println("Resposta da API: " + response.body());
         // Convertendo JSON para objeto Java
         return new Gson().fromJson(response.body(), Endereco.class);
     }
