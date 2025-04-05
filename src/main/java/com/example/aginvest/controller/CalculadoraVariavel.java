@@ -22,15 +22,9 @@ import java.util.List;
 
 
 public class CalculadoraVariavel {
-    public static final int REINVESTIR_SIM = 1;
-    public static final int REINVESTIR_NAO = 2;
-    private static final double LIMITE_ISENCAO_IR = 20000.0;
-
-
-
 
     //calculadora de FIIs
-    public List<Fiis> simularFundoImobiliario( Fiis calculadoraV, boolean historico) {
+    public List<Fiis> simularFundoImobiliario( Fiis calculadoraV) {
         FiisDAO dao = new FiisDAO();
         List<Fiis> resultados = dao.buscarFiis();
         if (resultados == null || resultados.isEmpty()) {
@@ -41,6 +35,7 @@ public class CalculadoraVariavel {
 
         for (Fiis fii : resultados) {
             double saldoDividendos = 0;
+            double saldoAporte = 0;
             double dividendoPorCota = fii.getDividendYield();
             double valorAporte = calculadoraV.getAporte();
             double precoCota = fii.getPrecoFiis();
@@ -53,15 +48,22 @@ public class CalculadoraVariavel {
 
             for (int mes = 1; mes <= meses; mes++) {
                 double dividendosRecebidos = quantidadeCotas * dividendoPorCota;
-                saldoDividendos += dividendosRecebidos + valorAporte;
-                if (reinvestir == REINVESTIR_SIM) {
+
+                if (reinvestir == 1) {
+                    saldoDividendos += dividendosRecebidos + valorAporte;
+                } else {
+                    saldoDividendos += dividendosRecebidos;
+                    saldoAporte += valorAporte;
+                }
+
+                if (reinvestir == 1) {
                     int novasCotas = (int) (saldoDividendos / precoCota);
                     quantidadeCotas += novasCotas;
                     saldoDividendos -= novasCotas * precoCota;
-                } if (reinvestir == REINVESTIR_NAO) {
-                    int novasCotasAporte = (int) (saldoDividendos / precoCota);
+                } else {
+                    int novasCotasAporte = (int) (saldoAporte / precoCota);
                     quantidadeCotas += novasCotasAporte;
-                    saldoDividendos -= novasCotasAporte * precoCota;
+                    saldoAporte -= novasCotasAporte * precoCota;
                 }
             }
 
@@ -79,10 +81,6 @@ public class CalculadoraVariavel {
             fiiSimulado.setId_fiis(fii.getId_fiis());
             fiisSimulados.add(fiiSimulado);
         }
-        if (historico){
-            int userId = UserSession.getLoggedInUserId();
-            dao.salvarHistoricoFiis(fiisSimulados, userId, calculadoraV.getAporte(), calculadoraV.getMeses());
-        }
 
         return fiisSimulados;
     }
@@ -99,6 +97,7 @@ public class CalculadoraVariavel {
         List<Fiis> fiisSimulados = new ArrayList<>();
 
         for (Fiis fii : resultados) {
+            double saldoAporte =0;
             double saldoDividendos = 0;
             double dividendoPorCota = fii.getDividendYield();
             double valorAporte = calculadoraV.getAporte();
@@ -112,18 +111,24 @@ public class CalculadoraVariavel {
 
             for (int mes = 1; mes <= meses; mes++) {
                 double dividendosRecebidos = quantidadeCotas * dividendoPorCota;
-                saldoDividendos += dividendosRecebidos + valorAporte;
-                if (reinvestir == REINVESTIR_SIM) {
+
+                if (reinvestir == 1) {
+                    saldoDividendos += dividendosRecebidos + valorAporte;
+                } else {
+                    saldoDividendos += dividendosRecebidos;
+                    saldoAporte += valorAporte;
+                }
+
+                if (reinvestir == 1) {
                     int novasCotas = (int) (saldoDividendos / precoCota);
                     quantidadeCotas += novasCotas;
                     saldoDividendos -= novasCotas * precoCota;
-                } if (reinvestir == REINVESTIR_NAO) {
-                    int novasCotasAporte = (int) (saldoDividendos / precoCota);
+                } else {
+                    int novasCotasAporte = (int) (saldoAporte / precoCota);
                     quantidadeCotas += novasCotasAporte;
-                    saldoDividendos -= novasCotasAporte * precoCota;
+                    saldoAporte -= novasCotasAporte * precoCota;
                 }
             }
-
 
             Fiis fiiSimulado = new Fiis(
                     fii.getNome(),

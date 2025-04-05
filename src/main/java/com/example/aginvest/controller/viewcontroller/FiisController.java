@@ -1,5 +1,7 @@
 package com.example.aginvest.controller.viewcontroller;
 
+import com.example.aginvest.model.UserModel;
+import com.example.aginvest.model.produtos.Fiis;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -126,18 +128,14 @@ public class FiisController {
     public void onClickCalcular() {
         System.out.println("Botão Calcular clicado!");
         // Adicione lógica para realizar o cálculo com base nos valores inseridos
-        String capitalInicial = capitalInicialField.getText();
-        String aporteMensal = aporteMensalField.getText();
-        String quantidadeCotas = quantidadeCotasField.getText();
-        String prazo = prazoField.getText();
-        boolean reinvestir = reinvestirCheckBox.isSelected();
-        boolean naoReinvestir = naoReinvestirCheckBox.isSelected();
+        double aporteMensal = Double.parseDouble(aporteMensalField.getText());
+        int quantidadeCotas = Integer.parseInt(quantidadeCotasField.getText());
+        int prazo = Integer.parseInt(prazoField.getText());
+       // boolean reinvestir = reinvestirCheckBox.isSelected();
+        //boolean naoReinvestir = naoReinvestirCheckBox.isSelected();
 
-        System.out.println("Capital Inicial: " + capitalInicial);
-        System.out.println("Aporte Mensal: " + aporteMensal);
-        System.out.println("Quantidade de Cotas: " + quantidadeCotas);
-        System.out.println("Prazo: " + prazo + " meses");
-        System.out.println("Reinvestir Dividendos: " + (reinvestir ? "Sim" : "Não"));
+        carregarTelaResultado(new Fiis(aporteMensal,quantidadeCotas,prazo,1));
+
     }
 
     // Método para garantir que apenas um CheckBox seja selecionado
@@ -167,6 +165,22 @@ public class FiisController {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void carregarTelaResultado(Fiis fiis) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/ResultadoFIIs.fxml"));
+            Parent root = loader.load();
+            ResultadoFIIsController fundos = new ResultadoFIIsController();
+            fundos.CalcularFiis(fiis);
+            Stage stage = (Stage) calcularButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao carregar próxima tela: " + e.getMessage());
         }
     }
 }
