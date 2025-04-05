@@ -13,7 +13,7 @@
       fx:controller="com.example.aginvest.controller.viewcontroller.ValoresAcoesController"
       style="-fx-background-color: #F8F9FA;">
 
-    <!-- Barra de Navegação Superior (same as Conta.fxml) -->
+    <!-- Barra de Navegação Superior -->
     <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;">
         <HBox alignment="CENTER_LEFT" spacing="0">
             <Label text="Invest" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20; -fx-font-weight: bold;" />
@@ -35,67 +35,11 @@
         </padding>
     </Label>
 
-    <!-- Grid de Ações -->
-    <VBox spacing="12" alignment="CENTER" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);">
+    <!-- Grid de Ações (será preenchido dinamicamente) -->
+    <VBox fx:id="acoesContainer" spacing="12" alignment="CENTER" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);">
         <padding>
             <Insets top="24" right="16" bottom="24" left="16" />
         </padding>
-
-        <GridPane hgap="16" vgap="16" alignment="CENTER">
-            <!-- Ação 1 -->
-            <VBox GridPane.rowIndex="0" GridPane.columnIndex="0" prefWidth="140" prefHeight="140" alignment="CENTER" spacing="8"
-                  style="-fx-background-color: #1E90FF; -fx-background-radius: 12;">
-                <Label fx:id="acao1Ticker" text="" style="-fx-text-fill: #FFFFFF; -fx-font-size: 16; -fx-font-weight: bold;" />
-                <Label fx:id="acao1Preco" text="" style="-fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-                <Label fx:id="acao1Maxima" text="" style="-fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-                <Label fx:id="acao1Variacao" text="" style="-fx-text-fill: #1FCE52; -fx-font-size: 14;" />
-            </VBox>
-
-            <!-- Ação 2 -->
-            <VBox GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="140" prefHeight="140" alignment="CENTER" spacing="8"
-                  style="-fx-background-color: #1E90FF; -fx-background-radius: 12;">
-                <Label fx:id="acao2Ticker" text="GOOGL" style="-fx-text-fill: #FFFFFF; -fx-font-size: 16; -fx-font-weight: bold;" />
-                <Label fx:id="acao2Preco" text="Preço: $142.30" style="-fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-                <Label fx:id="acao2Maxima" text="Máxima: $145.10" style="-fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-                <Label fx:id="acao2Variacao" text="Variação: -1.2%" style="-fx-text-fill: #FF4C4C; -fx-font-size: 14;" />
-            </VBox>
-
-            <!-- Ação 3 -->
-            <VBox GridPane.rowIndex="1" GridPane.columnIndex="0" prefWidth="140" prefHeight="140" alignment="CENTER" spacing="8"
-                  style="-fx-background-color: #1E90FF; -fx-background-radius: 12;">
-                <Label fx:id="acao3Ticker" text="MSFT" style="-fx-text-fill: #FFFFFF; -fx-font-size: 16; -fx-font-weight: bold;" />
-                <Label fx:id="acao3Preco" text="Preço: $305.70" style="-fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-                <Label fx:id="acao3Maxima" text="Máxima: $310.00" style="-fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-                <Label fx:id="acao3Variacao" text="Variação: +0.8%" style="-fx-text-fill: #1FCE52; -fx-font-size: 14;" />
-            </VBox>
-
-            <!-- Ação 4 -->
-            <VBox GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="140" prefHeight="140" alignment="CENTER" spacing="8"
-                  style="-fx-background-color: #1E90FF; -fx-background-radius: 12;">
-                <Label fx:id="acao4Ticker" text="TSLA" style="-fx-text-fill: #FFFFFF; -fx-font-size: 16; -fx-font-weight: bold;" />
-                <Label fx:id="acao4Preco" text="Preço: $245.20" style="-fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-                <Label fx:id="acao4Maxima" text="Máxima: $250.50" style="-fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-                <Label fx:id="acao4Variacao" text="Variação: -3.1%" style="-fx-text-fill: #FF4C4C; -fx-font-size: 14;" />
-            </VBox>
-
-            <!-- Ação 5 -->
-            <VBox GridPane.rowIndex="2" GridPane.columnIndex="0" prefWidth="140" prefHeight="140" alignment="CENTER" spacing="8"
-                  style="-fx-background-color: #1E90FF; -fx-background-radius: 12;">
-                <Label fx:id="acao5Ticker" text="AMZN" style="-fx-text-fill: #FFFFFF; -fx-font-size: 16; -fx-font-weight: bold;" />
-                <Label fx:id="acao5Preco" text="Preço: $130.40" style="-fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-                <Label fx:id="acao5Maxima" text="Máxima: $132.80" style="-fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-                <Label fx:id="acao5Variacao" text="Variação: +1.5%" style="-fx-text-fill: #1FCE52; -fx-font-size: 14;" />
-            </VBox>
-
-            <!-- Ação 6 -->
-            <VBox GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="140" prefHeight="140" alignment="CENTER" spacing="8"
-                  style="-fx-background-color: #1E90FF; -fx-background-radius: 12;">
-                <Label fx:id="acao6Ticker" text="NVDA" style="-fx-text-fill: #FFFFFF; -fx-font-size: 16; -fx-font-weight: bold;" />
-                <Label fx:id="acao6Preco" text="Preço: $490.60" style="-fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-                <Label fx:id="acao6Maxima" text="Máxima: $495.30" style="-fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-                <Label fx:id="acao6Variacao" text="Variação: +2.0%" style="-fx-text-fill: #1FCE52; -fx-font-size: 14;" />
-            </VBox>
-        </GridPane>
     </VBox>
 
     <!-- Botão Voltar -->
