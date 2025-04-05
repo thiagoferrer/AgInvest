@@ -59,7 +59,7 @@
             </padding>
             <!-- Linha 1 -->
             <!-- Botão 1: Fundo Imobiliário -->
-            <Button fx:id="btnFundoImobiliario" prefWidth="120" prefHeight="150" style="-fx-background-color: #66B3FF; -fx-background-radius: 12; -fx-text-fill: #FFFFFF;">
+            <Button fx:id="btnFundoImobiliario" prefWidth="120" prefHeight="150" style="-fx-background-color: #66B3FF; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-cursor: hand">
                 <graphic>
                     <VBox alignment="CENTER" spacing="8">
                         <Label text="🏠" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF; -fx-cursor: hand;" />
@@ -70,7 +70,7 @@
                 <GridPane.rowIndex>0</GridPane.rowIndex>
             </Button>
             <!-- Botão 2: Renda Fixa -->
-            <Button fx:id="btnRendaFixa" prefWidth="120" prefHeight="150" style="-fx-background-color: #66CC99; -fx-background-radius: 12; -fx-text-fill: #FFFFFF;">
+            <Button fx:id="btnRendaFixa" prefWidth="120" prefHeight="150" style="-fx-background-color: #66CC99; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-cursor: hand">
                 <graphic>
                     <VBox alignment="CENTER" spacing="8">
                         <Label text="💵" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF; -fx-cursor: hand;" />
@@ -83,7 +83,7 @@
 
             <!-- Linha 2 -->
             <!-- Botão 3: Ações -->
-            <Button fx:id="btnAcoes" prefWidth="120" prefHeight="150" style="-fx-background-color: #FF9933; -fx-background-radius: 12; -fx-text-fill: #FFFFFF;">
+            <Button fx:id="btnAcoes" prefWidth="120" prefHeight="150" style="-fx-background-color: #FF9933; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-cursor: hand">
                 <graphic>
                     <VBox alignment="CENTER" spacing="8">
                         <Label text="📈" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF; -fx-cursor: hand;" />
@@ -94,7 +94,7 @@
                 <GridPane.rowIndex>1</GridPane.rowIndex>
             </Button>
             <!-- Botão 4: Valores Ações -->
-            <Button fx:id="btnValoresAcoes" onAction="#onClickValoresAcoes" prefWidth="120" prefHeight="150" style="-fx-background-color: #FF6666; -fx-background-radius: 12; -fx-text-fill: #FFFFFF;">
+            <Button fx:id="btnValoresAcoes" onAction="#onClickValoresAcoes" prefWidth="120" prefHeight="150" style="-fx-background-color: #FF6666; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-cursor: hand">
                 <graphic>
                     <VBox alignment="CENTER" spacing="8">
                         <Label text="💰" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF; -fx-cursor: hand;" />
@@ -107,7 +107,7 @@
 
             <!-- Linha 3 (opcional para futuras expansões) -->
             <!-- Botão 5: FAQ -->
-            <Button fx:id="btnFAQ" prefWidth="120" prefHeight="150" style="-fx-background-color: #CC99CC; -fx-background-radius: 12; -fx-text-fill: #FFFFFF;">
+            <Button fx:id="btnFAQ" prefWidth="120" prefHeight="150" style="-fx-background-color: #CC99CC; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-cursor: hand">
                 <graphic>
                     <VBox alignment="CENTER" spacing="8">
                         <Label text="❓" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF;-fx-cursor: hand;" />
