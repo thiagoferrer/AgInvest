@@ -5,63 +5,57 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" spacing="16" prefWidth="360" prefHeight="640"
+<VBox alignment="TOP_CENTER" spacing="16"
+      stylesheets="@styles.css"
+      prefWidth="360" prefHeight="640"
+      maxWidth="360" maxHeight="640"
+      minWidth="360" minHeight="640"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.aginvest.controller.viewcontroller.DeletarContaController"
       style="-fx-background-color: #F8F9FA;">
 
     <!-- Barra de Navegação Superior -->
-    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;">
-        <HBox alignment="CENTER_LEFT" spacing="0">
-            <Label text="Invest" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20; -fx-font-weight: bold;" />
-            <Label text="7" style="-fx-text-fill: #1FCE52; -fx-font-size: 20; -fx-font-weight: bold;" />
+    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;
+            -fx-font-size: 20; -fx-font-weight: bold;">
+        <HBox alignment="CENTER_LEFT" >
+            <Label text="Invest" style="-fx-text-fill: #FFFFFF" />
+            <Label text="7" style="-fx-text-fill: #2CC158" />
         </HBox>
         <HBox HBox.hgrow="ALWAYS" />
-        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
-        <Button fx:id="faqButton" onAction="#onClickFaq" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
-        <Button fx:id="contaButton" onAction="#onClickConta" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="homeButton" onAction="#onClickHome" text="Home"
+                style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF;
+                -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
     </HBox>
 
     <!-- Título -->
-    <Label text="Deletar Conta" style="-fx-text-fill: #2E86AB;">
-        <font>
-            <Font name="Roboto Medium" size="20" />
-        </font>
-        <padding>
-            <Insets top="24" bottom="8" />
-        </padding>
-    </Label>
+    <Label text="Deletar Conta" styleClass="titulo-sim"/>
 
     <!-- Conteúdo -->
-    <VBox spacing="12" alignment="CENTER" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);">
-        <padding>
-            <Insets top="24" right="16" bottom="24" left="16" />
-        </padding>
+    <VBox spacing="12" alignment="CENTER" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12;
+     -fx-padding: 24 16;">
 
         <Label text="Esta ação irá remover permanentemente sua conta e todos os dados associados."
-               wrapText="true"
-               style="-fx-text-fill: #FF0000; -fx-font-size: 14; -fx-alignment: center;"/>
+               wrapText="true" styleClass="aviso-delete"/>
 
         <!-- Mensagem de erro geral -->
-        <Label fx:id="erroGeralLabel" wrapText="true" style="-fx-text-fill: #FF0000; -fx-font-size: 14; -fx-alignment: center;" visible="false" />
+        <Label fx:id="erroGeralLabel" wrapText="true" visible="false" styleClass="aviso-delete" />
 
-        <Label text="E-mail" style="-fx-text-fill: #333333; -fx-font-size: 14;" />
-        <TextField fx:id="emailField" promptText="Digite seu e-mail"
-                   style="-fx-font-size: 14; -fx-pref-height: 40; -fx-background-radius: 8; -fx-border-radius: 8;" />
-        <Label fx:id="emailErroLabel" style="-fx-text-fill: #FF0000; -fx-font-size: 12;" visible="false" />
+        <Label text="E-mail" styleClass="label-input-sim" />
+        <TextField fx:id="emailField" promptText="Digite seu e-mail" styleClass="input-deletar-conta"/>
+        <Label fx:id="emailErroLabel" styleClass="aviso-delete" visible="false" />
 
-        <Label text="Senha" style="-fx-text-fill: #333333; -fx-font-size: 14;" />
-        <PasswordField fx:id="senhaField" promptText="Digite sua senha"
-                       style="-fx-font-size: 14; -fx-pref-height: 40; -fx-background-radius: 8; -fx-border-radius: 8;" />
-        <Label fx:id="senhaErroLabel" style="-fx-text-fill: #FF0000; -fx-font-size: 12;" visible="false" />
+        <Label text="Senha" styleClass="label-input-sim"  />
+        <PasswordField fx:id="senhaField" promptText="Digite sua senha" styleClass="input-deletar-conta"/>
+        <Label fx:id="senhaErroLabel" styleClass="aviso-delete" visible="false" />
 
         <Button fx:id="deletarContaButton" text="Deletar conta" onAction="#onClickDeletarConta"
                 prefWidth="300" prefHeight="48"
                 style="-fx-background-color: #FF4C4C; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
 
-        <Button fx:id="voltarButton" text="Voltar" onAction="#onClickVoltar"
-                prefWidth="300" prefHeight="48"
-                style="-fx-background-color: #D3D3D3; -fx-background-radius: 12; -fx-text-fill: #333333; -fx-font-size: 14; -fx-cursor: hand;" />
+
+        <Button fx:id="voltarButton" text="Voltar" onAction="#onClickVoltar" styleClass="button-azul"/>
     </VBox>
 
     <!-- Espaço inferior opcional -->

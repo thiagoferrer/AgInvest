@@ -194,8 +194,34 @@
     -fx-font-weight: bold;
 }
 
+.op-conta {
+    -fx-background-radius: 12;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-pref-height: 48;
+    -fx-pref-width: 300;
+}
 
+.aviso-delete {
+    -fx-text-fill: #FF0000;
+    -fx-font-size: 14;
+    -fx-alignment: center;
+}
 
+.msg-erro {
+    -fx-text-fill: #FF0000;
+    -fx-font-size: 12;
+}
+
+.input-deletar-conta {
+    -fx-font-size: 14;
+    -fx-pref-height: 40;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #EA7A5D;
+}
 
 
 

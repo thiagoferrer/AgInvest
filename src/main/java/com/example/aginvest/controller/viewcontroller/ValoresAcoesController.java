@@ -90,8 +90,8 @@ public class ValoresAcoesController {
         }
 
         GridPane gridPane = new GridPane();
-        gridPane.setHgap(16);
-        gridPane.setVgap(16);
+        gridPane.setHgap(14);
+        gridPane.setVgap(14);
         gridPane.setAlignment(javafx.geometry.Pos.CENTER);
 
         int colunas = 2; // Sempre 2 colunas
@@ -114,7 +114,7 @@ public class ValoresAcoesController {
         card.setPrefWidth(140);
         card.setPrefHeight(140);
         card.setAlignment(javafx.geometry.Pos.CENTER);
-        card.setStyle("-fx-background-color: #1E90FF; -fx-background-radius: 12;");
+        card.setStyle("-fx-background-color: #4D4D4D; -fx-background-radius: 12;");
 
         // Formata os valores
         String precoFormatado = String.format("Preço: R$%.2f", acao.getRegularMarketPrice());
@@ -122,19 +122,19 @@ public class ValoresAcoesController {
         String variacaoFormatada = String.format("Variação: %.2f%%", acao.getRegularMarketChange());
 
         // Define a cor da variação
-        String corVariacao = acao.getRegularMarketChange() >= 0 ? "#1FCE52" : "#FF4C4C";
+        String corVariacao = acao.getRegularMarketChange() >= 0 ? "#1FCE52" : "#EA7A5D";
 
         Label tickerLabel = new Label(acao.getSymbol());
-        tickerLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-size: 16; -fx-font-weight: bold;");
+        tickerLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-size: 18; -fx-font-weight: bold;");
 
         Label precoLabel = new Label(precoFormatado);
-        precoLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-size: 14;");
+        precoLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-size: 14;-fx-font-weight: bold;");
 
         Label maximaLabel = new Label(maximaFormatada);
-        maximaLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-size: 14;");
+        maximaLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-size: 14;-fx-font-weight: bold;");
 
         Label variacaoLabel = new Label(variacaoFormatada);
-        variacaoLabel.setStyle("-fx-text-fill: " + corVariacao + "; -fx-font-size: 14;");
+        variacaoLabel.setStyle("-fx-text-fill: " + corVariacao + "; -fx-font-size: 14;-fx-font-weight: bold;");
 
         card.getChildren().addAll(tickerLabel, precoLabel, maximaLabel, variacaoLabel);
         return card;

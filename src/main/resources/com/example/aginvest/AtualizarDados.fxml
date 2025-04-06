@@ -17,16 +17,20 @@
       style="-fx-background-color: #F8F9FA;">
 
     <!-- Barra de Navegação Superior -->
-    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;">
-        <HBox alignment="CENTER_LEFT" spacing="0">
-            <Label text="Invest" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20; -fx-font-weight: bold;" />
-            <Label text="7" style="-fx-text-fill: #1FCE52; -fx-font-size: 20; -fx-font-weight: bold;" />
+    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;
+            -fx-font-size: 20; -fx-font-weight: bold;">
+        <HBox alignment="CENTER_LEFT" >
+            <Label text="Invest" style="-fx-text-fill: #FFFFFF" />
+            <Label text="7" style="-fx-text-fill: #2CC158" />
         </HBox>
         <HBox HBox.hgrow="ALWAYS" />
-        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="homeButton" onAction="#onClickHome" text="Home"
+                style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF;
+                -fx-font-size: 14; -fx-cursor: hand;" />
         <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
         <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
     </HBox>
+
 
     <!-- Área rolável principal -->
     <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
