@@ -1,6 +1,7 @@
 package com.example.aginvest.controller.viewcontroller;
 
 import com.example.aginvest.controller.user.UserController;
+import com.example.aginvest.controller.user.UserSession;
 import com.example.aginvest.model.UserModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,6 +58,18 @@ public class QuestionarioPerfilController {
     @FXML private RadioButton pergunta10C;
 
     @FXML private Button finalizarCadastro;
+    @FXML private Button homeButton;
+
+
+    @FXML
+    private void onClickVoltar() {
+        carregarTela("/com/example/aginvest/Conta.fxml", "Conta - Invest7");
+    }
+
+    @FXML
+    private void onClickHome() {
+        carregarTela("/com/example/aginvest/home.fxml", "Home - Invest7");
+    }
 
 
     @FXML
@@ -101,6 +114,46 @@ public class QuestionarioPerfilController {
             } else {
                 mostrarAlerta("Erro", "Falha ao cadastrar usuário.");
             }
+        }
+    }
+
+    @FXML
+    private void confirmarRefazer() {
+        // Verificar se todas as perguntas foram respondidas
+        if (!validarRespostas()) {
+            mostrarAlerta("Atenção", "Por favor, responda todas as perguntas antes de continuar.");
+            return;
+        }
+
+        // Processar respostas
+        String[] respostas = {
+                obterResposta(pergunta1A, pergunta1B, pergunta1C),
+                obterResposta(pergunta2A, pergunta2B, pergunta2C),
+                obterResposta(pergunta3A, pergunta3B, pergunta3C),
+                obterResposta(pergunta4A, pergunta4B, pergunta4C),
+                obterResposta(pergunta5A, pergunta5B, pergunta5C),
+                obterResposta(pergunta6A, pergunta6B, pergunta6C),
+                obterResposta(pergunta7A, pergunta7B, pergunta7C),
+                obterResposta(pergunta8A, pergunta8B, pergunta8C),
+                obterResposta(pergunta9A, pergunta9B, pergunta9C),
+                obterResposta(pergunta10A, pergunta10B, pergunta10C)
+        };
+
+        // Calcular perfil
+        int perfil = calcularPerfil(respostas);
+        UserController userController = new UserController();
+        int userId = UserSession.getLoggedInUserId();
+
+        if (userId != 0) { // Verifica se há um usuário logado
+          UserModel atualizado = userController.atualizarPerfil(new UserModel(userId, perfil));
+
+            if (atualizado != null) {
+                carregarTela("/com/example/aginvest/Conta.fxml", "Conta - Invest7");
+            } else {
+                mostrarAlerta("Erro", "Falha ao atualizar perfil. Tente novamente.");
+            }
+        } else {
+            mostrarAlerta("Erro", "Nenhum usuário logado encontrado.");
         }
     }
     private String obterResposta(RadioButton opcao1, RadioButton opcao2, RadioButton opcao3) {
@@ -174,6 +227,23 @@ public class QuestionarioPerfilController {
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Erro ao carregar tela principal: " + e.getMessage());
+        }
+    }
+
+    // Método genérico para carregar telas
+    private void carregarTela(String fxmlPath, String titulo) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) homeButton.getScene().getWindow();
+            stage.setTitle(titulo);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao carregar a tela: " + e.getMessage());
         }
     }
 }
