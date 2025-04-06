@@ -59,10 +59,10 @@ public class HomeController {
         // Definir o texto do Label
         if (user != null) {
             bemVindoLabel.setText("BEM VINDO, " + user.getNome() + "!");
-            perfilConservador.setText("Seu perfil é: " + user.getDescricao_perfil() + "!");
+            perfilConservador.setText(user.getDescricao_perfil());
         } else {
             bemVindoLabel.setText("BEM VINDO, USUÁRIO!");
-            perfilConservador.setText("Descrubra seu perfil");
+            perfilConservador.setText("Descubra seu perfil");
         }
 
 
