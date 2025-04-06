@@ -62,7 +62,7 @@ public class ContaController {
 
     @FXML
     private void onClickRefazerQuiz() {
-        carregarTela(refazerQuizButton, "/com/example/aginvest/quiz.fxml", "Questionário - Invest7");
+        carregarTela(refazerQuizButton, "/com/example/aginvest/RefazerQuestionarioPerfil.fxml", "Questionário - Invest7");
     }
 
     @FXML private void onClickSairConta(){
