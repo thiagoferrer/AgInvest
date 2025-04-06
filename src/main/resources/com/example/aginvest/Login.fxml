@@ -56,14 +56,16 @@
         <Button fx:id="voltarButton" text="Voltar" onAction="#handleVoltar">
             <styleClass>
                 <String fx:value="botao-hover"/>
-                <String fx:value="button-voltar-azul"/>
+                <String fx:value="button-azul"/>
             </styleClass>
         </Button>
 
-    <Button fx:id="fazerLogin" text="Entrar" onAction="#realizarLogin"
-            style="-fx-background-color: #41C769; -fx-font-weight: bold; -fx-text-fill: white;
-            -fx-font-size: 14; -fx-pref-width: 100; -fx-pref-height: 40;
-            -fx-background-radius: 8;-fx-cursor: hand;" />
+    <Button fx:id="fazerLogin" text="Entrar" onAction="#realizarLogin">
+        <styleClass>
+            <String fx:value="botao-hover"/>
+            <String fx:value="button-verde"/>
+        </styleClass>
+    </Button>
     </HBox>
     <!-- Link Esqueci a senha -->
     <Hyperlink fx:id="forgotPasswordLink" text="Esqueci a senha"

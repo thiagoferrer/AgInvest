@@ -92,13 +92,13 @@
             <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar">
                 <styleClass>
                     <String fx:value="botao-hover"/>
-                    <String fx:value="button-voltar-azul"/>
+                    <String fx:value="button-azul"/>
                 </styleClass>
             </Button>
             <Button fx:id="calcularButton" onAction="#onClickCalcular" text="Calcular">
                 <styleClass>
                     <String fx:value="botao-hover"/>
-                    <String fx:value="button-calcular-verde"/>
+                    <String fx:value="button-verde"/>
                 </styleClass>
             </Button>
 
