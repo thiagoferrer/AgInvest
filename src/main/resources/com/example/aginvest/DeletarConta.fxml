@@ -12,7 +12,7 @@
       minWidth="360" minHeight="640"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.aginvest.controller.viewcontroller.DeletarContaController"
-      style="-fx-background-color: #F8F9FA;">
+      style="-fx-background-color: #FFFFFF;">
 
     <!-- Barra de Navegação Superior -->
     <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;
@@ -29,35 +29,30 @@
         <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
     </HBox>
 
-    <!-- Título -->
-    <Label text="Deletar Conta" styleClass="titulo-sim"/>
-
     <!-- Conteúdo -->
-    <VBox spacing="12" alignment="CENTER" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12;
-     -fx-padding: 24 16;">
-
+    <VBox  alignment="CENTER" spacing="16" style="-fx-padding: 16;-fx-background-color: #FFFFFF;">
+        <!-- Título -->
+        <Label text="Deletar Conta" styleClass="titulo-sim"/>
         <Label text="Esta ação irá remover permanentemente sua conta e todos os dados associados."
                wrapText="true" styleClass="aviso-delete"/>
-
         <!-- Mensagem de erro geral -->
         <Label fx:id="erroGeralLabel" wrapText="true" visible="false" styleClass="aviso-delete" />
 
-        <Label text="E-mail" styleClass="label-input-sim" />
-        <TextField fx:id="emailField" promptText="Digite seu e-mail" styleClass="input-deletar-conta"/>
-        <Label fx:id="emailErroLabel" styleClass="aviso-delete" visible="false" />
-
+        <VBox alignment="TOP_LEFT" style="-fx-padding: 4 10">
+            <Label text="E-mail" styleClass="label-input-sim" />
+            <TextField fx:id="emailField" promptText="Digite seu e-mail" styleClass="input-deletar-conta"/>
+            <Label fx:id="emailErroLabel" styleClass="aviso-delete" visible="false" />
+        </VBox>
+        <VBox alignment="TOP_LEFT" style="-fx-padding: 0 10 8 10">
         <Label text="Senha" styleClass="label-input-sim"  />
         <PasswordField fx:id="senhaField" promptText="Digite sua senha" styleClass="input-deletar-conta"/>
         <Label fx:id="senhaErroLabel" styleClass="aviso-delete" visible="false" />
-
-        <Button fx:id="deletarContaButton" text="Deletar conta" onAction="#onClickDeletarConta"
-                prefWidth="300" prefHeight="48"
-                style="-fx-background-color: #FF4C4C; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
-
-
-        <Button fx:id="voltarButton" text="Voltar" onAction="#onClickVoltar" styleClass="button-azul"/>
+        </VBox>
+        <HBox spacing="16" alignment="CENTER" style="-fx-padding: 20 0 0 0;">
+            <Button fx:id="voltarButton" text="Voltar" onAction="#onClickVoltar" styleClass="button-azul"/>
+            <Button fx:id="deletarContaButton" text="Deletar conta" onAction="#onClickDeletarConta"
+            styleClass="button-delete"/>
+        </HBox>
     </VBox>
 
-    <!-- Espaço inferior opcional -->
-    <Region prefHeight="16" />
 </VBox>

@@ -50,26 +50,24 @@
         <VBox style="-fx-padding: 8 10">
         <!-- Aporte -->
         <VBox spacing="8" alignment="TOP_LEFT" style="-fx-padding: 4 10 8 10">
-            <Label text="Aporte Mensal"  style="-fx-text-fill: #666666; -fx-font-size: 16;" />
+            <Label text="Aporte Mensal" styleClass="label-input-sim" />
             <TextField fx:id="aporteMensalField" promptText="R$ 0,00" styleClass="input-sim" />
         </VBox>
 
         <!--Qtd cotas-->
         <VBox spacing="8" alignment="TOP_LEFT" style="-fx-padding: 4 10 8 10" >
-            <Label text="Quantidade de Cotas"
-                   style="-fx-text-fill: #666666; -fx-font-size: 16;" />
+            <Label text="Quantidade de Cotas" styleClass="label-input-sim" />
             <TextField fx:id="quantidadeCotasField" promptText="Cotas" styleClass="input-sim" />
         </VBox>
         <!--Prazo-->
         <VBox spacing="8" alignment="TOP_LEFT" style="-fx-padding: 4 10 8 10">
-            <Label text="Prazo (em meses)"
-                   style="-fx-text-fill: #666666; -fx-font-size: 16;" />
+            <Label text="Prazo (em meses)" styleClass="label-input-sim" />
             <TextField fx:id="prazoField" promptText="Meses" styleClass="input-sim" />
         </VBox>
 
         <!--Reinvestir-->
         <VBox spacing="8" alignment="TOP_LEFT" style="-fx-padding: 4 10 8 10">
-            <Label text="Reinvestir Dividendos" style="-fx-text-fill: #666666;-fx-font-size: 16;" />
+            <Label text="Reinvestir Dividendos" styleClass="label-input-sim" />
             <HBox spacing="20">
                 <RadioButton fx:id="reinvestirSimRadio" text="Sim" styleClass="radio" style="-fx-cursor: hand;-fx-text-fill: #666666;" />
                 <RadioButton fx:id="reinvestirNaoRadio" text="Não" styleClass="radio" style="-fx-cursor: hand;-fx-text-fill: #666666;"/>
