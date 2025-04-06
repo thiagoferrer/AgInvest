@@ -9,72 +9,80 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="24" prefWidth="360" prefHeight="640" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+<VBox alignment="CENTER" spacing="24"
+      prefWidth="360" prefHeight="640"
+      maxWidth="360" maxHeight="640"
+      minWidth="360" minHeight="640"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.aginvest.controller.viewcontroller.HomeController"
-      style="-fx-background-color: #F8F9FA;">
+      style="-fx-background-color: #FFFFFF;">
 
     <!-- Barra de Navegação Superior -->
-    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;">
-        <HBox alignment="CENTER_LEFT" spacing="0">
-            <Label text="Invest" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20; -fx-font-weight: bold;" />
-            <Label text="7" style="-fx-text-fill: #1FCE52; -fx-font-size: 20; -fx-font-weight: bold;" />
+    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;
+            -fx-font-size: 20; -fx-font-weight: bold;">
+        <HBox alignment="CENTER_LEFT" >
+            <Label text="Invest" style="-fx-text-fill: #FFFFFF" />
+            <Label text="7" style="-fx-text-fill: #2CC158" />
         </HBox>
         <HBox HBox.hgrow="ALWAYS" />
-        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="homeButton" onAction="#onClickHome" text="Home"
+                style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF;
+                -fx-font-size: 14; -fx-cursor: hand;" />
         <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
         <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
     </HBox>
 
     <!-- Título e Subtítulo -->
-    <Label fx:id="bemVindoLabel" style="-fx-text-fill: #333333;">
-        <font>
-            <Font name="Roboto Medium" size="20" />
-        </font>
-        <padding>
-            <Insets top="16" right="16" bottom="0" left="16" />
-        </padding>
-    </Label>
-    <Label fx:id="perfilConservador" style="-fx-text-fill: #0267FF;">
-        <font>
-            <Font name="Roboto Regular" size="16" />
-        </font>
-        <padding>
-            <Insets top="0" right="16" bottom="0" left="16" />
-        </padding>
-    </Label>
-    <Label text="Simulações disponíveis:" style="-fx-text-fill: #333333;">
-        <font>
-            <Font name="Roboto Regular" size="14" />
-        </font>
-        <padding>
-            <Insets top="8" right="16" bottom="0" left="16" />
-        </padding>
-    </Label>
+    <HBox alignment="CENTER_LEFT">
+        <Label fx:id="bemVindoLabel" style="-fx-text-fill: #666666; -fx-font-weight: bold;">
+            <font>
+                <Font name="Roboto Medium" size="24" />
+            </font>
+            <padding>
+                <Insets top="16" right="16" bottom="0" left="16" />
+            </padding>
+        </Label>
+    </HBox>
 
+    <HBox alignment="CENTER_LEFT" style="-fx-padding: 8 16 4 16; -fx-font-size: 18; -fx-font-weight: bold;">
+        <Label text="Seu perfil é:  " style="-fx-text-fill: #666666;"/>
+        <Label fx:id="perfilConservador" style="-fx-text-fill: #3585FF;">
+            <font>
+                <Font name="Roboto Regular" />
+            </font>
+        </Label>
+    </HBox>
     <!-- ScrollPane para o Grid de Botões -->
     <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-padding: 0 16 16 16;">
-        <GridPane hgap="16" vgap="24" alignment="CENTER" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 2);">
+        <GridPane hgap="16" vgap="24" alignment="CENTER" style="-fx-background-color: #FFFFFF;
+         -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 2);">
             <padding>
                 <Insets top="24" right="16" bottom="24" left="16" />
             </padding>
             <!-- Linha 1 -->
             <!-- Botão 1: Fundo Imobiliário -->
-            <Button fx:id="btnFundoImobiliario" prefWidth="120" prefHeight="150" style="-fx-background-color: #66B3FF; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-cursor: hand">
+            <Button fx:id="btnFundoImobiliario" prefWidth="120" prefHeight="120"
+                    style="-fx-background-color: #4E95FF; -fx-background-radius: 12;
+                    -fx-text-fill: #FFFFFF; -fx-cursor: hand">
                 <graphic>
-                    <VBox alignment="CENTER" spacing="8">
-                        <Label text="🏠" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF; -fx-cursor: hand;" />
-                        <Label text="FIIs" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center; -fx-cursor: hand;" />
+                    <VBox alignment="CENTER" spacing="8"
+                          style="-fx-cursor: hand;-fx-text-alignment: center; -fx-font-weight: bold">
+                        <Label text="🏠" style="-fx-font-size: 32;-fx-text-fill: #FFFFFF;" />
+                        <Label text="FIIs" style="-fx-font-size: 14;-fx-text-fill: #FFFFFF;" />
                     </VBox>
                 </graphic>
                 <GridPane.columnIndex>0</GridPane.columnIndex>
                 <GridPane.rowIndex>0</GridPane.rowIndex>
             </Button>
             <!-- Botão 2: Renda Fixa -->
-            <Button fx:id="btnRendaFixa" prefWidth="120" prefHeight="150" style="-fx-background-color: #66CC99; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-cursor: hand">
+            <Button fx:id="btnRendaFixa" prefWidth="120" prefHeight="120"
+                    style="-fx-background-color: #6BD48A; -fx-background-radius: 12;
+                    -fx-text-fill: #FFFFFF; -fx-cursor: hand">
                 <graphic>
-                    <VBox alignment="CENTER" spacing="8">
-                        <Label text="💵" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF; -fx-cursor: hand;" />
-                        <Label text="Renda Fixa" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center; -fx-cursor: hand;" />
+                    <VBox alignment="CENTER" spacing="8"
+                          style="-fx-cursor: hand;-fx-text-alignment: center;-fx-font-weight: bold">
+                        <Label text="💵" style="-fx-font-size: 32;-fx-text-fill: #FFFFFF;" />
+                        <Label text="Renda Fixa" style="-fx-font-size: 14;-fx-text-fill: #FFFFFF;" />
                     </VBox>
                 </graphic>
                 <GridPane.columnIndex>1</GridPane.columnIndex>
@@ -83,22 +91,28 @@
 
             <!-- Linha 2 -->
             <!-- Botão 3: Ações -->
-            <Button fx:id="btnAcoes" prefWidth="120" prefHeight="150" style="-fx-background-color: #FF9933; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-cursor: hand">
+            <Button fx:id="btnAcoes" prefWidth="120" prefHeight="120"
+                    style="-fx-background-color: #F8983F; -fx-background-radius: 12;
+                     -fx-text-fill: #FFFFFF; -fx-cursor: hand">
                 <graphic>
-                    <VBox alignment="CENTER" spacing="8">
-                        <Label text="📈" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF; -fx-cursor: hand;" />
-                        <Label text="Ações" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center; -fx-cursor: hand;" />
+                    <VBox alignment="CENTER" spacing="8"
+                          style="-fx-cursor: hand;-fx-text-alignment: center;-fx-font-weight: bold">
+                        <Label text="📈" style="-fx-font-size: 32;-fx-text-fill: #FFFFFF;" />
+                        <Label text="Ações" style="-fx-font-size: 14;-fx-text-fill: #FFFFFF;" />
                     </VBox>
                 </graphic>
                 <GridPane.columnIndex>0</GridPane.columnIndex>
                 <GridPane.rowIndex>1</GridPane.rowIndex>
             </Button>
             <!-- Botão 4: Valores Ações -->
-            <Button fx:id="btnValoresAcoes" onAction="#onClickValoresAcoes" prefWidth="120" prefHeight="150" style="-fx-background-color: #FF6666; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-cursor: hand">
+            <Button fx:id="btnValoresAcoes" onAction="#onClickValoresAcoes" prefWidth="120" prefHeight="120"
+                    style="-fx-background-color: #EA7A5D; -fx-background-radius: 12;
+                    -fx-text-fill: #FFFFFF; -fx-cursor: hand">
                 <graphic>
-                    <VBox alignment="CENTER" spacing="8">
-                        <Label text="💰" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF; -fx-cursor: hand;" />
-                        <Label text="Valores Ações" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center; -fx-cursor: hand;" />
+                    <VBox alignment="CENTER" spacing="8"
+                          style="-fx-cursor: hand;-fx-text-alignment: center;-fx-font-weight: bold">
+                        <Label text="💰" style="-fx-font-size: 32;-fx-text-fill: #FFFFFF;" />
+                        <Label text="Valores Ações" style="-fx-font-size: 14;-fx-text-fill: #FFFFFF;" />
                     </VBox>
                 </graphic>
                 <GridPane.columnIndex>1</GridPane.columnIndex>
@@ -107,11 +121,14 @@
 
             <!-- Linha 3 (opcional para futuras expansões) -->
             <!-- Botão 5: FAQ -->
-            <Button fx:id="btnFAQ" prefWidth="120" prefHeight="150" style="-fx-background-color: #CC99CC; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-cursor: hand">
+            <Button fx:id="btnFAQ" prefWidth="120" prefHeight="120"
+                    style="-fx-background-color: #AD6BD4; -fx-background-radius: 12;
+                    -fx-text-fill: #FFFFFF; -fx-cursor: hand">
                 <graphic>
-                    <VBox alignment="CENTER" spacing="8">
-                        <Label text="❓" style="-fx-font-size: 24; -fx-text-fill: #FFFFFF;-fx-cursor: hand;" />
-                        <Label text="FAQ" style="-fx-font-size: 14; -fx-text-fill: #FFFFFF; -fx-text-alignment: center; -fx-cursor: hand;" />
+                    <VBox alignment="CENTER" spacing="8"
+                          style="-fx-cursor: hand;-fx-text-alignment: center;-fx-font-weight: bold">
+                        <Label text="❓" style="-fx-font-size: 32;-fx-text-fill: #FFFFFF;" />
+                        <Label text="FAQ" style="-fx-font-size: 14;-fx-text-fill: #FFFFFF;" />
                     </VBox>
                 </graphic>
                 <GridPane.columnIndex>0</GridPane.columnIndex>
