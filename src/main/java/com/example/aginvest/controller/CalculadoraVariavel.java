@@ -79,6 +79,7 @@ public class CalculadoraVariavel {
             fiiSimulado.setSaldoCotas((quantidadeCotas*precoCota));
             fiiSimulado.setSaldoDividendos(saldoDividendos);
             fiiSimulado.setId_fiis(fii.getId_fiis());
+            fiiSimulado.setQtdCotas(quantidadeCotas);
             fiisSimulados.add(fiiSimulado);
         }
 
@@ -152,13 +153,15 @@ public class CalculadoraVariavel {
     }
 
 
-    public List<Acoes> simularAcao(double capital,int prazo,boolean historico) {
+    public List<Acoes> simularAcao(Acoes acoes) {
         AcoesDao dao = new AcoesDao();
         List<Acoes> resultados = dao.buscarAcao();
         List<Acoes> acoesFeitas = new ArrayList<>();
 
 
+        double capital = acoes.getValorInvestido();
         for(Acoes acaoSimulada : resultados){
+
             double precoCompra = acaoSimulada.getPrecoAcao();
             double txIr = acaoSimulada.getTxIr();
             double desvio =  acaoSimulada.getDesvio()/100.0;
@@ -191,11 +194,6 @@ public class CalculadoraVariavel {
             acoesFinal.setPrecoAcao(acaoSimulada.getPrecoAcao());
             acoesFeitas.add(acoesFinal);
 
-        }
-
-        if (historico){
-            int userId = UserSession.getLoggedInUserId();
-            dao.salvarHistoricoAcoes(acoesFeitas, userId, capital, prazo);
         }
 
         return acoesFeitas;

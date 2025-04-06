@@ -38,8 +38,8 @@
         <VBox spacing="16">
             <!-- Aporte Mensal -->
             <HBox alignment="CENTER_LEFT" spacing="16">
-                <Label text="Aporte Mensal" style="-fx-text-fill: #333333; -fx-font-weight: bold; -fx-min-width: 120;" />
-                <TextField fx:id="aporteMensalField" promptText="R$ 0,00"
+                <Label text="Capital Inicial" style="-fx-text-fill: #333333; -fx-font-weight: bold; -fx-min-width: 120;" />
+                <TextField fx:id="capitalInicialField" promptText="R$ 0,00"
                            style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #1E90FF; -fx-pref-width: 180;" />
             </HBox>
 

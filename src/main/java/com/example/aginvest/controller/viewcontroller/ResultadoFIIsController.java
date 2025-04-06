@@ -16,8 +16,8 @@ public class ResultadoFIIsController {
         List<Fiis> resultados = calculadoraVariavel.simularFundoImobiliario(fiis);
         for (Fiis cfiis : resultados) {
             System.out.println("nome: " + cfiis.getNome());
-            System.out.println("saldo cotas: " + cfiis.getSaldoCotas());
-            System.out.println("saldo dividendos: " + cfiis.getSaldoDividendos());
+            System.out.println("saldo cotas: " + String.format("%.2f", cfiis.getSaldoCotas()));
+            System.out.println("saldo dividendos: " + String.format("%.2f",cfiis.getSaldoDividendos()));
             System.out.println("quantidades cotas: " + cfiis.getQtdCotas());
         }
     }

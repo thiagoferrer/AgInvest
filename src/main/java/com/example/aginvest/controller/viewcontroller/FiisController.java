@@ -26,8 +26,6 @@ public class FiisController {
 
     // Campos de entrada
     @FXML
-    private TextField capitalInicialField;
-    @FXML
     private TextField aporteMensalField;
     @FXML
     private TextField quantidadeCotasField;
