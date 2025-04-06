@@ -95,7 +95,6 @@
     -fx-background-color: #007BFF;
 }
 
-<!-- Estilo para o botão de mazoinha -->
 
 .button-hover {
     -fx-cursor: hand;
@@ -107,3 +106,25 @@
     -fx-border-color: #3585FF; /* Cor da borda da bolinha */
     -fx-border-radius: 50;
 }
+
+.button-voltar-azul, .button-calcular-verde {
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+    -fx-pref-height: 40;
+    -fx-pref-width: 110;
+    -fx-padding: 0 24 0 24;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button-voltar-azul {
+    -fx-background-color: #1E90FF;
+}
+
+.button-calcular-verde {
+    -fx-background-color: #32CD32;
+}
+
+
+

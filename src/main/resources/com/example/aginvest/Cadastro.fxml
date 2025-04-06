@@ -110,7 +110,7 @@
                        -fx-pref-height: 48; -fx-pref-width: 120; -fx-background-radius: 8;-fx-cursor: hand;" />
         <Button fx:id="cadastrarButton" text="Cadastrar" onAction="#handleCadastrar"
                 style="-fx-background-color: #1FCE52; -fx-text-fill: white;-fx-font-weight: bold; -fx-font-size: 16;
-                       -fx-pref-height: 48; -fx-pref-width: 120; -fx-background-radius: 8; -fx-cursor: hand;"" />
+                       -fx-pref-height: 48; -fx-pref-width: 120; -fx-background-radius: 8; -fx-cursor: hand;" />
 
     </HBox>
 </VBox>

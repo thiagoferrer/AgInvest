@@ -5,11 +5,13 @@
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 
+<?import java.lang.String?>
 <ScrollPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.aginvest.controller.viewcontroller.SimuPreviaController"
             prefWidth="360" prefHeight="640"
             maxWidth="360" maxHeight="640"
             minWidth="360" minHeight="640"
+            stylesheets="@styles.css"
             fitToWidth="true" style="-fx-background-color: #FFFFFF;">
     <!-- Cabeçalho -->
 
@@ -81,14 +83,18 @@
 
             <!-- Botões -->
             <HBox spacing="16" alignment="CENTER">
-                <Button fx:id="voltarButton" text="Voltar" onAction="#handleVoltar" styleClass="botao-hover"
-                        style="-fx-background-color: #1E90FF; -fx-text-fill: white; -fx-font-size: 14;
-                               -fx-pref-height: 40; -fx-pref-width: 110; -fx-padding: 0 24 0 24;
-                               -fx-background-radius: 8;-fx-font-weight: bold; -fx-cursor: hand;" />
-                <Button fx:id="calcularButton" text="Calcular" onAction="#handleCalcular"
-                        style="-fx-background-color: #32CD32; -fx-text-fill: white; -fx-font-size: 14;
-                               -fx-pref-height: 40; -fx-pref-width: 110; -fx-padding: 0 24 0 24;
-                               -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;" />
+                <Button fx:id="voltarButton" text="Voltar" onAction="#handleVoltar">
+                    <styleClass>
+                        <String fx:value="botao-hover"/>
+                        <String fx:value="button-voltar-azul"/>
+                    </styleClass>
+                </Button>
+                <Button fx:id="calcularButton" text="Calcular" onAction="#handleCalcular">
+                    <styleClass>
+                        <String fx:value="botao-hover"/>
+                        <String fx:value="button-calcular-verde"/>
+                    </styleClass>
+                </Button>
 
 
             </HBox>
