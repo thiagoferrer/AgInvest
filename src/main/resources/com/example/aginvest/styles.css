@@ -107,11 +107,11 @@
     -fx-border-radius: 50;
     -fx-text-fill: #666666;
     -fx-font-size: 14;
-    -fx-wrap-text: true;
+
 }
 
 
-.button-azul, .button-verde, .button-cadastro, .button-cadastro-voltar, .button-quest {
+.button-azul, .button-verde, .button-cadastro, .button-cadastro-voltar, .button-quest, .button-delete {
     -fx-text-fill: white;
     -fx-font-size: 14;
     -fx-background-radius: 8;
@@ -120,7 +120,9 @@
 }
 
 .button-quest {
-    -fx-pref-height: 60;
+    -fx-pref-height: 40;
+    -fx-pref-width: 140;
+    -fx-padding: 0 24 0 24;
 }
 
 .button-azul, .button-verde {
@@ -129,7 +131,7 @@
     -fx-padding: 0 24 0 24;
 }
 
-.button-cadastro, .button-cadastro-voltar {
+.button-cadastro, .button-cadastro-voltar  {
     -fx-pref-height: 80;
     -fx-pref-width: 120;
     -fx-padding: 10 24 10 24;
@@ -142,6 +144,13 @@
 
 .button-verde, .button-cadastro, .button-quest {
     -fx-background-color: #32CD32;
+}
+
+.button-delete{
+    -fx-pref-height: 40;
+    -fx-pref-width: 180;
+    -fx-padding: 0 24 0 24;
+    -fx-background-color: #FF4C4C;
 }
 
 .indice-sim-txvalue, .descr-sim  {
@@ -175,6 +184,17 @@
     -fx-background-color: #FFFFFF;
     -fx-text-fill: #3585FF;
 }
+
+.input-small {
+    -fx-pref-height: 36;
+    -fx-pref-width: 140;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #3585FF;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+
+}
+
 
 .label-input-sim {
     -fx-font-size: 16;
@@ -221,7 +241,16 @@
     -fx-background-radius: 8;
     -fx-border-radius: 8;
     -fx-border-color: #EA7A5D;
+    -fx-background-color: #ffffff;
+    -fx-start-margin: 0;
+    -fx-end-margin: 0;
 }
 
+.quest-perg {
+    -fx-text-fill: #666666;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-wrap-text: true;
+}
 
 
