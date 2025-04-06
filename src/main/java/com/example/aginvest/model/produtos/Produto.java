@@ -14,18 +14,21 @@ public class Produto {
         this.meses = meses;
     }
 
-    public Produto(int idProduto) {
-        this.idProduto = idProduto;
+    public Produto(int meses) {
+        this.meses = meses;
     }
 
     public Produto (String nome) {
         this.nome = nome;
     }
 
+
     public Produto (String nome, double valorInvestido) {
         this.nome = nome;
         this.valorInvestido = valorInvestido;
     }
+
+
 
     public Produto (double valorInvestido, int meses) {
         this.valorInvestido = valorInvestido;
@@ -45,13 +48,9 @@ public class Produto {
         this.idProduto = idProduto;
     }
 
-    public String getNome() {
-        return nome;
-    }
+    public String getNome() {return nome;}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public void setNome(String nome) {this.nome = nome;}
 
     public double getValorInvestido() {
         return valorInvestido;
@@ -61,9 +60,7 @@ public class Produto {
         this.valorInvestido = valorInvestido;
     }
 
-    public int getMeses() {
-        return meses;
-    }
+    public int getMeses() {return meses;}
 
     public void setMeses(int meses) {
         this.meses = meses;
