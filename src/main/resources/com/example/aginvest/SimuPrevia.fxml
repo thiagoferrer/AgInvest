@@ -19,72 +19,59 @@
         <VBox alignment="CENTER" spacing="16" style="-fx-padding: 16;-fx-background-color: #FFFFFF;">
 
             <Label text="Invest7" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #1E90FF;" />
-            <Label text="Simulação Prévia" style="-fx-font-size: 20;-fx-font-weight: bold;
-             -fx-text-fill: #666666; -fx-label-padding: 0 8" />
+            <Label text="Simulação Prévia" styleClass="titulo-sim" />
 
             <!-- Descrição -->
             <Label text="Calcule quanto seu dinheiro pode render simulando um investimento em CDB,
-            Tesouro Direto Prefixado, Tesouro Direto IPCA+ e Tesouro Direto Selic."
-                   style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-wrap-text: true; -fx-max-width: 300; " />
+            Tesouro Direto Prefixado, Tesouro Direto IPCA+ e Tesouro Direto Selic." styleClass="descr-sim"/>
 
             <!-- Formulário -->
             <VBox style="-fx-padding: 8 10">
             <VBox spacing="8" alignment="CENTER_LEFT">
                 <!-- Capital Inicial -->
-                <Label text="Capital Inicial" style="-fx-font-size: 16; -fx-text-fill: #666666;" />
+                <Label text="Capital Inicial" styleClass="label-input-sim" />
                 <TextField fx:id="capitalInicialField" promptText="R$ 0,00" styleClass="input-sim"/>
             </VBox>
 
             <VBox spacing="8" alignment="CENTER_LEFT">
                 <!-- Aporte Mensal -->
-                <Label text="Aporte Mensal" style="-fx-font-size: 16; -fx-text-fill: #666666;" />
+                <Label text="Aporte Mensal" styleClass="label-input-sim" />
                 <TextField fx:id="aporteMensalField" promptText="R$ 0,00" styleClass="input-sim" />
             </VBox>
 
             <VBox spacing="8" alignment="CENTER_LEFT">
                 <!-- Prazo -->
-                <Label text="Prazo (em meses)" style="-fx-font-size: 16; -fx-text-fill: #666;" />
+                <Label text="Prazo (em meses)" styleClass="label-input-sim" />
                 <TextField fx:id="prazoField" promptText="Prazo (meses)"
-                           styleClass="input-sim" />
+                           styleClass="input-sim"/>
             </VBox>
             </VBox>
 
             <!-- Índices -->
             <VBox spacing="12" prefWidth="300">
                 <HBox spacing="8" alignment="CENTER" style="-fx-padding: 8">
+
                     <VBox alignment="CENTER" spacing="4" prefWidth="96" styleClass="indice-sim">
-                        <Label text="Selic (a.a)" style="-fx-text-fill: #4D4D4D; -fx-font-size: 14;-fx-font-weight: bold;"/>
-                        <Label text="13.15%" style="-fx-text-fill: #666666; -fx-font-size: 14; " />
+                        <Label text="Selic (a.a)" styleClass="indice-sim-nometx"/>
+                        <Label text="13.15%" styleClass="indice-sim-txvalue"  />
                     </VBox>
-                    <VBox alignment="CENTER" spacing="4" prefWidth="96"
-                          styleClass="indice-sim">
-                        <Label text="CDI (a.a)" style="-fx-text-fill: #4D4D4D; -fx-font-size: 14;-fx-font-weight: bold;" />
-                        <Label text="14.15%" style="-fx-text-fill: #666666; -fx-font-size: 14; " />
+
+                    <VBox alignment="CENTER" spacing="4" prefWidth="96" styleClass="indice-sim">
+                        <Label text="CDI (a.a)" styleClass="indice-sim-nometx" />
+                        <Label text="14.15%" styleClass="indice-sim-txvalue" />
                     </VBox>
-                    <VBox alignment="CENTER" spacing="4" prefWidth="96"
-                          styleClass="indice-sim">
-                        <Label text="IPCA (a.a)" style="-fx-text-fill: #4D4D4D; -fx-font-size: 14;-fx-font-weight: bold;" />
-                        <Label text="5.19%" style="-fx-text-fill: #666666; -fx-font-size: 14; " />
+
+                    <VBox alignment="CENTER" spacing="4" prefWidth="96" styleClass="indice-sim">
+                        <Label text="IPCA (a.a)" styleClass="indice-sim-nometx" />
+                        <Label text="5.19%" styleClass="indice-sim-txvalue" />
                     </VBox>
                 </HBox>
             </VBox>
 
             <!-- Botões -->
             <HBox spacing="16" alignment="CENTER">
-                <Button fx:id="voltarButton" text="Voltar" onAction="#handleVoltar">
-                    <styleClass>
-                        <String fx:value="botao-hover"/>
-                        <String fx:value="button-azul"/>
-                    </styleClass>
-                </Button>
-                <Button fx:id="calcularButton" text="Calcular" onAction="#handleCalcular">
-                    <styleClass>
-                        <String fx:value="botao-hover"/>
-                        <String fx:value="button-verde"/>
-                    </styleClass>
-                </Button>
-
-
+                <Button fx:id="voltarButton" text="Voltar" onAction="#handleVoltar" styleClass="button-azul"/>
+                <Button fx:id="calcularButton" text="Calcular" onAction="#handleCalcular" styleClass="button-verde"/>
             </HBox>
         </VBox>
     </content>

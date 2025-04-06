@@ -108,14 +108,12 @@
     <HBox spacing="24" alignment="CENTER" style="-fx-padding: 16;">
         <Button fx:id="voltarButton" text="Voltar" onAction="#handleVoltar">
             <styleClass>
-                <String fx:value="botao-hover"/>
-                <String fx:value="button-azul"/>
+                <String fx:value="button-cadastro-voltar"/>
             </styleClass>
         </Button>
         <Button fx:id="cadastrarButton" text="Cadastrar" onAction="#handleCadastrar">
-            <styleClass>
-                <String fx:value="botao-hover"/>
-                <String fx:value="button-verde"/>
+            <styleClass>>
+                <String fx:value="button-cadastro"/>
             </styleClass>
         </Button>
 
