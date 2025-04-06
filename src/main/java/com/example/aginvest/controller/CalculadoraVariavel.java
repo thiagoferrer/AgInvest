@@ -46,6 +46,7 @@ public class CalculadoraVariavel {
             int quantidadeCotas = calculadoraV.getQtdCotas();
             int reinvestir = calculadoraV.getReinvestir();
 
+
             for (int mes = 1; mes <= meses; mes++) {
                 double dividendosRecebidos = quantidadeCotas * dividendoPorCota;
 
@@ -66,7 +67,7 @@ public class CalculadoraVariavel {
                     saldoAporte -= novasCotasAporte * precoCota;
                 }
             }
-
+            double dividendosMensais = quantidadeCotas * dividendoPorCota;
 
             Fiis fiiSimulado = new Fiis(
                     fii.getNome(),
@@ -80,6 +81,7 @@ public class CalculadoraVariavel {
             fiiSimulado.setSaldoDividendos(saldoDividendos);
             fiiSimulado.setId_fiis(fii.getId_fiis());
             fiiSimulado.setQtdCotas(quantidadeCotas);
+            fiiSimulado.setDividendosMensais(dividendosMensais);
             fiisSimulados.add(fiiSimulado);
         }
 

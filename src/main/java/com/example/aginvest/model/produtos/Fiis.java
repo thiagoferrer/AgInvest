@@ -17,6 +17,16 @@ public class Fiis extends Produto {
     private double saldoDividendos;
     private int id_fiis;
 
+    public double getDividendosMensais() {
+        return dividendosMensais;
+    }
+
+    public void setDividendosMensais(double dividendosMensais) {
+        this.dividendosMensais = dividendosMensais;
+    }
+
+    private double dividendosMensais;
+
 
     public Fiis(String nome, double valorInvestido, double txIr, double precoFiis, double dividendYield, double desvioCotas, double desvioDividendos) {
         super(nome, valorInvestido);
