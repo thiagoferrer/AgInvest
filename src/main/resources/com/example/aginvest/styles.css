@@ -105,26 +105,97 @@
     -fx-background-color: #ffffff; /* Fundo da bolinha */
     -fx-border-color: #3585FF; /* Cor da borda da bolinha */
     -fx-border-radius: 50;
+    -fx-text-fill: #666666;
+    -fx-font-size: 14;
+    -fx-wrap-text: true;
 }
 
-.button-voltar-azul, .button-calcular-verde {
+
+.button-azul, .button-verde, .button-cadastro, .button-cadastro-voltar, .button-quest {
     -fx-text-fill: white;
     -fx-font-size: 14;
-    -fx-pref-height: 40;
-    -fx-pref-width: 110;
-    -fx-padding: 0 24 0 24;
     -fx-background-radius: 8;
     -fx-font-weight: bold;
     -fx-cursor: hand;
 }
 
-.button-voltar-azul {
+.button-quest {
+    -fx-pref-height: 60;
+}
+
+.button-azul, .button-verde {
+    -fx-pref-height: 40;
+    -fx-pref-width: 110;
+    -fx-padding: 0 24 0 24;
+}
+
+.button-cadastro, .button-cadastro-voltar {
+    -fx-pref-height: 80;
+    -fx-pref-width: 120;
+    -fx-padding: 10 24 10 24;
+
+}
+
+.button-azul, .button-cadastro-voltar {
     -fx-background-color: #1E90FF;
 }
 
-.button-calcular-verde {
+.button-verde, .button-cadastro, .button-quest {
     -fx-background-color: #32CD32;
 }
+
+.indice-sim-txvalue, .descr-sim  {
+    -fx-text-fill: #666666;
+    -fx-font-size: 14;
+}
+
+.titulo-sim {
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-text-fill: #666666;
+    -fx-label-padding: 0 8;
+}
+
+.descr-sim {
+    -fx-wrap-text: true;
+    -fx-max-width: 300;
+}
+
+.input-sim, .indice-sim {
+    -fx-font-size: 14;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: #3585FF;
+
+}
+
+.input-sim {
+    -fx-pref-height: 36;
+    -fx-pref-width: 300;
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #3585FF;
+}
+
+.label-input-sim {
+    -fx-font-size: 16;
+    -fx-text-fill: #666666;
+}
+
+.indice-sim {
+    -fx-background-color: #E6F0FF;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 8;
+}
+
+.indice-sim-nometx {
+    -fx-text-fill: #4D4D4D;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+
+
+
 
 
 
