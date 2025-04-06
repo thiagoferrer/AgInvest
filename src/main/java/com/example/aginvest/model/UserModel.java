@@ -1,7 +1,8 @@
     package com.example.aginvest.model;
 
     public class UserModel {
-        private String nome = null, cpf = null, endereco = null, genero = null, email = null, senha = null, senhaHash = null, dt_nasc = null, descricao_perfil = null;
+        private String nome = null, cpf = null, endereco = null, genero = null,
+                email = null, senha = null, senhaHash = null, dt_nasc = null, descricao_perfil = null;
         int id_user, id_perfil;
 
         //model para update
