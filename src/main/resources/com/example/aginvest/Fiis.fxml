@@ -12,6 +12,7 @@
 
 
 <?import javafx.scene.control.RadioButton?>
+<?import java.lang.String?>
 <VBox alignment="TOP_CENTER" spacing="16"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.aginvest.controller.viewcontroller.FiisController"
@@ -88,16 +89,19 @@
 
         <!-- BOTÕES -->
         <HBox spacing="16" alignment="CENTER" style="-fx-padding: 20 0 0 0;">
-            <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar"
-                    prefWidth="140" prefHeight="48" styleClass="botao-hover"
-                    style="-fx-background-color: #1E90FF; -fx-text-fill: white; -fx-font-size: 14;
-                               -fx-pref-height: 40; -fx-pref-width: 110; -fx-padding: 0 24 0 24;
-                               -fx-background-radius: 8;-fx-font-weight: bold; -fx-cursor: hand;" />
-            <Button fx:id="calcularButton" onAction="#onClickCalcular" text="Calcular"
-                    prefWidth="140" prefHeight="48" styleClass="botao-hover"
-                    style="-fx-background-color: #32CD32; -fx-text-fill: white; -fx-font-size: 14;
-                               -fx-pref-height: 40; -fx-pref-width: 110; -fx-padding: 0 24 0 24;
-                               -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;" />
+            <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar">
+                <styleClass>
+                    <String fx:value="botao-hover"/>
+                    <String fx:value="button-voltar-azul"/>
+                </styleClass>
+            </Button>
+            <Button fx:id="calcularButton" onAction="#onClickCalcular" text="Calcular">
+                <styleClass>
+                    <String fx:value="botao-hover"/>
+                    <String fx:value="button-calcular-verde"/>
+                </styleClass>
+            </Button>
+
         </HBox>
     </VBox>
 
