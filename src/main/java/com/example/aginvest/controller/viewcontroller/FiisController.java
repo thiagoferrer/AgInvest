@@ -1,6 +1,5 @@
 package com.example.aginvest.controller.viewcontroller;
 
-import com.example.aginvest.model.UserModel;
 import com.example.aginvest.model.produtos.Fiis;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -121,19 +120,19 @@ public class FiisController {
         }
     }
 
-    // Método para o botão "Calcular"
     @FXML
     public void onClickCalcular() {
         System.out.println("Botão Calcular clicado!");
-        // Adicione lógica para realizar o cálculo com base nos valores inseridos
-        double aporteMensal = Double.parseDouble(aporteMensalField.getText());
-        int quantidadeCotas = Integer.parseInt(quantidadeCotasField.getText());
-        int prazo = Integer.parseInt(prazoField.getText());
-       // boolean reinvestir = reinvestirCheckBox.isSelected();
-        //boolean naoReinvestir = naoReinvestirCheckBox.isSelected();
+        try {
+            double aporteMensal = Double.parseDouble(aporteMensalField.getText());
+            int quantidadeCotas = Integer.parseInt(quantidadeCotasField.getText());
+            int prazo = Integer.parseInt(prazoField.getText());
 
-        carregarTelaResultado(new Fiis(aporteMensal,quantidadeCotas,prazo,1));
-
+            carregarTelaResultado(new Fiis(aporteMensal, quantidadeCotas, prazo, 1));
+        } catch (NumberFormatException e) {
+            System.out.println("Erro ao converter valores numéricos: " + e.getMessage());
+            // Aqui você pode mostrar um alerta para o usuário também
+        }
     }
 
     // Método para garantir que apenas um CheckBox seja selecionado
@@ -168,10 +167,13 @@ public class FiisController {
 
     private void carregarTelaResultado(Fiis fiis) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/ResultadoFIIs.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/ResultadoFiis.fxml"));
             Parent root = loader.load();
-            ResultadoFIIsController fundos = new ResultadoFIIsController();
+
+            // Aqui está a correção: pegue o controller correto do loader
+            ResultadoFiisController fundos = loader.getController();
             fundos.CalcularFiis(fiis);
+
             Stage stage = (Stage) calcularButton.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
@@ -181,4 +183,5 @@ public class FiisController {
             System.out.println("Erro ao carregar próxima tela: " + e.getMessage());
         }
     }
+
 }
