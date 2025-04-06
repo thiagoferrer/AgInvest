@@ -1,7 +1,8 @@
 .root {
-    -fx-background-color: #f5f5f5;
-    -fx-padding: 20;
-    -fx-alignment: center;
+    -fx-background-color: #FFFFFF;
+    -fx-alignment: TOP_CENTER;
+    -fx-padding: 0;
+
 }
 
 .title {
@@ -98,4 +99,11 @@
 
 .button-hover {
     -fx-cursor: hand;
+}
+
+.radio-button > .radio {
+    -fx-mark-color: #3585FF; /* Cor da bolinha preenchida */
+    -fx-background-color: #ffffff; /* Fundo da bolinha */
+    -fx-border-color: #3585FF; /* Cor da borda da bolinha */
+    -fx-border-radius: 50;
 }

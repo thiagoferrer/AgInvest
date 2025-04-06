@@ -57,7 +57,7 @@
         <GridPane hgap="16" vgap="24" alignment="CENTER" style="-fx-background-color: #FFFFFF;
          -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 2);">
             <padding>
-                <Insets top="24" right="16" bottom="24" left="16" />
+                <Insets top="16" right="8" bottom="16" left="8" />
             </padding>
             <!-- Linha 1 -->
             <!-- Botão 1: Fundo Imobiliário -->
