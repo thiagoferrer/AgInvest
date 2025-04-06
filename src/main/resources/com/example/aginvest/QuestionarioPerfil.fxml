@@ -30,17 +30,17 @@
                        style="-fx-text-fill: #333333; -fx-font-size: 16; -fx-font-weight: bold; -fx-wrap-text: true;"/>
 
                 <RadioButton fx:id="pergunta1A"
-                             text="A) Preservar o capital com segurança, mesmo que o retorno seja baixo"
+                             text="Preservar o capital com segurança, mesmo que o retorno seja baixo"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="A"/>
 
                 <RadioButton fx:id="pergunta1B"
-                             text="B) Equilibrar segurança e crescimento do patrimônio"
+                             text="Equilibrar segurança e crescimento do patrimônio"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="B"/>
 
                 <RadioButton fx:id="pergunta1C"
-                             text="C) Buscar altos retornos, mesmo que isso envolva riscos maiores"
+                             text="Buscar altos retornos, mesmo que isso envolva riscos maiores"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="C"/>
             </VBox>
@@ -51,17 +51,17 @@
                        style="-fx-text-fill: #333333; -fx-font-size: 16; -fx-font-weight: bold; -fx-wrap-text: true;"/>
 
                 <RadioButton fx:id="pergunta2A"
-                             text="A) Menos de 1 ano"
+                             text="Menos de 1 ano"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="A"/>
 
                 <RadioButton fx:id="pergunta2B"
-                             text="B) Entre 1 e 5 anos"
+                             text="Entre 1 e 5 anos"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="B"/>
 
                 <RadioButton fx:id="pergunta2C"
-                             text="C) Mais de 5 anos"
+                             text="Mais de 5 anos"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="C"/>
             </VBox>
@@ -72,17 +72,17 @@
                        style="-fx-text-fill: #333333; -fx-font-size: 16; -fx-font-weight: bold; -fx-wrap-text: true;"/>
 
                 <RadioButton fx:id="pergunta3A"
-                             text="A) Ficaria muito preocupado e tentaria resgatar o dinheiro imediatamente"
+                             text="Ficaria muito preocupado e tentaria resgatar o dinheiro imediatamente"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="A"/>
 
                 <RadioButton fx:id="pergunta3B"
-                             text="B) Ficaria incomodado, mas esperaria para ver se a situação melhora"
+                             text="Ficaria incomodado, mas esperaria para ver se a situação melhora"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="B"/>
 
                 <RadioButton fx:id="pergunta3C"
-                             text="C) Aceitaria a perda como parte do processo e manteria os investimentos"
+                             text="Aceitaria a perda como parte do processo e manteria os investimentos"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="C"/>
             </VBox>
@@ -93,17 +93,17 @@
                        style="-fx-text-fill: #333333; -fx-font-size: 16; -fx-font-weight: bold; -fx-wrap-text: true;"/>
 
                 <RadioButton fx:id="pergunta4A"
-                             text="A) Até 10%"
+                             text="Até 10%"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="A"/>
 
                 <RadioButton fx:id="pergunta4B"
-                             text="B) Entre 10% e 30%"
+                             text="Entre 10% e 30%"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="B"/>
 
                 <RadioButton fx:id="pergunta4C"
-                             text="C) Mais de 30%"
+                             text="Mais de 30%"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="C"/>
             </VBox>
@@ -114,17 +114,17 @@
                        style="-fx-text-fill: #333333; -fx-font-size: 16; -fx-font-weight: bold; -fx-wrap-text: true;"/>
 
                 <RadioButton fx:id="pergunta5A"
-                             text="A) Básico (conheço apenas opções seguras, como poupança)"
+                             text="Básico (conheço apenas opções seguras, como poupança)"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="A"/>
 
                 <RadioButton fx:id="pergunta5B"
-                             text="B) Intermediário (já ouvi falar de fundos e ações, mas não domino o assunto)"
+                             text="Intermediário (já ouvi falar de fundos e ações, mas não domino o assunto)"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="B"/>
 
                 <RadioButton fx:id="pergunta5C"
-                             text="C) Avançado (entendo bem o mercado e acompanho as tendências)"
+                             text="Avançado (entendo bem o mercado e acompanho as tendências)"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="C"/>
             </VBox>
@@ -135,17 +135,17 @@
                        style="-fx-text-fill: #333333; -fx-font-size: 16; -fx-font-weight: bold; -fx-wrap-text: true;"/>
 
                 <RadioButton fx:id="pergunta6A"
-                             text="A) Sim, e não pretendo usá-la para investimentos"
+                             text="Sim, e não pretendo usá-la para investimentos"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="A"/>
 
                 <RadioButton fx:id="pergunta6B"
-                             text="B) Sim, mas posso usar uma parte para investir"
+                             text="Sim, mas posso usar uma parte para investir"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="B"/>
 
                 <RadioButton fx:id="pergunta6C"
-                             text="C) Não, e pretendo investir tudo o que tenho disponível"
+                             text="Não, e pretendo investir tudo o que tenho disponível"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="C"/>
             </VBox>
@@ -156,17 +156,17 @@
                        style="-fx-text-fill: #333333; -fx-font-size: 16; -fx-font-weight: bold; -fx-wrap-text: true;"/>
 
                 <RadioButton fx:id="pergunta7A"
-                             text="A) Prefiro estabilidade, mesmo com ganhos menores"
+                             text="Prefiro estabilidade, mesmo com ganhos menores"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="A"/>
 
                 <RadioButton fx:id="pergunta7B"
-                             text="B) Aceito pequenas variações em busca de melhores retornos"
+                             text="Aceito pequenas variações em busca de melhores retornos"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="B"/>
 
                 <RadioButton fx:id="pergunta7C"
-                             text="C) Estou confortável com grandes oscilações por retornos altos"
+                             text="Estou confortável com grandes oscilações por retornos altos"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="C"/>
             </VBox>
@@ -177,17 +177,17 @@
                        style="-fx-text-fill: #333333; -fx-font-size: 16; -fx-font-weight: bold; -fx-wrap-text: true;"/>
 
                 <RadioButton fx:id="pergunta8A"
-                             text="A) Títulos públicos ou renda fixa com liquidez diária"
+                             text="Títulos públicos ou renda fixa com liquidez diária"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="A"/>
 
                 <RadioButton fx:id="pergunta8B"
-                             text="B) Fundos mistos com renda fixa e um pouco de renda variável"
+                             text="Fundos mistos com renda fixa e um pouco de renda variável"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="B"/>
 
                 <RadioButton fx:id="pergunta8C"
-                             text="C) Ações ou fundos de maior risco"
+                             text="Ações ou fundos de maior risco"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="C"/>
             </VBox>
@@ -198,17 +198,17 @@
                        style="-fx-text-fill: #333333; -fx-font-size: 16; -fx-font-weight: bold; -fx-wrap-text: true;"/>
 
                 <RadioButton fx:id="pergunta9A"
-                             text="A) Segurança do valor investido"
+                             text="Segurança do valor investido"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="A"/>
 
                 <RadioButton fx:id="pergunta9B"
-                             text="B) Um equilíbrio entre segurança e rentabilidade"
+                             text="Um equilíbrio entre segurança e rentabilidade"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="B"/>
 
                 <RadioButton fx:id="pergunta9C"
-                             text="C) Maximizar a rentabilidade, mesmo com risco"
+                             text="Maximizar a rentabilidade, mesmo com risco"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="C"/>
             </VBox>
@@ -219,17 +219,17 @@
                        style="-fx-text-fill: #333333; -fx-font-size: 16; -fx-font-weight: bold; -fx-wrap-text: true;"/>
 
                 <RadioButton fx:id="pergunta10A"
-                             text="A) Nenhuma ou apenas em produtos simples (ex.: poupança)"
+                             text="Nenhuma ou apenas em produtos simples (ex.: poupança)"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="A"/>
 
                 <RadioButton fx:id="pergunta10B"
-                             text="B) Já investi em fundos ou renda fixa com orientação"
+                             text="Já investi em fundos ou renda fixa com orientação"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="B"/>
 
                 <RadioButton fx:id="pergunta10C"
-                             text="C) Já investi por conta própria em ações ou outros produtos de risco"
+                             text="Já investi por conta própria em ações ou outros produtos de risco"
                              style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-wrap-text: true; -fx-cursor: hand;"
                              userData="C"/>
             </VBox>
