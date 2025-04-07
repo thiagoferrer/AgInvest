@@ -127,8 +127,18 @@ public class FiisController {
             double aporteMensal = Double.parseDouble(aporteMensalField.getText());
             int quantidadeCotas = Integer.parseInt(quantidadeCotasField.getText());
             int prazo = Integer.parseInt(prazoField.getText());
+            // Verifica se o reinvestimento está marcado
+            int reinvestirDividendos;
 
-            carregarTelaResultado(new Fiis(aporteMensal, quantidadeCotas, prazo, 1));
+            if (reinvestirCheckBox != null && reinvestirCheckBox.isSelected()) {
+                reinvestirDividendos = 1; // Usuário escolheu REINVESTIR
+            } else if (naoReinvestirCheckBox != null && naoReinvestirCheckBox.isSelected()) {
+                reinvestirDividendos = 0; // Usuário escolheu NÃO REINVESTIR
+            } else {
+                reinvestirDividendos = 0; // Padrão (caso nenhum esteja selecionado)
+            }
+
+            carregarTelaResultado(new Fiis(aporteMensal, quantidadeCotas, prazo, reinvestirDividendos ));
         } catch (NumberFormatException e) {
             System.out.println("Erro ao converter valores numéricos: " + e.getMessage());
             // Aqui você pode mostrar um alerta para o usuário também

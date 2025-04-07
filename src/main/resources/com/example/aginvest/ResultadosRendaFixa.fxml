@@ -84,7 +84,7 @@
         </padding>
         <Button fx:id="backButton" text="Voltar"  prefWidth="140" prefHeight="48"
                 style="-fx-background-color: #D3D3D3; -fx-background-radius: 12; -fx-text-fill: #333333; -fx-font-size: 14; -fx-cursor: hand;" />
-        <Button fx:id="newSimulationButton" text="Nova simulação"  prefWidth="140" prefHeight="48"
+        <Button fx:id="newSimulationButton"  prefWidth="140" prefHeight="48"
                 style="-fx-background-color: #66CC99; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
     </HBox>
 

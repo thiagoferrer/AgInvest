@@ -52,7 +52,7 @@
     <!-- Botões Voltar e Nova Simulação -->
 
     <HBox alignment="CENTER" spacing="16" style="-fx-padding: 8">
-        <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar" styleClass="button-cadastro-voltar"/>
+        <Button fx:id="voltarButton" onAction="#onClickVoltar" text="Voltar" styleClass="button-cadastro-voltar"/>
         <Button fx:id="newSimulationButton" onAction="#gerarCsv" text="Gerar CSV" styleClass="button-quest" />
     </HBox>
 </VBox>

@@ -48,54 +48,55 @@ public class ResultadoAcoesController {
     @FXML private Button backButton;
     @FXML private Button newSimulationButton;
 
-    @FXML
-    public void initialize() {
-        System.out.println("ResultadoAcoesController inicializado");
-    }
 
-    // Métodos de navegação
     @FXML
     private void onClickHome() {
-        carregarTela(homeButton, "/com/example/aginvest/home.fxml", "Home - Invest7");
+        carregarTela("/com/example/aginvest/home.fxml", "Home - Invest7");
     }
 
-    @FXML
-    private void onClickFaq() {
-        carregarTela(faqButton, "/com/example/aginvest/faq.fxml", "FAQ - Invest7");
-    }
+    @FXML private void onClickVoltar(){carregarTela("/com/example/aginvest/Acoes.fxml", "Acoes- Invest7"); }
 
     @FXML
-    private void onClickConta() {
-        carregarTela(contaButton, "/com/example/aginvest/conta.fxml", "Conta - Invest7");
+    public void initialize() {
+        faqButton.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Faq.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de FAQ");
+            }
+        });
+
+        contaButton.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Conta.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de dados do usuario");
+            }
+        });
     }
 
-    @FXML
-    private void onClickBack() {
-        carregarTela(backButton, "/com/example/aginvest/home.fxml", "Home - Invest7");
-    }
-
-    @FXML
-    private void onClickNewSimulation() {
-        carregarTela(newSimulationButton, "/com/example/aginvest/SimuladorAcoes.fxml", "Simulação de Ações - Invest7");
-    }
 
     private List<Acoes> resultadosSimulacao;
-
-    private void carregarTela(Button botaoOrigem, String fxmlPath, String titulo) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) botaoOrigem.getScene().getWindow();
-            stage.setTitle(titulo);
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        } catch (IOException e) {
-            mostrarAlerta("Erro", "Não foi possível carregar a tela: " + fxmlPath + "\nErro: " + e.getMessage(), AlertType.ERROR);
-            e.printStackTrace();
-        }
-    }
 
     private void mostrarAlerta(String titulo, String mensagem, AlertType tipo) {
         Alert alert = new Alert(tipo);
@@ -254,6 +255,21 @@ public class ResultadoAcoesController {
 
         } catch (Exception e) {
             mostrarAlerta("Erro", "Falha ao gerar o CSV: " + e.getMessage(), AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
+
+    private void carregarTela(String fxmlPath, String titulo) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) homeButton.getScene().getWindow();
+            stage.setTitle(titulo);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
