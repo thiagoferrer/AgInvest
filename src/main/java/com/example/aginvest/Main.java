@@ -1,4 +1,4 @@
-package com.example.aginvest.controller.viewcontroller;
+package com.example.aginvest;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
