@@ -26,7 +26,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         try {
             // Tente usar o caminho absoluto do recurso
-            URL fxmlUrl = getClass().getResource("/com/example/aginvest/Acoes.fxml");
+            URL fxmlUrl = getClass().getResource("/com/example/aginvest/Logo.fxml");
 
             if (fxmlUrl == null) {
                 System.err.println("FXML file not found!");
