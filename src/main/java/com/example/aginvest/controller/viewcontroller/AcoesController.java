@@ -35,6 +35,8 @@ public class AcoesController {
     @FXML
     private Button calcularButton;
 
+
+
     @FXML
     private void onClickHome() {
         carregarTela("/com/example/aginvest/home.fxml", "Home - Invest7");

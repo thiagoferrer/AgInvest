@@ -123,6 +123,7 @@ public class CadastroController {
             // Validação de CEP
             BuscarCep viacep = new BuscarCep();
             String enderecoCEP = viacep.buscarApi(cep);
+            System.out.println("endetro cep " + enderecoCEP);
             if (enderecoCEP == null) {
                 showError("CEP inválido ou não encontrado!");
                 cepFieldCadastro.setStyle("-fx-border-color: #FF0000; -fx-border-radius: 8;");

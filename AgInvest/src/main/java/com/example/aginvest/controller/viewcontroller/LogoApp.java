@@ -11,23 +11,15 @@ import java.net.URL;
 
 import static javafx.application.Application.launch;
 
-public class Main extends Application {
+public class LogoApp extends Application {
     // Método start() modificado
-    @Override
-    public void init() {
-        // Inicialização, se necessário
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     @Override
     public void start(Stage stage) throws IOException {
         try {
             // Tente usar o caminho absoluto do recurso
-            URL fxmlUrl = getClass().getResource("/com/example/aginvest/Acoes.fxml");
-
+            //URL fxmlUrl = getClass().getResource("/com/example/aginvest/LogoApp.fxml");
+            //bypass para simulacao RF
+            URL fxmlUrl = getClass().getResource("/com/example/aginvest/RendaFixa.fxml");
             if (fxmlUrl == null) {
                 System.err.println("FXML file not found!");
                 return;
