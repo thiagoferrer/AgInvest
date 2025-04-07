@@ -12,6 +12,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextFlow;
 
 import java.util.List;
 
@@ -99,8 +100,11 @@ public class ResultadoFiisController {
         nomeLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 14; -fx-font-weight: bold;");
 
         // Quantidade de cotas
-        Label qtdLabel = new Label("Quantidade Total Cotas: " + fii.getQtdCotas());
+        Label qtdLabel = new Label("Quantidade Total Cotas: ");
         qtdLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label qtdColorLabel = new Label(String.valueOf(fii.getQtdCotas()));
+        qtdColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaQtd = new TextFlow(qtdLabel, qtdColorLabel);
 
         // Saldo cotas
         Label saldoCotasLabel = new Label("Saldo Cotas: R$" + String.format("%,.2f", fii.getSaldoCotas()));
@@ -117,7 +121,7 @@ public class ResultadoFiisController {
         // Adiciona todos os labels ao VBox
         box.getChildren().addAll(
                 nomeLabel,
-                qtdLabel,
+                linhaQtd,
                 saldoCotasLabel,
                 saldoDividendosLabel,
                 dividendosMensaisLabel

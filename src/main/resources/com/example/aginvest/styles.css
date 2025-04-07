@@ -111,7 +111,8 @@
 }
 
 
-.button-azul, .button-verde, .button-cadastro, .button-cadastro-voltar, .button-quest, .button-delete {
+.button-azul, .button-verde, .button-cadastro, .button-cadastro-voltar,
+ .button-quest, .button-delete, .button-sim {
     -fx-text-fill: white;
     -fx-font-size: 14;
     -fx-background-radius: 8;
@@ -128,11 +129,17 @@
     -fx-pref-width: 140;
 }
 
+.button-sim {
+    -fx-pref-height: 80;
+    -fx-pref-width: 240;
+    -fx-padding: 10 24 10 24;
+}
+
 .button-azul, .button-verde {
     -fx-pref-width: 110;
 }
 
-.button-cadastro, .button-cadastro-voltar  {
+.button-cadastro, .button-cadastro-voltar   {
     -fx-pref-height: 80;
     -fx-pref-width: 120;
     -fx-padding: 10 24 10 24;

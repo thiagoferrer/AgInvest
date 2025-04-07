@@ -38,17 +38,18 @@
 
     <!-- Valor Investido -->
     <Label text="Valor Investido: R$1.000,00" styleClass="descr-sim"/> <!--acrescentar Get-->
-
-    <!-- Seção Ativos com Scroll -->
-    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
-        <!-- Seção Gráficos -->
-        <VBox fx:id="barChartContainer" spacing="12" alignment="CENTER"
-              style="-fx-background-color: #FFFFFF; -fx-background-radius: 12;
+    <!-- Seção Gráficos -->
+    <VBox fx:id="barChartContainer" spacing="12" alignment="CENTER"
+          style="-fx-background-color: #FFFFFF; -fx-background-radius: 12;
                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);
                -fx-padding: 24 16">
-            <Label text="Dividendos Mensais por FII" styleClass="descr-sim"/>
+        <Label text="Dividendos Mensais por FII" styleClass="descr-sim"/>
+    </VBox>
+    <!-- Seção Ativos com Scroll -->
+    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+
             <!-- O gráfico será adicionado dinamicamente aqui -->
-        </VBox>
+
         <VBox fx:id="ativosSection" spacing="12" alignment="CENTER"
               style="-fx-background-color: #FFFFFF; -fx-background-radius: 12;
                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2); -fx-padding: 24 16">
@@ -63,7 +64,7 @@
         <padding>
             <Insets top="16" />
         </padding>
-        <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar" styleClass="button-azul"/>
+        <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar" styleClass="button-cadastro-voltar"/>
         <Button fx:id="newSimulationButton" text="Nova simulação" styleClass="button-quest" />
     </HBox>
 </VBox>
