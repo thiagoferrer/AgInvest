@@ -69,8 +69,10 @@
         <VBox spacing="8" alignment="TOP_LEFT" style="-fx-padding: 4 10 8 10">
             <Label text="Reinvestir Dividendos" styleClass="label-input-sim" />
             <HBox spacing="20">
-                <RadioButton fx:id="reinvestirSimRadio" text="Sim" styleClass="radio" style="-fx-cursor: hand;-fx-text-fill: #666666;" />
-                <RadioButton fx:id="reinvestirNaoRadio" text="Não" styleClass="radio" style="-fx-cursor: hand;-fx-text-fill: #666666;"/>
+                <RadioButton fx:id="reinvestirSimRadio" text="Sim" styleClass="radio"
+                             style="-fx-cursor: hand;-fx-text-fill: #666666;" />
+                <RadioButton fx:id="reinvestirNaoRadio" text="Não" styleClass="radio"
+                             style="-fx-cursor: hand;-fx-text-fill: #666666;"/>
             </HBox>
         </VBox>
         </VBox>

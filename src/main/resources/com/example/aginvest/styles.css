@@ -133,6 +133,7 @@
     -fx-pref-height: 80;
     -fx-pref-width: 240;
     -fx-padding: 10 24 10 24;
+    -fx-wrap-text: true;
 }
 
 .button-azul, .button-verde {
@@ -254,6 +255,17 @@
     -fx-font-size: 14;
     -fx-font-weight: bold;
     -fx-wrap-text: true;
+}
+
+#grafico-fiis .default-color0.chart-bar {
+    -fx-bar-fill: #3585FF;
+
+}
+
+#grafico-fiis .axis-label, .tick-label {
+    -fx-font-size: 12px;
+    -fx-font-family: "Roboto Light";
+    -fx-text-fill: #666666 ;
 }
 
 

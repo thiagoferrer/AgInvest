@@ -5,6 +5,7 @@ import com.example.aginvest.model.produtos.Fiis;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -35,10 +36,9 @@ public class ResultadoFiisController {
 
         // Limpa os containers antes de adicionar novos elementos
         ativosContainer.getChildren().clear();
-        barChartContainer.getChildren().clear();
 
         // Cria e adiciona o gráfico de barras
-        criarGraficoBarras(resultados);
+        criarGraficoBarras(resultados, ativosContainer);
 
         // Adiciona cada ativo ao container
         for (Fiis fii : resultados) {
@@ -47,7 +47,7 @@ public class ResultadoFiisController {
         }
     }
 
-    private void criarGraficoBarras(List<Fiis> fiisList) {
+    private void criarGraficoBarras(List<Fiis> fiisList, VBox container) {
         // Define os eixos
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setLabel("Fundos Imobiliários");
@@ -57,11 +57,17 @@ public class ResultadoFiisController {
 
         // Cria o gráfico de barras
         BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
-        barChart.setTitle("Dividendos Mensais por Fundo");
+        barChart.setId("grafico-fiis");
         barChart.setLegendVisible(false);
+        barChart.setMinHeight(250);
+        barChart.setMinWidth(300);
         barChart.setPrefHeight(250);
         barChart.setPrefWidth(300);
-        barChart.setStyle("-fx-background-color: #FFFFFF; -fx-background-radius: 8;");
+        barChart.setMaxHeight(250);
+        barChart.setMaxWidth(300);
+        barChart.setStyle("-fx-background-color: #FFFFFF; -fx-background-radius: 8; " +
+                "-fx-text-fill: #666666;");
+
 
         // Cria a série de dados
         XYChart.Series<String, Number> series = new XYChart.Series<>();
@@ -72,19 +78,22 @@ public class ResultadoFiisController {
                     fii.getDividendosMensais()
             );
 
-            // Adiciona um nó para mostrar o valor em cima da barra
-            data.setNode(createDataLabel(fii.getDividendosMensais()));
-
             series.getData().add(data);
         }
 
         barChart.getData().add(series);
-        barChartContainer.getChildren().add(barChart);
+
+
+        Label titulo = new Label("Dividendos Mensais por Fundo");
+        titulo.setStyle("-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #666666;");
+
+
+        container.getChildren().addAll(titulo, barChart);
     }
 
     private Node createDataLabel(double value) {
         Label label = new Label(String.format("R$%,.2f", value));
-        label.setStyle("-fx-text-fill: #333333; -fx-font-size: 7; -fx-font-weight: bold;");
+        label.setStyle("-fx-text-fill: #666666; -fx-font-size: 7; -fx-font-weight: bold;");
         return label;
     }
 
@@ -107,24 +116,34 @@ public class ResultadoFiisController {
         TextFlow linhaQtd = new TextFlow(qtdLabel, qtdColorLabel);
 
         // Saldo cotas
-        Label saldoCotasLabel = new Label("Saldo Cotas: R$" + String.format("%,.2f", fii.getSaldoCotas()));
-        saldoCotasLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        Label saldoCotasLabel = new Label("Saldo Cotas: ");
+        saldoCotasLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label saldoCotasColorLabel = new Label(String.format("R$ %,.2f", fii.getSaldoCotas()));
+        saldoCotasColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaSaldoCotas = new TextFlow(saldoCotasLabel, saldoCotasColorLabel);
+
 
         // Saldo dividendos
-        Label saldoDividendosLabel = new Label("Saldo Dividendos: R$" + String.format("%,.2f", fii.getSaldoDividendos()));
-        saldoDividendosLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        Label saldoDividendosLabel = new Label("Saldo Dividendos: ");
+        saldoDividendosLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label saldoDividendosColorLabel = new Label(String.format("R$ %,.2f", fii.getSaldoDividendos()));
+        saldoDividendosColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaSaldoDivs = new TextFlow(saldoDividendosLabel, saldoDividendosColorLabel);
 
         // Dividendos Mensais
-        Label dividendosMensaisLabel = new Label("Dividendos Mensais: R$" + String.format("%,.2f", fii.getDividendosMensais()));
-        dividendosMensaisLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        Label dividendosMensaisLabel = new Label("Dividendos Mensais: ");
+        dividendosMensaisLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label divColorMensaisLabel = new Label("R$" + String.format("%,.2f", fii.getDividendosMensais()));
+        divColorMensaisLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaDivsMensais = new TextFlow(dividendosMensaisLabel, divColorMensaisLabel);
 
         // Adiciona todos os labels ao VBox
         box.getChildren().addAll(
                 nomeLabel,
                 linhaQtd,
-                saldoCotasLabel,
-                saldoDividendosLabel,
-                dividendosMensaisLabel
+                linhaSaldoCotas,
+                linhaSaldoDivs,
+                linhaDivsMensais
         );
 
         return box;
