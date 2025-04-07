@@ -2,6 +2,7 @@ package com.example.aginvest.controller.viewcontroller;
 
 import com.example.aginvest.controller.CalculadoraVariavel;
 import com.example.aginvest.model.produtos.Fiis;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -95,11 +96,11 @@ public class ResultadoFiisController {
 
         // Nome do FII
         Label nomeLabel = new Label(fii.getNome());
-        nomeLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold;");
+        nomeLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 14; -fx-font-weight: bold;");
 
         // Quantidade de cotas
         Label qtdLabel = new Label("Quantidade Total Cotas: " + fii.getQtdCotas());
-        qtdLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 12;");
+        qtdLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
 
         // Saldo cotas
         Label saldoCotasLabel = new Label("Saldo Cotas: R$" + String.format("%,.2f", fii.getSaldoCotas()));
@@ -123,5 +124,8 @@ public class ResultadoFiisController {
         );
 
         return box;
+    }
+
+    public void onClickHome(ActionEvent actionEvent) {
     }
 }
