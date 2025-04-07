@@ -64,6 +64,6 @@
             <Insets top="16" />
         </padding>
         <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar" styleClass="button-azul"/>
-        <Button fx:id="newSimulationButton" text="Nova simulação" styleClass="button-quest" />
+        <Button fx:id="newSimulationButton" onAction="#gerarCsv" text="Gerar CSV" styleClass="button-quest" />
     </HBox>
 </VBox>
