@@ -14,7 +14,7 @@ import java.util.List;
 public class RendaFixaDAO {
     public List<RendaFixa> buscarTodosProdutos() {
         List<RendaFixa> produtos = new ArrayList<>();
-        String sql = "SELECT id_renda_fixa nome_produto, tipo_produto, rentabilidade_bruta, is_taxable FROM renda_fixa";
+        String sql = "SELECT id_renda_fixa ,nome_produto, tipo_produto, rentabilidade_bruta, is_taxable FROM renda_fixa";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
