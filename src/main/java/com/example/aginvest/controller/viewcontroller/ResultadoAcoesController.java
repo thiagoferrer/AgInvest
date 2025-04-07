@@ -23,6 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.geometry.Insets;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -111,10 +112,9 @@ public class ResultadoAcoesController {
 
         // Limpa os containers antes de adicionar novos elementos
         ativosContainer.getChildren().clear();
-        graficosContainer.getChildren().clear();
 
         // Cria e adiciona o gráfico
-        criarGraficoSaldoFinal(resultados);
+        criarGraficoSaldoFinal(resultados, ativosContainer);
 
         // Adiciona cada ativo ao container
         for (Acoes acao : resultados) {
@@ -123,13 +123,16 @@ public class ResultadoAcoesController {
         }
     }
 
-    private void criarGraficoSaldoFinal(List<Acoes> resultados) {
+    private void criarGraficoSaldoFinal(List<Acoes> resultados, VBox container) {
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         final BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
 
         // Configurações de tamanho e espaçamento
-        barChart.setPrefSize(400, 250);
+        barChart.setId("grafico-acoes");
+        barChart.setPrefSize(320, 340);
+        barChart.setMaxSize(320, 340);
+        barChart.setMinSize(320, 340);
         barChart.setCategoryGap(10);
         barChart.setBarGap(3);
 
@@ -155,7 +158,7 @@ public class ResultadoAcoesController {
         }
 
         barChart.getData().add(series);
-        graficosContainer.getChildren().add(barChart);
+        container.getChildren().addAll(barChart);
     }
 
     private VBox criarAtivoBox(Acoes acao) {
@@ -166,34 +169,54 @@ public class ResultadoAcoesController {
         box.setStyle("-fx-border-color: #1E90FF; -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 8;");
 
         Label nomeLabel = new Label(acao.getNome());
-        nomeLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold;");
+        nomeLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 14; -fx-font-weight: bold;");
 
-        Label qtdLabel = new Label("Quantidade Total Cotas: " + acao.getQtdAcoes());
-        qtdLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 12;");
+        Label qtdLabel = new Label("Quantidade Total Cotas: ");
+        qtdLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label qtdColorLabel = new Label(String.valueOf(acao.getQtdAcoes()));
+        qtdColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaQtd = new TextFlow(qtdLabel, qtdColorLabel);
 
-        Label valorInvestidoLabel = new Label("Valor Investido: R$" + String.format("%,.2f", acao.getValorInvestido()));
-        valorInvestidoLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 12;");
+        Label valorInvestidoLabel = new Label("Valor Investido: ");
+        valorInvestidoLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label vlrInvestColor = new Label("R$ "+ String.format("%,.2f", acao.getValorInvestido()));
+        vlrInvestColor.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaVlrInvest = new TextFlow(valorInvestidoLabel, vlrInvestColor);
 
-        Label totalCompraLabel = new Label("Total compra: R$" + String.format("%,.2f", acao.getCustoTotalCompra()));
-        totalCompraLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 12;");
+        Label totalCompraLabel = new Label("Total compra: ");
+        totalCompraLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label totalCompraColor = new Label("R$" + String.format("%,.2f", acao.getCustoTotalCompra()));
+        totalCompraColor.setStyle("-fx-text-fill: #EA7A5D; -fx-font-size: 12;");
+        TextFlow linhaTotalCompra = new TextFlow(totalCompraLabel, totalCompraColor);
 
-        Label totalVendaLabel = new Label("Total venda: R$" + String.format("%,.2f", acao.getValorTotalVenda()));
-        totalVendaLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 12;");
+        Label totalVendaLabel = new Label("Total venda: ");
+        totalVendaLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label totalVendaColor = new Label("R$"+ String.format("%,.2f", acao.getValorTotalVenda()));
+        totalVendaColor.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaTotalVenda = new TextFlow(totalVendaLabel, totalVendaColor);
 
-        Label saldoFinalLabel = new Label("Saldo Final: R$" + String.format("%,.2f", acao.getSaldoFinal()));
-        saldoFinalLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 12;");
+        Label saldoFinalLabel = new Label("Saldo Final: ");
+        saldoFinalLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label saldoFinalColor = new Label("R$ " + String.format("%,.2f", acao.getSaldoFinal()));
+        String corTexto = acao.getSaldoFinal() >= 0 ? "#1FCE52" : "#FF4C4C";
+        saldoFinalColor.setStyle("-fx-text-fill: " + corTexto + "; -fx-font-size: 12;");
+        TextFlow linhaSaldoFinal = new TextFlow(saldoFinalLabel, saldoFinalColor);
 
-        Label trocoLabel = new Label("Troco Valor Investido: R$" + String.format("%,.2f", acao.getTroco()));
-        trocoLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 12;");
+        Label trocoLabel = new Label("Troco Valor Investido: ");
+        trocoLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label trocoColor = new Label("R$ " + String.format("%,.2f", acao.getTroco()));
+        String corTextoTroco = acao.getTroco() >= 0 ? "#1FCE52" : "#FF4C4C";
+        trocoColor.setStyle("-fx-text-fill: " + corTextoTroco + "; -fx-font-size: 12;");
+        TextFlow linhaTroco = new TextFlow(trocoLabel, trocoColor);
 
         box.getChildren().addAll(
                 nomeLabel,
-                qtdLabel,
-                valorInvestidoLabel,
-                totalCompraLabel,
-                totalVendaLabel,
-                saldoFinalLabel,
-                trocoLabel
+                linhaQtd ,
+                linhaVlrInvest ,
+                linhaTotalCompra,
+                linhaTotalVenda ,
+                linhaSaldoFinal,
+                linhaTroco
         );
 
         return box;
