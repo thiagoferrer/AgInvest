@@ -16,4 +16,5 @@ module com.example.aginvest {
     //exports com.example.aginvest;
     exports com.example.aginvest.controller.viewcontroller;
     opens com.example.aginvest.controller.viewcontroller to javafx.fxml;
+    exports com.example.aginvest;
 }

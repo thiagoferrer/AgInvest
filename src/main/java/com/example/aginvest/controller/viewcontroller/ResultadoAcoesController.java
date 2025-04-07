@@ -1,21 +1,34 @@
 package com.example.aginvest.controller.viewcontroller;
 
 import com.example.aginvest.controller.CalculadoraVariavel;
+import com.example.aginvest.controller.user.UserController;
 import com.example.aginvest.model.produtos.Acoes;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.geometry.Insets;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
+import java.util.Optional;
 
 public class ResultadoAcoesController {
     @FXML
@@ -25,14 +38,76 @@ public class ResultadoAcoesController {
     @FXML
     private VBox graficosContainer;
 
+    // Botões do cabeçalho
+    @FXML private Button homeButton;
+    @FXML private Button faqButton;
+    @FXML private Button contaButton;
+
+    // Botões de ação
+    @FXML private Button backButton;
+    @FXML private Button newSimulationButton;
+
     @FXML
     public void initialize() {
-        // Inicialização se necessário
+        System.out.println("ResultadoAcoesController inicializado");
+    }
+
+    // Métodos de navegação
+    @FXML
+    private void onClickHome() {
+        carregarTela(homeButton, "/com/example/aginvest/home.fxml", "Home - Invest7");
+    }
+
+    @FXML
+    private void onClickFaq() {
+        carregarTela(faqButton, "/com/example/aginvest/faq.fxml", "FAQ - Invest7");
+    }
+
+    @FXML
+    private void onClickConta() {
+        carregarTela(contaButton, "/com/example/aginvest/conta.fxml", "Conta - Invest7");
+    }
+
+    @FXML
+    private void onClickBack() {
+        carregarTela(backButton, "/com/example/aginvest/home.fxml", "Home - Invest7");
+    }
+
+    @FXML
+    private void onClickNewSimulation() {
+        carregarTela(newSimulationButton, "/com/example/aginvest/SimuladorAcoes.fxml", "Simulação de Ações - Invest7");
+    }
+
+    private List<Acoes> resultadosSimulacao;
+
+    private void carregarTela(Button botaoOrigem, String fxmlPath, String titulo) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) botaoOrigem.getScene().getWindow();
+            stage.setTitle(titulo);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            mostrarAlerta("Erro", "Não foi possível carregar a tela: " + fxmlPath + "\nErro: " + e.getMessage(), AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
+
+    private void mostrarAlerta(String titulo, String mensagem, AlertType tipo) {
+        Alert alert = new Alert(tipo);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
     }
 
     public void CalcularAcoes(Acoes acoes) {
         CalculadoraVariavel calculadoraVariavel = new CalculadoraVariavel();
         List<Acoes> resultados = calculadoraVariavel.simularAcao(acoes);
+        this.resultadosSimulacao = resultados;
 
         // Limpa os containers antes de adicionar novos elementos
         ativosContainer.getChildren().clear();
@@ -54,9 +129,9 @@ public class ResultadoAcoesController {
         final BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
 
         // Configurações de tamanho e espaçamento
-        barChart.setPrefSize(400, 250);  // Largura e altura maiores
-        barChart.setCategoryGap(10);     // Menor espaço entre categorias
-        barChart.setBarGap(3);           // Menor espaço entre barras
+        barChart.setPrefSize(400, 250);
+        barChart.setCategoryGap(10);
+        barChart.setBarGap(3);
 
         barChart.setTitle("Saldo Final por Ativo");
         barChart.setLegendVisible(false);
@@ -73,7 +148,6 @@ public class ResultadoAcoesController {
 
             data.nodeProperty().addListener((ov, oldNode, newNode) -> {
                 if (newNode != null) {
-                    // Aplica cor e tamanho
                     String cor = acao.getSaldoFinal() >= 0 ? "#1FCE52" : "#FF4500";
                     newNode.setStyle("-fx-bar-fill: " + cor + "; -fx-pref-width: 30px;");
                 }
@@ -91,35 +165,27 @@ public class ResultadoAcoesController {
         box.setPrefWidth(300);
         box.setStyle("-fx-border-color: #1E90FF; -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 8;");
 
-        // Nome do ativo
         Label nomeLabel = new Label(acao.getNome());
         nomeLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold;");
 
-        // Quantidade de ações
         Label qtdLabel = new Label("Quantidade Total Cotas: " + acao.getQtdAcoes());
         qtdLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 12;");
 
-        // Valor investido
         Label valorInvestidoLabel = new Label("Valor Investido: R$" + String.format("%,.2f", acao.getValorInvestido()));
         valorInvestidoLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 12;");
 
-        // Total compra
         Label totalCompraLabel = new Label("Total compra: R$" + String.format("%,.2f", acao.getCustoTotalCompra()));
         totalCompraLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 12;");
 
-        // Total venda
         Label totalVendaLabel = new Label("Total venda: R$" + String.format("%,.2f", acao.getValorTotalVenda()));
         totalVendaLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 12;");
 
-        // Saldo final
         Label saldoFinalLabel = new Label("Saldo Final: R$" + String.format("%,.2f", acao.getSaldoFinal()));
         saldoFinalLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 12;");
 
-        // Troco
         Label trocoLabel = new Label("Troco Valor Investido: R$" + String.format("%,.2f", acao.getTroco()));
         trocoLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 12;");
 
-        // Adiciona todos os labels ao VBox
         box.getChildren().addAll(
                 nomeLabel,
                 qtdLabel,
@@ -132,4 +198,41 @@ public class ResultadoAcoesController {
 
         return box;
     }
+
+    @FXML
+    private void gerarCsv() {
+        if (resultadosSimulacao == null || resultadosSimulacao.isEmpty()) {
+            mostrarAlerta("Erro", "Nenhum dado para exportar. Realize uma simulação primeiro.", AlertType.WARNING);
+            return;
+        }
+
+        try {
+            String nomeArquivo = "resultado_acoes.csv";
+            PrintWriter writer = new PrintWriter(nomeArquivo);
+
+            // Cabeçalho
+            writer.println("Nome,Quantidade Total Cotas,Valor Investido,Total Compra,Total Venda,Saldo Final,Troco");
+
+            // Dados
+            for (Acoes acao : resultadosSimulacao) {
+                writer.printf("%s,%d,%.2f,%.2f,%.2f,%.2f,%.2f%n",
+                        acao.getNome(),
+                        acao.getQtdAcoes(),
+                        acao.getValorInvestido(),
+                        acao.getCustoTotalCompra(),
+                        acao.getValorTotalVenda(),
+                        acao.getSaldoFinal(),
+                        acao.getTroco());
+            }
+
+            writer.close();
+
+            mostrarAlerta("Sucesso", "CSV gerado com sucesso: " + nomeArquivo, AlertType.INFORMATION);
+
+        } catch (Exception e) {
+            mostrarAlerta("Erro", "Falha ao gerar o CSV: " + e.getMessage(), AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
+
 }
