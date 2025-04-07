@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.chart.PieChart?>
+
+<VBox fx:id="rootContainer" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.aginvest.controller.viewcontroller.ResultadoGridItemController"
+      style="-fx-background-color: #f5f5f5; -fx-padding: 10; -fx-spacing: 5; -fx-background-radius: 5;
+             -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);"
+      prefWidth="200" prefHeight="250">
+    <Label fx:id="nomeLabel" style="-fx-font-weight: bold;"/>
+    <Label fx:id="tipoLabel" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+    <Label fx:id="totalLabel"/>
+    <Label fx:id="lucroLabel"/>
+    <PieChart fx:id="donutChart" legendVisible="false" prefWidth="150" prefHeight="150" />
+    <Label fx:id="irLabel" style="-fx-font-size: 11px;"/>
+</VBox>
