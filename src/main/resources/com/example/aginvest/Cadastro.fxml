@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<VBox alignment="CENTER" spacing="10"
+      prefWidth="360" prefHeight="640"
+      maxWidth="360" maxHeight="640"
+      minWidth="360" minHeight="640"
+      stylesheets="@styles.css"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.aginvest.controller.viewcontroller.CadastroController"
+      style="-fx-background-color: #FFFFFF;">
+
+    <!-- Logotipo -->
+    <Label text="Invest7" style="-fx-font-size: 24; -fx-font-weight: bold;
+     -fx-text-fill: #1E90FF; -fx-padding: 24 0 16 0;" />
+
+    <!-- Mensagem de erro -->
+    <Label fx:id="errorMessage" style="-fx-text-fill: #FF0000; -fx-font-size: 14;" visible="false" />
+
+    <!-- ScrollPane para o formulário -->
+    <ScrollPane  maxWidth="340" style="-fx-background-color: #FFFFFF; -fx-padding: 10;">
+        <VBox alignment="CENTER" spacing="16" style="-fx-padding: 0 8 16 8;">
+            <!-- Formulário de Cadastro -->
+            <VBox spacing="16" alignment="CENTER" style="-fx-padding: 0 10 0 10;
+            -fx-background-color: #FFFFFF; ">
+
+                <VBox spacing="8" alignment="CENTER_LEFT" style="-fx-min-width: 250;">
+                    <Label text="Nome Completo" style="-fx-font-size: 14; -fx-text-fill: #333;" />
+                    <TextField fx:id="nomeFieldCadastro" promptText="Ex: Maria Silva"
+                               style="-fx-pref-height: 48; -fx-min-width: 250; -fx-background-color: #FFFFFF;
+                                      -fx-border-color: #D9D9D9; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                </VBox>
+
+                <VBox spacing="8" alignment="CENTER_LEFT" style="-fx-min-width: 250;">
+                    <Label text="CPF" style="-fx-font-size: 14; -fx-text-fill: #333;" />
+                    <TextField fx:id="cpfFieldCadastro" promptText="Ex: 567.978.654-89"
+                               style="-fx-pref-height: 48; -fx-min-width:250; -fx-background-color: #FFFFFF;
+                                      -fx-border-color: #D9D9D9; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                </VBox>
+
+                <HBox spacing="16" alignment="CENTER" style="-fx-min-width: 140;">
+                    <VBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="Gênero" style="-fx-font-size: 14; -fx-text-fill: #333;" />
+                        <ComboBox fx:id="generoComboCadastro" promptText="Escolha"
+                                  style="-fx-pref-height: 48; -fx-pref-width: 140; -fx-background-color: #FFFFFF;
+                                         -fx-border-color: #D9D9D9; -fx-border-radius: 8; -fx-background-radius: 8;">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Masculino" />
+                                    <String fx:value="Feminino" />
+                                    <String fx:value="Outro" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                    </VBox>
+
+                    <VBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="Data de Nascimento" style="-fx-font-size: 14; -fx-text-fill: #333;" />
+                        <TextField fx:id="dataNascimentoFieldCadastro" promptText="aaaa/mm/dd"
+                                   style="-fx-pref-height: 48; -fx-pref-width: 140; -fx-background-color: #FFFFFF;
+                                          -fx-border-color: #D9D9D9; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                    </VBox>
+                </HBox>
+
+                <VBox spacing="8" alignment="CENTER_LEFT" style="-fx-min-width: 250;">
+                    <Label text="E-mail" style="-fx-font-size: 14; -fx-text-fill: #333;" />
+                    <TextField fx:id="emailFieldCadastro" promptText="Ex: mariasilva@gmail.com"
+                               style="-fx-pref-height: 48; -fx-min-width: 250; -fx-background-color: #FFFFFF;
+                                      -fx-border-color: #D9D9D9; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                </VBox>
+
+                <VBox spacing="8" alignment="CENTER_LEFT" style="-fx-min-width: 250;">
+                    <Label text="Endereço" style="-fx-font-size: 14; -fx-text-fill: #333;" />
+                    <TextField fx:id="enderecoField" promptText="Ex: Rua Um, 90, Bairro Dois, Campinas, SP"
+                               style="-fx-pref-height: 48; -fx-min-width: 250; -fx-background-color: #FFFFFF;
+                                      -fx-border-color: #D9D9D9; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                </VBox>
+
+                <VBox spacing="8" alignment="CENTER_LEFT" style="-fx-min-width: 250;">
+                    <Label text="CEP" style="-fx-font-size: 14; -fx-text-fill: #333;" />
+                    <TextField fx:id="cepFieldCadastro" promptText="Ex: 13980-763"
+                               style="-fx-pref-height: 48; -fx-min-width: 250; -fx-background-color: #FFFFFF;
+                                      -fx-border-color: #D9D9D9; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                </VBox>
+
+                <VBox spacing="8" alignment="CENTER_LEFT" style="-fx-min-width: 250;">
+                    <Label text="Senha" style="-fx-font-size: 14; -fx-text-fill: #333;" />
+                    <PasswordField fx:id="senhaFieldCadastro" promptText="******"
+                                   style="-fx-pref-height: 48; -fx-min-width: 300; -fx-background-color: #FFFFFF;
+                                          -fx-border-color: #D9D9D9; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                </VBox>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+
+    <!-- Botões Voltar e Cadastrar -->
+    <HBox spacing="24" alignment="CENTER" style="-fx-padding: 16;">
+        <Button fx:id="voltarButton" text="Voltar" onAction="#handleVoltar">
+            <styleClass>
+                <String fx:value="button-cadastro-voltar"/>
+            </styleClass>
+        </Button>
+        <Button fx:id="cadastrarButton" text="Cadastrar" onAction="#handleCadastrar">
+            <styleClass>>
+                <String fx:value="button-cadastro"/>
+            </styleClass>
+        </Button>
+
+
+    </HBox>
+</VBox>

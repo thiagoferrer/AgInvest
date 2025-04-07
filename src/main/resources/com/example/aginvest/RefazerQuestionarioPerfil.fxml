@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="0"  prefWidth="360" prefHeight="640"
+      maxWidth="360" maxHeight="640"
+      minWidth="360" minHeight="640"
+      stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.aginvest.controller.viewcontroller.QuestionarioPerfilController"
+      style="-fx-background-color: #F8F9FA;">
+
+    <!-- Barra de Navegação Superior -->
+    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;
+            -fx-font-size: 20; -fx-font-weight: bold;">
+        <HBox alignment="CENTER_LEFT" >
+            <Label text="Invest" style="-fx-text-fill: #FFFFFF" />
+            <Label text="7" style="-fx-text-fill: #2CC158" />
+        </HBox>
+        <HBox HBox.hgrow="ALWAYS" />
+        <Button fx:id="homeButton" onAction="#onClickHome" text="Home"
+                style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF;
+                -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+    </HBox>
+
+    <!-- Título Centralizado -->
+    <Label text="Questionário Perfil Investidor" styleClass="titulo-sim" />
+
+    <!-- Área rolável principal (idêntica à tela de cadastro) -->
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                style="-fx-background: #Ffffff; -fx-background-color: transparent;"
+                VBox.vgrow="ALWAYS">
+
+        <VBox spacing="24" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12;
+        -fx-padding: 24 16 24 16; -fx-min-width: 360;">
+
+            <!-- Pergunta 1 -->
+            <VBox spacing="8" style="-fx-min-width: 320;">
+                <Label text="1. Qual é o seu principal objetivo ao investir?" styleClass="quest-perg"/>
+
+                <RadioButton fx:id="pergunta1A"
+                             text="Preservar o capital com segurança, mesmo que o retorno seja baixo"
+                             styleClass="radio" userData="A" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta1B"
+                             text="Equilibrar segurança e crescimento do patrimônio"
+                             styleClass="radio" userData="B" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta1C"
+                             text="Buscar altos retornos, mesmo que isso envolva riscos maiores"
+                             styleClass="radio" userData="C" style="-fx-wrap-text: true;"/>
+            </VBox>
+
+            <!-- Pergunta 2 -->
+            <VBox spacing="8" style="-fx-min-width: 320;">
+                <Label text="2. Por quanto tempo você pretende manter seus investimentos antes de precisar do dinheiro?"
+                       styleClass="quest-perg"/>
+
+                <RadioButton fx:id="pergunta2A" text="Menos de 1 ano" styleClass="radio"
+                             userData="A" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta2B" text="Entre 1 e 5 anos" styleClass="radio"
+                             userData="B" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta2C" text="Mais de 5 anos" styleClass="radio"
+                             userData="C" style="-fx-wrap-text: true;"/>
+
+            </VBox>
+
+            <!-- Pergunta 3 -->
+            <VBox spacing="8" style="-fx-min-width: 320;">
+                <Label text="3. Como você reagiria se seus investimentos perdessem 10% do valor em um curto período?"
+                       styleClass="quest-perg"/>
+
+                <RadioButton fx:id="pergunta3A"
+                             text="Ficaria muito preocupado e tentaria resgatar o dinheiro imediatamente"
+                             styleClass="radio" userData="A" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta3B"
+                             text="Ficaria incomodado, mas esperaria para ver se a situação melhora"
+                             styleClass="radio" userData="B" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta3C"
+                             text="Aceitaria a perda como parte do processo e manteria os investimentos"
+                             styleClass="radio" userData="C" style="-fx-wrap-text: true;"/>
+            </VBox>
+
+            <!-- Pergunta 4 -->
+            <VBox spacing="8" style="-fx-min-width: 320;">
+                <Label text="4. Qual percentual do seu patrimônio você está disposto a investir em produtos de maior risco?"
+                       styleClass="quest-perg"/>
+
+                <RadioButton fx:id="pergunta4A" text="Até 10%" styleClass="radio"
+                             userData="A" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta4B" text="Entre 10% e 30%" styleClass="radio"
+                             userData="B" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta4C" text="Mais de 30%" styleClass="radio"
+                             userData="C" style="-fx-wrap-text: true;"/>
+            </VBox>
+
+            <!-- Pergunta 5 -->
+            <VBox spacing="8" style="-fx-min-width: 320;">
+                <Label text="5. Qual é o seu nível de conhecimento sobre investimentos financeiros?"
+                       styleClass="quest-perg"/>
+
+                <RadioButton fx:id="pergunta5A"
+                             text="Básico (conheço apenas opções seguras, como poupança)"
+                             styleClass="radio" userData="A" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta5B"
+                             text="Intermediário (já ouvi falar de fundos e ações, mas não domino o assunto)"
+                             styleClass="radio" userData="B" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta5C"
+                             text="Avançado (entendo bem o mercado e acompanho as tendências)"
+                             styleClass="radio" userData="C" style="-fx-wrap-text: true;"/>
+            </VBox>
+
+            <!-- Pergunta 6 -->
+            <VBox spacing="8" style="-fx-min-width: 320;">
+                <Label text="6. Você já tem uma reserva de emergência (equivalente a 6 meses de despesas)?"
+                       styleClass="quest-perg"/>
+
+                <RadioButton fx:id="pergunta6A" text="Sim, e não pretendo usá-la para investimentos"
+                             styleClass="radio" userData="A" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta6B" text="Sim, mas posso usar uma parte para investir"
+                             styleClass="radio" userData="B" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta6C" text="Não, e pretendo investir tudo o que tenho disponível"
+                             styleClass="radio" userData="C" style="-fx-wrap-text: true;"/>
+            </VBox>
+
+            <!-- Pergunta 7 -->
+            <VBox spacing="8" style="-fx-min-width: 320;">
+                <Label text="7. Qual é a sua tolerância a variações no valor dos seus investimentos?"
+                       styleClass="quest-perg"/>
+
+                <RadioButton fx:id="pergunta7A" text="Prefiro estabilidade, mesmo com ganhos menores"
+                             styleClass="radio" userData="A" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta7B" text="Aceito pequenas variações em busca de melhores retornos"
+                             styleClass="radio" userData="B" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta7C" text="Estou confortável com grandes oscilações por retornos altos"
+                             styleClass="radio" userData="C" style="-fx-wrap-text: true;"/>
+            </VBox>
+
+            <!-- Pergunta 8 -->
+            <VBox spacing="8" style="-fx-min-width: 320;">
+                <Label text="8. Qual dessas opções de investimento você se sente mais confortável?"
+                       styleClass="quest-perg"/>
+
+                <RadioButton fx:id="pergunta8A" text="Títulos públicos ou renda fixa com liquidez diária"
+                             styleClass="radio" userData="A" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta8B" text="Fundos mistos com renda fixa e um pouco de renda variável"
+                             styleClass="radio" userData="B" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta8C" text="Ações ou fundos de maior risco"
+                             styleClass="radio" userData="C" style="-fx-wrap-text: true;"/>
+            </VBox>
+
+            <!-- Pergunta 9 -->
+            <VBox spacing="8" style="-fx-min-width: 320;">
+                <Label text="9. Caso precisasse escolher, o que seria mais importante para você?"
+                       styleClass="quest-perg"/>
+                <RadioButton fx:id="pergunta9A" text="Segurança do valor investido"
+                             styleClass="radio" userData="A" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta9B" text="Um equilíbrio entre segurança e rentabilidade"
+                             styleClass="radio" userData="B" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta9C" text="Maximizar a rentabilidade, mesmo com risco"
+                             styleClass="radio" userData="C" style="-fx-wrap-text: true;"/>
+            </VBox>
+
+            <!-- Pergunta 10 -->
+            <VBox spacing="8" style="-fx-min-width: 320;">
+                <Label text="10. Qual é a sua experiência prévia com investimentos?" styleClass="quest-perg"/>
+
+                <RadioButton fx:id="pergunta10A" text="Nenhuma ou apenas em produtos simples (ex.: poupança)"
+                             styleClass="radio" userData="A" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta10B" text="Já investi em fundos ou renda fixa com orientação"
+                             styleClass="radio" userData="B" style="-fx-wrap-text: true;"/>
+                <RadioButton fx:id="pergunta10C" text="Já investi por conta própria em ações ou outros produtos de risco"
+                             styleClass="radio" userData="C" style="-fx-wrap-text: true;"/>
+            </VBox>
+            <!-- Botões Voltar e Confirmar -->
+            <HBox spacing="24" alignment="CENTER" style="-fx-padding: 16;">
+                <Button fx:id="voltarButton" text="Voltar" onAction="#onClickVoltar" styleClass="button-azul"/>
+                <Button fx:id="confirmarButtonRefazer" text="Confirmar" onAction="#confirmarRefazer"
+                        styleClass="button-quest "/>
+            </HBox>
+
+        </VBox>
+    </ScrollPane>
+</VBox>

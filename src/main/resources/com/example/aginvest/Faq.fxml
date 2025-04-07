@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="0" prefWidth="360" prefHeight="640" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.aginvest.controller.viewcontroller.FaqController"
+      style="-fx-background-color: #F8F9FA;">
+
+    <!-- Barra de Navegação Superior -->
+    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;
+            -fx-font-size: 20; -fx-font-weight: bold;">
+        <HBox alignment="CENTER_LEFT" >
+            <Label text="Invest" style="-fx-text-fill: #FFFFFF" />
+            <Label text="7" style="-fx-text-fill: #2CC158" />
+        </HBox>
+        <HBox HBox.hgrow="ALWAYS" />
+        <Button fx:id="homeButton" onAction="#onClickHome" text="Home"
+                style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF;
+                -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+    </HBox>
+
+
+    <!-- Área rolável principal (mesmo padrão da tela de questionário) -->
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                style="-fx-background: #F8F9FA; -fx-background-color: transparent;"
+                VBox.vgrow="ALWAYS">
+
+        <VBox spacing="16" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-padding: 24 16 24 16;" minWidth="360">
+
+            <!-- Título Centralizado -->
+            <Label text="Perguntas Frequentes"
+                   style="-fx-text-fill: #2E86AB; -fx-font-weight: bold; -fx-font-size: 20;"/>
+
+            <!-- Separador visual -->
+            <Rectangle height="1" fill="#EEEEEE" width="328"/>
+
+            <!-- Accordion de FAQs -->
+            <Accordion fx:id="faqAccordion" style="-fx-min-width: 320;"/>
+
+            <!-- Separador visual -->
+            <Rectangle height="1" fill="#EEEEEE" width="328"/>
+
+            <!-- Botão Voltar -->
+            <Button text="Voltar" onAction="#goBack"
+                    style="-fx-background-color: #2E86AB; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold;
+                           -fx-pref-height: 48; -fx-min-width: 200; -fx-background-radius: 8; -fx-alignment: center; -fx-cursor: hand;">
+                <padding>
+                    <Insets left="24.0" right="24.0" top="8.0" bottom="8.0"/>
+                </padding>
+            </Button>
+        </VBox>
+    </ScrollPane>
+</VBox>
