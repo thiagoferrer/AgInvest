@@ -4,18 +4,24 @@ import com.example.aginvest.controller.CalculadoraVariavel;
 import com.example.aginvest.model.produtos.Fiis;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -26,11 +32,55 @@ public class ResultadoFiisController {
     private VBox ativosSection;
     @FXML
     private VBox barChartContainer; // Novo container para o gráfico
+    // Botões do cabeçalho
+    @FXML private Button homeButton;
+    @FXML private Button faqButton;
+    @FXML private Button contaButton;
 
+    @FXML
+    private void onClickHome() {
+        carregarTela("/com/example/aginvest/home.fxml", "Home - Invest7");
+    }
+
+    @FXML private void onClickVoltar(){carregarTela("/com/example/aginvest/Fiis.fxml", "Fiis - Invest7"); }
     private List<Fiis> resultadosSimulacao;
     @FXML
     public void initialize() {
-        // Inicialização se necessário
+        faqButton.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Faq.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de FAQ");
+            }
+        });
+
+        contaButton.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Conta.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de dados do usuario");
+            }
+        });
     }
 
     public void CalcularFiis(Fiis fiis) {
@@ -195,7 +245,20 @@ public class ResultadoFiisController {
         alert.setContentText(mensagem);
         alert.showAndWait();
     }
-    public void onClickHome(ActionEvent actionEvent) {
-        // Implementação faltando
+
+
+    private void carregarTela(String fxmlPath, String titulo) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) homeButton.getScene().getWindow();
+            stage.setTitle(titulo);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
