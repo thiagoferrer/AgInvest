@@ -21,9 +21,10 @@
       prefWidth="360" prefHeight="640"
       maxWidth="360" maxHeight="640"
       minWidth="360" minHeight="640">
+
     <!-- Barra de Navegação Superior -->
     <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;
-        -fx-font-size: 20; -fx-font-weight: bold;">
+            -fx-font-size: 20; -fx-font-weight: bold;">
         <HBox alignment="CENTER_LEFT" >
             <Label text="Invest" style="-fx-text-fill: #FFFFFF" />
             <Label text="7" style="-fx-text-fill: #2CC158" />
@@ -39,47 +40,34 @@
 
     <VBox alignment="CENTER" spacing="16" style="-fx-padding: 16;-fx-background-color: #FFFFFF;">
         <!-- TÍTULO -->
-        <Label text="Simulador de FIIs" style="-fx-font-size: 20;-fx-font-weight: bold;
-                 -fx-text-fill: #666666; -fx-label-padding: 0 8"/>
+        <Label text="Simulador de FIIs" styleClass="titulo-sim" />
 
         <!-- Subtítulo ou descrição futura -->
         <Label text="Simule o saldo de cotas e dividendos com nossa calculadora de Fundo de Investimento Imobiliário"
-               style="-fx-text-fill: #666666; -fx-font-size: 14; -fx-wrap-text: true;-fx-max-width: 300; " />
+               styleClass="descr-sim" />
 
         <!-- FORMULÁRIO -->
         <VBox style="-fx-padding: 8 10">
         <!-- Aporte -->
         <VBox spacing="8" alignment="TOP_LEFT" style="-fx-padding: 4 10 8 10">
-            <Label text="Aporte Mensal"
-                   style="-fx-text-fill: #666666; -fx-font-size: 16;" />
-            <TextField fx:id="aporteMensalField" promptText="R$ 0,00"
-                       style="-fx-pref-height: 36; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
-                                  -fx-border-color: #3585FF;  -fx-text-fill: #3585FF;-fx-border-radius: 10;
-                                  -fx-background-radius: 10; -fx-font-size: 14;" />
+            <Label text="Aporte Mensal" styleClass="label-input-sim" />
+            <TextField fx:id="aporteMensalField" promptText="R$ 0,00" styleClass="input-sim" />
         </VBox>
 
         <!--Qtd cotas-->
         <VBox spacing="8" alignment="TOP_LEFT" style="-fx-padding: 4 10 8 10" >
-            <Label text="Quantidade de Cotas"
-                   style="-fx-text-fill: #666666; -fx-font-size: 16;" />
-            <TextField fx:id="quantidadeCotasField" promptText="Cotas"
-                       style="-fx-pref-height: 36; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
-                                  -fx-border-color: #3585FF;  -fx-text-fill: #3585FF;-fx-border-radius: 10;
-                                  -fx-background-radius: 10; -fx-font-size: 14;" />
+            <Label text="Quantidade de Cotas" styleClass="label-input-sim" />
+            <TextField fx:id="quantidadeCotasField" promptText="Cotas" styleClass="input-sim" />
         </VBox>
         <!--Prazo-->
         <VBox spacing="8" alignment="TOP_LEFT" style="-fx-padding: 4 10 8 10">
-            <Label text="Prazo (em meses)"
-                   style="-fx-text-fill: #666666; -fx-font-size: 16;" />
-            <TextField fx:id="prazoField" promptText="Meses"
-                       style="-fx-pref-height: 36; -fx-pref-width: 300; -fx-background-color: #FFFFFF;
-                                  -fx-border-color: #3585FF;  -fx-text-fill: #3585FF;-fx-border-radius: 10;
-                                  -fx-background-radius: 10; -fx-font-size: 14;" />
+            <Label text="Prazo (em meses)" styleClass="label-input-sim" />
+            <TextField fx:id="prazoField" promptText="Meses" styleClass="input-sim" />
         </VBox>
 
         <!--Reinvestir-->
         <VBox spacing="8" alignment="TOP_LEFT" style="-fx-padding: 4 10 8 10">
-            <Label text="Reinvestir Dividendos" style="-fx-text-fill: #666666;-fx-font-size: 16;" />
+            <Label text="Reinvestir Dividendos" styleClass="label-input-sim" />
             <HBox spacing="20">
                 <RadioButton fx:id="reinvestirSimRadio" text="Sim" styleClass="radio" style="-fx-cursor: hand;-fx-text-fill: #666666;" />
                 <RadioButton fx:id="reinvestirNaoRadio" text="Não" styleClass="radio" style="-fx-cursor: hand;-fx-text-fill: #666666;"/>
@@ -89,19 +77,8 @@
 
         <!-- BOTÕES -->
         <HBox spacing="16" alignment="CENTER" style="-fx-padding: 20 0 0 0;">
-            <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar">
-                <styleClass>
-                    <String fx:value="botao-hover"/>
-                    <String fx:value="button-voltar-azul"/>
-                </styleClass>
-            </Button>
-            <Button fx:id="calcularButton" onAction="#onClickCalcular" text="Calcular">
-                <styleClass>
-                    <String fx:value="botao-hover"/>
-                    <String fx:value="button-calcular-verde"/>
-                </styleClass>
-            </Button>
-
+            <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar" styleClass="button-azul"/>
+            <Button fx:id="calcularButton" onAction="#onClickCalcular" text="Calcular" styleClass="button-verde"/>
         </HBox>
     </VBox>
 

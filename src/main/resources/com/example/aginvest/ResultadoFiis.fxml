@@ -44,15 +44,13 @@
     </Label>
 
     <!-- Seção Gráficos -->
-    <VBox spacing="12" alignment="CENTER" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);">
+    <VBox fx:id="barChartContainer" spacing="12" alignment="CENTER"
+          style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);">
         <padding>
             <Insets top="24" right="16" bottom="24" left="16" />
         </padding>
-        <Label text="Gráficos" style="-fx-text-fill: #333333; -fx-font-size: 16; -fx-font-weight: bold;" />
-        <!-- Placeholder para o gráfico de linha -->
-        <Region fx:id="lineChartPlaceholder" prefWidth="300" prefHeight="100" style="-fx-background-color: #F0F0F0; -fx-background-radius: 8;" />
-        <!-- Placeholder para o gráfico de barras -->
-        <Region fx:id="barChartPlaceholder" prefWidth="300" prefHeight="100" style="-fx-background-color: #F0F0F0; -fx-background-radius: 8;" />
+        <Label text="Dividendos Mensais por FII" style="-fx-text-fill: #333333; -fx-font-size: 16; -fx-font-weight: bold;" />
+        <!-- O gráfico será adicionado dinamicamente aqui -->
     </VBox>
 
     <!-- Seção Ativos com Scroll -->

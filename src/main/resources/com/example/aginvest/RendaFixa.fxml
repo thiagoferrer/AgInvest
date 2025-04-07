@@ -8,88 +8,85 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" spacing="16" prefWidth="360" prefHeight="640"
+<?import java.lang.String?>
+<VBox alignment="TOP_CENTER" spacing="16"
+      prefWidth="360" prefHeight="640"
+      maxWidth="360" maxHeight="640"
+      minWidth="360" minHeight="640"
+      stylesheets="@styles.css"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.aginvest.controller.viewcontroller.RendaFixaController"
-      style="-fx-background-color: #F8F9FA;">
+      style="-fx-background-color: #Ffffff;">
 
-    <!-- Barra de Navegação Superior (same as Conta.fxml) -->
-    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;">
-        <HBox alignment="CENTER_LEFT" spacing="0">
-            <Label text="Invest" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20; -fx-font-weight: bold;" />
-            <Label text="7" style="-fx-text-fill: #1FCE52; -fx-font-size: 20; -fx-font-weight: bold;" />
+    <!-- Barra de Navegação Superior -->
+    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;
+            -fx-font-size: 20; -fx-font-weight: bold;">
+        <HBox alignment="CENTER_LEFT" >
+            <Label text="Invest" style="-fx-text-fill: #FFFFFF" />
+            <Label text="7" style="-fx-text-fill: #2CC158" />
         </HBox>
         <HBox HBox.hgrow="ALWAYS" />
-        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;-fx-cursor: hand;" />
-        <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;-fx-cursor: hand;" />
-        <Button fx:id="contaButton"  text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;-fx-cursor: hand;" />
+        <Button fx:id="homeButton" onAction="#onClickHome" text="Home"
+                style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF;
+                -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
     </HBox>
 
     <!-- Título e Descrição -->
-    <Label text="Simulador de Renda Fixa" style="-fx-text-fill: #333333;">
-        <font>
-            <Font name="Roboto Medium" size="20" />
-        </font>
-        <padding>
-            <Insets top="24" bottom="8" />
-        </padding>
-    </Label>
+    <VBox alignment="CENTER" spacing="16" style="-fx-padding: 16;-fx-background-color: #FFFFFF;">
+        <Label text="Simulador de Renda Fixa" styleClass="titulo-sim" />
+        <!-- Descrição -->
+        <Label text="Calcule quanto seu dinheiro pode render simulando um investimento em CDB, CRI, CRA, LCI, LCA, Tesouro Direto Prefixado, Tesouro Direto IPCA+ e Tesouro Direto Selic."
+               styleClass="descr-sim"/>
 
-    <!-- Card Principal -->
-    <VBox spacing="12" alignment="CENTER" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);">
-        <padding>
-            <Insets top="24" right="16" bottom="24" left="16" />
-        </padding>
+        <VBox style="-fx-padding: 8 10">
+            <VBox spacing="8" alignment="CENTER_LEFT">
+                <!-- Capital Inicial -->
+                <Label text="Capital Inicial" styleClass="label-input-sim" />
+                <TextField fx:id="capitalInicialField" promptText="R$ 0,00" styleClass="input-sim"/>
+            </VBox>
 
-        <!-- Capital Inicial -->
-        <VBox spacing="8" prefWidth="300">
-            <Label text="Capital Inicial" style="-fx-text-fill: #333333; -fx-font-size: 14;" />
-            <TextField fx:id="capitalInicialField" promptText="R$ 0,00" prefHeight="48"
-                       style="-fx-background-radius: 8; -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-font-size: 14;" />
+            <VBox spacing="8" alignment="CENTER_LEFT">
+                <!-- Aporte Mensal -->
+                <Label text="Aporte Mensal" styleClass="label-input-sim" />
+                <TextField fx:id="aporteMensalField" promptText="R$ 0,00" styleClass="input-sim" />
+            </VBox>
+
+            <VBox spacing="8" alignment="CENTER_LEFT">
+                <!-- Prazo -->
+                <Label text="Prazo (em meses)" styleClass="label-input-sim" />
+                <TextField fx:id="prazoField" promptText="Prazo (meses)"
+                           styleClass="input-sim"/>
+            </VBox>
         </VBox>
 
-        <!-- Aporte Mensal -->
-        <VBox spacing="8" prefWidth="300">
-            <Label text="Aporte Mensal" style="-fx-text-fill: #333333; -fx-font-size: 14;" />
-            <TextField fx:id="aporteMensalField" promptText="R$ 0,00" prefHeight="48"
-                       style="-fx-background-radius: 8; -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-font-size: 14;" />
-        </VBox>
-
-        <!-- Prazo -->
-        <VBox spacing="8" prefWidth="300">
-            <Label text="Prazo (em meses)" style="-fx-text-fill: #333333; -fx-font-size: 14;" />
-            <TextField fx:id="prazoField" promptText="Ex: 36" prefHeight="48"
-                       style="-fx-background-radius: 8; -fx-border-color: #D3D3D3; -fx-border-radius: 8; -fx-font-size: 14;" />
-        </VBox>
-
-        <!-- Taxas Exibidas -->
+        <!-- Índices -->
         <VBox spacing="12" prefWidth="300">
-            <HBox spacing="8" alignment="CENTER">
-                <VBox alignment="CENTER" spacing="4" prefWidth="96" style="-fx-background-color: #F1F3F5; -fx-background-radius: 8;">
-                    <Label text="Selic (a.a)" style="-fx-text-fill: #666666; -fx-font-size: 12;" />
-                    <Label text="13.15%" style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold;" />
+            <HBox spacing="8" alignment="CENTER" style="-fx-padding: 8">
+
+                <VBox alignment="CENTER" spacing="4" prefWidth="96" styleClass="indice-sim">
+                    <Label text="Selic (a.a)" styleClass="indice-sim-nometx"/>
+                    <Label text="13.15%" styleClass="indice-sim-txvalue"  />
                 </VBox>
-                <VBox alignment="CENTER" spacing="4" prefWidth="96" style="-fx-background-color: #F1F3F5; -fx-background-radius: 8;">
-                    <Label text="CDI (a.a)" style="-fx-text-fill: #666666; -fx-font-size: 12;" />
-                    <Label text="14.15%" style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold;" />
+
+                <VBox alignment="CENTER" spacing="4" prefWidth="96" styleClass="indice-sim">
+                    <Label text="CDI (a.a)" styleClass="indice-sim-nometx" />
+                    <Label text="14.15%" styleClass="indice-sim-txvalue" />
                 </VBox>
-                <VBox alignment="CENTER" spacing="4" prefWidth="96" style="-fx-background-color: #F1F3F5; -fx-background-radius: 8;">
-                    <Label text="IPCA (a.a)" style="-fx-text-fill: #666666; -fx-font-size: 12;" />
-                    <Label text="5.19%" style="-fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold;" />
+
+                <VBox alignment="CENTER" spacing="4" prefWidth="96" styleClass="indice-sim">
+                    <Label text="IPCA (a.a)" styleClass="indice-sim-nometx" />
+                    <Label text="5.19%" styleClass="indice-sim-txvalue" />
                 </VBox>
             </HBox>
         </VBox>
 
+
         <!-- Botões -->
-        <HBox spacing="16" alignment="CENTER">
-            <Button fx:id="voltarButton" onAction="#onClickHome" text="← Voltar" prefWidth="140" prefHeight="48"
-                    style="-fx-background-color: #D3D3D3; -fx-background-radius: 12; -fx-text-fill: #333333; -fx-font-size: 14;-fx-cursor: hand;">
-                <padding>
-                    <Insets top="16" />
-                </padding>
-            </Button>
-            <Button fx:id="calcularButton" onAction="#onClickCalcular" text="Calcular" prefWidth="140" prefHeight="48"
-                    style="-fx-background-color: #1FCE52; -fx-background-radius: 12; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-font-weight: bold;-fx-cursor: hand;" />
+        <HBox spacing="16" alignment="CENTER" style="-fx-padding: 20 0 0 0;">
+        <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar" styleClass="button-azul"/>
+        <Button fx:id="calcularButton" onAction="#onClickCalcular" text="Calcular" styleClass="button-verde"/>
         </HBox>
     </VBox>
 </VBox>

@@ -8,46 +8,40 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" spacing="16" prefWidth="360" prefHeight="640"
+<VBox alignment="TOP_CENTER" spacing="16"
+      stylesheets="@styles.css"
+      prefWidth="360" prefHeight="640"
+      maxWidth="360" maxHeight="640"
+      minWidth="360" minHeight="640"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.aginvest.controller.viewcontroller.ValoresAcoesController"
-      style="-fx-background-color: #F8F9FA;">
+      style="-fx-background-color: #FFFFFF;">
 
     <!-- Barra de Navegação Superior -->
-    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;">
-        <HBox alignment="CENTER_LEFT" spacing="0">
-            <Label text="Invest" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20; -fx-font-weight: bold;" />
-            <Label text="7" style="-fx-text-fill: #1FCE52; -fx-font-size: 20; -fx-font-weight: bold;" />
+    <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;
+            -fx-font-size: 20; -fx-font-weight: bold;">
+        <HBox alignment="CENTER_LEFT" >
+            <Label text="Invest" style="-fx-text-fill: #FFFFFF" />
+            <Label text="7" style="-fx-text-fill: #2CC158" />
         </HBox>
         <HBox HBox.hgrow="ALWAYS" />
-        <Button fx:id="homeButton" onAction="#onClickHome" text="Home" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-        <Button fx:id="faqButton" onAction="#onClickFaq" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
-        <Button fx:id="contaButton" onAction="#onClickConta" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14;" />
+        <Button fx:id="homeButton" onAction="#onClickHome" text="Home"
+                style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF;
+                -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="faqButton" text="FAQ" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
+        <Button fx:id="contaButton" text="Conta" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14; -fx-cursor: hand;" />
     </HBox>
 
+
     <!-- Título -->
-    <Label text="Ações" style="-fx-text-fill: #333333;">
-        <font>
-            <Font name="Roboto Medium" size="20" />
-        </font>
-        <padding>
-            <Insets top="24" bottom="8" />
-        </padding>
-    </Label>
+    <Label text="Ações" styleClass="titulo-sim" />
 
     <!-- Grid de Ações (será preenchido dinamicamente) -->
-    <VBox fx:id="acoesContainer" spacing="12" alignment="CENTER" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);">
-        <padding>
-            <Insets top="24" right="16" bottom="24" left="16" />
-        </padding>
+    <VBox fx:id="acoesContainer" spacing="10" alignment="CENTER"
+          style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-padding: 10;">
     </VBox>
 
     <!-- Botão Voltar -->
-    <Button fx:id="backButton" text="Voltar" onAction="#onClickBackToHome" prefWidth="140" prefHeight="48"
-            style="-fx-background-color: #D3D3D3; -fx-background-radius: 12; -fx-text-fill: #333333; -fx-font-size: 14;">
-        <padding>
-            <Insets top="16" />
-        </padding>
-    </Button>
+    <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar" styleClass="button-azul"/>
 
 </VBox>
