@@ -1,5 +1,6 @@
 package com.example.aginvest.controller.viewcontroller;
 
+import com.example.aginvest.model.produtos.Acoes;
 import com.example.aginvest.model.produtos.RendaFixa;
 import com.example.aginvest.util.TaxService; // Needed for recalculation if necessary
 import javafx.animation.KeyFrame;
@@ -13,6 +14,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -22,6 +24,7 @@ import javafx.util.Duration;
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
@@ -111,6 +114,42 @@ public class ResultadoChartController {
         // Initial setup if needed, before data is loaded
         lineChart.setAnimated(false); // Optional: Improve performance for many series
         barChart.setAnimated(true);
+
+        faqButton.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Faq.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de FAQ");
+            }
+        });
+
+        contaButton.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Conta.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de dados do usuario");
+            }
+        });
     }
 
     // --- Data Population Methods ---
@@ -333,5 +372,48 @@ public class ResultadoChartController {
             e.printStackTrace(); // Log the full error
             System.err.println("Erro ao obter a janela/cena. Certifique-se que o botão pertence a uma cena ativa. " + e.getMessage());
         }
+    }
+
+    @FXML
+    private void gerarCsv() {
+        if (simulationResults == null || simulationResults.isEmpty()) {
+            mostrarAlerta("Erro", "Nenhum dado para exportar. Realize uma simulação primeiro.", Alert.AlertType.WARNING);
+            return;
+        }
+
+        try {
+            String nomeArquivo = "resultado_rendafixa.csv";
+            PrintWriter writer = new PrintWriter(nomeArquivo);
+
+            // Cabeçalho
+            writer.println("Nome, Rendimento Bruto, Rendimento Liquido, Imposto de Renda, Valor Total");
+
+            // Dados
+            for (RendaFixa rendaFixa : simulationResults) {
+                writer.printf("%s, %.2f, %.2f, %.2f, %.2f%n",  // Note o %n no final para quebra de linha
+                        rendaFixa.getNome(),
+                        rendaFixa.getRendimentoBruto(),
+                        rendaFixa.getRendimentoLiquido(),
+                        rendaFixa.getImpostoIR(),
+                        rendaFixa.getValorTotal());
+            }
+
+            writer.close();
+
+            mostrarAlerta("Sucesso", "CSV gerado com sucesso: " + nomeArquivo, Alert.AlertType.INFORMATION);
+
+        } catch (Exception e) {
+            mostrarAlerta("Erro", "Falha ao gerar o CSV: " + e.getMessage(), Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
+
+
+    private void mostrarAlerta(String titulo, String mensagem, Alert.AlertType tipo) {
+        Alert alert = new Alert(tipo);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
     }
 }
