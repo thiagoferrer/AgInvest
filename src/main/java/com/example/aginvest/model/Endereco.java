@@ -1,20 +1,27 @@
 package com.example.aginvest.model;
 
-import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class Endereco {
+    @SerializedName("cep")
     private String cep;
-    @Expose
-    private String logradouro; // Rua
+    @SerializedName("logradouro")
+    private String logradouro;
+    @SerializedName("complemento")
     private String complemento;
-    @Expose
+    @SerializedName("bairro")
     private String bairro;
-    @Expose
-    private String localidade; // Cidade
-    private String uf;
+    @SerializedName("localidade")
+    private String localidade;  // Cidade
+    @SerializedName("uf")
+    private String uf;         // Sigla do estado (ex: "SP")
+    @SerializedName("ibge")
     private String ibge;
+    @SerializedName("gia")
     private String gia;
+    @SerializedName("ddd")
     private String ddd;
+    @SerializedName("siafi")
     private String siafi;
 
     public Endereco() {}
@@ -97,4 +104,5 @@ public class Endereco {
     public void setSiafi(String siafi) {
         this.siafi = siafi;
     }
+
 }

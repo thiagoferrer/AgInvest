@@ -15,6 +15,7 @@ public class BuscarCep {
                     .append(", Bairro: ").append(endereco.getBairro())
                     .append(", Cidade: ").append(endereco.getLocalidade());
 
+            System.out.println("resultado api: " + resultado);
             return resultado.toString();
         } catch (Exception e) {
             return "Erro ao buscar o CEP: " + e.getMessage();
