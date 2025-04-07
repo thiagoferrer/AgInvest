@@ -11,10 +11,12 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextFlow;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 public class ResultadoFiisController {
@@ -25,6 +27,7 @@ public class ResultadoFiisController {
     @FXML
     private VBox barChartContainer; // Novo container para o gráfico
 
+    private List<Fiis> resultadosSimulacao;
     @FXML
     public void initialize() {
         // Inicialização se necessário
@@ -33,6 +36,8 @@ public class ResultadoFiisController {
     public void CalcularFiis(Fiis fiis) {
         CalculadoraVariavel calculadoraVariavel = new CalculadoraVariavel();
         List<Fiis> resultados = calculadoraVariavel.simularFundoImobiliario(fiis);
+
+        this.resultadosSimulacao = resultados;
 
         // Limpa os containers antes de adicionar novos elementos
         ativosContainer.getChildren().clear();
@@ -149,6 +154,48 @@ public class ResultadoFiisController {
         return box;
     }
 
+    @FXML
+    private void gerarCsv() {
+        if (resultadosSimulacao == null || resultadosSimulacao.isEmpty()) {
+            mostrarAlerta("Erro", "Nenhum dado para exportar. Realize uma simulação primeiro.", Alert.AlertType.WARNING);
+            return;
+        }
+
+        try {
+            String nomeArquivo = "resultado_fiis.csv";
+            PrintWriter writer = new PrintWriter(nomeArquivo);
+
+            // Cabeçalho
+            writer.println("Nome,Quantidade de Cotas,Saldo Cotas,Saldo Dividendos,Dividendos Mensais");
+
+            // Dados
+            for (Fiis fiis : resultadosSimulacao) {
+                writer.printf("%s,%d,%.2f,%.2f,%.2f%n",
+                        fiis.getNome(),
+                        fiis.getQtdCotas(),
+                        fiis.getSaldoCotas(),
+                        fiis.getSaldoDividendos(),
+                        fiis.getDividendosMensais());
+            }
+
+            writer.close();
+
+            mostrarAlerta("Sucesso", "CSV gerado com sucesso: " + nomeArquivo, Alert.AlertType.INFORMATION);
+
+        } catch (Exception e) {
+            mostrarAlerta("Erro", "Falha ao gerar o CSV: " + e.getMessage(), Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
+
+    private void mostrarAlerta(String titulo, String mensagem, Alert.AlertType tipo) {
+        Alert alert = new Alert(tipo);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
+    }
     public void onClickHome(ActionEvent actionEvent) {
+        // Implementação faltando
     }
 }
