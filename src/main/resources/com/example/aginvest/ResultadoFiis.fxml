@@ -36,34 +36,24 @@
     <!-- Título -->
     <Label text="Resultado FIIs" styleClass="titulo-sim"/>
 
-    <!-- Valor Investido -->
-    <Label text="Valor Investido: R$1.000,00" styleClass="descr-sim"/> <!--acrescentar Get-->
-
     <!-- Seção Ativos com Scroll -->
     <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
-        <!-- Seção Gráficos -->
-        <VBox fx:id="barChartContainer" spacing="12" alignment="CENTER"
-              style="-fx-background-color: #FFFFFF; -fx-background-radius: 12;
-               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);
-               -fx-padding: 24 16">
-            <Label text="Dividendos Mensais por FII" styleClass="descr-sim"/>
+
             <!-- O gráfico será adicionado dinamicamente aqui -->
-        </VBox>
+
         <VBox fx:id="ativosSection" spacing="12" alignment="CENTER"
               style="-fx-background-color: #FFFFFF; -fx-background-radius: 12;
                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2); -fx-padding: 24 16">
-            <Label text="Ativos" styleClass="descr-sim" />
             <!-- Container para os ativos dinâmicos -->
             <VBox fx:id="ativosContainer" spacing="8" alignment="TOP_CENTER" />
         </VBox>
     </ScrollPane>
 
     <!-- Botões Voltar e Nova Simulação -->
-    <HBox alignment="CENTER" spacing="16">
-        <padding>
-            <Insets top="16" />
-        </padding>
-        <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar" styleClass="button-azul"/>
+
+    <HBox alignment="CENTER" spacing="16" style="-fx-padding: 8">
+        <Button fx:id="voltarButton" onAction="#onClickHome" text="Voltar"
+                styleClass="button-cadastro-voltar"/>
         <Button fx:id="newSimulationButton" onAction="#gerarCsv" text="Gerar CSV" styleClass="button-quest" />
     </HBox>
 </VBox>

@@ -140,6 +140,8 @@ public class FiisController {
     public void onReinvestirSelected() {
         if (reinvestirCheckBox.isSelected()) {
             naoReinvestirCheckBox.setSelected(false);
+        } else {
+            naoReinvestirCheckBox.setSelected(true);
         }
     }
 
@@ -147,6 +149,8 @@ public class FiisController {
     public void onNaoReinvestirSelected() {
         if (naoReinvestirCheckBox.isSelected()) {
             reinvestirCheckBox.setSelected(false);
+        } else {
+            reinvestirCheckBox.setSelected(true);
         }
     }
 
