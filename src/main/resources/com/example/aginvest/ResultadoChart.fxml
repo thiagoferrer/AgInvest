@@ -62,53 +62,9 @@
                 </LineChart>
             </VBox>
 
-            <!-- Gráfico de Barras -->
-            <VBox style="-fx-padding: 0 0 16 0;">
-                <Label text="Lucro Líquido por Ativo" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
-                <BarChart fx:id="barChart" legendVisible="false" prefHeight="200">
-                    <xAxis>
-                        <CategoryAxis side="BOTTOM" label="Ativo"/>
-                    </xAxis>
-                    <yAxis>
-                        <NumberAxis side="LEFT" label="Lucro (R$)" />
-                    </yAxis>
-                </BarChart>
-            </VBox>
-
             <!-- Cards de Produtos -->
             <VBox fx:id="assetCardsContainer" spacing="8">
-                <!-- CDB Card -->
-                <VBox fx:id="cdbCard" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 12;" visible="false" managed="false">
-                    <Label text="CDB" style="-fx-font-weight: bold; -fx-text-fill: #1E88E5; -fx-font-size: 16px;"/>
-                    <Label fx:id="cdbTotalInvestidoLabel" style="-fx-text-fill: #666666;"/>
-                    <Label fx:id="cdbGrossReturnLabel" style="-fx-text-fill: #666666;"/>
-                    <Label fx:id="cdbTaxLabel" style="-fx-text-fill: #666666;"/>
-                    <Label fx:id="cdbNetProfitLabel" style="-fx-text-fill: #666666;"/>
-                    <Label fx:id="cdbNetTotalLabel" style="-fx-font-weight: bold; -fx-text-fill: #333333;"/>
-                    <Label fx:id="cdbProfitPercentLabel" style="-fx-text-fill: #666666;"/>
-                </VBox>
-
-                <!-- LCI/LCA Card -->
-                <VBox fx:id="lciLcaCard" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 12;" visible="false" managed="false">
-                    <Label text="LCI/LCA" style="-fx-font-weight: bold; -fx-text-fill: #4CAF50; -fx-font-size: 16px;"/>
-                    <Label fx:id="lciLcaTotalInvestidoLabel" style="-fx-text-fill: #666666;"/>
-                    <Label fx:id="lciLcaGrossReturnLabel" style="-fx-text-fill: #666666;"/>
-                    <Label fx:id="lciLcaTaxLabel" style="-fx-text-fill: #666666;"/>
-                    <Label fx:id="lciLcaNetProfitLabel" style="-fx-text-fill: #666666;"/>
-                    <Label fx:id="lciLcaNetTotalLabel" style="-fx-font-weight: bold; -fx-text-fill: #333333;"/>
-                    <Label fx:id="lciLcaProfitPercentLabel" style="-fx-text-fill: #666666;"/>
-                </VBox>
-
-                <!-- Poupança Card -->
-                <VBox fx:id="poupancaCard" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 12;" visible="false" managed="false">
-                    <Label text="Poupança" style="-fx-font-weight: bold; -fx-text-fill: #FF9800; -fx-font-size: 16px;"/>
-                    <Label fx:id="poupancaTotalInvestidoLabel" style="-fx-text-fill: #666666;"/>
-                    <Label fx:id="poupancaGrossReturnLabel" style="-fx-text-fill: #666666;"/>
-                    <Label fx:id="poupancaTaxLabel" style="-fx-text-fill: #666666;"/>
-                    <Label fx:id="poupancaNetProfitLabel" style="-fx-text-fill: #666666;"/>
-                    <Label fx:id="poupancaNetTotalLabel" style="-fx-font-weight: bold; -fx-text-fill: #333333;"/>
-                    <Label fx:id="poupancaProfitPercentLabel" style="-fx-text-fill: #666666;"/>
-                </VBox>
+                <!-- Cards will be generated dynamically here -->
             </VBox>
 
             <Label fx:id="csvStatusLabel" style="-fx-text-fill: #666666; -fx-font-size: 18px;" visible="false"/>
