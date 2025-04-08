@@ -259,13 +259,19 @@
 
 #grafico-fiis .default-color0.chart-bar {
     -fx-bar-fill: #3585FF;
-
 }
 
-#grafico-fiis .axis-label, .tick-label {
+#grafico-fiis, .axis-label, .tick-label {
     -fx-font-size: 12px;
     -fx-font-family: "Roboto Light";
     -fx-text-fill: #666666 ;
 }
+
+#grafico-acoes .axis-label, .tick-label {
+    -fx-font-size: 12px;
+    -fx-font-family: "Roboto Light";
+    -fx-text-fill: #666666 ;
+}
+
 
 
