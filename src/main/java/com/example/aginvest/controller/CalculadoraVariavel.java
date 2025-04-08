@@ -90,7 +90,7 @@ public class CalculadoraVariavel {
 
 
     //calculadora de FIIs
-    public List<Fiis> simularFundoImobiliarioPerfil( Fiis calculadoraV, boolean historico, int quantidade) {
+    public List<Fiis> simularFundoImobiliarioPerfil( Fiis calculadoraV,  int quantidade) {
         FiisDAO dao = new FiisDAO();
         List<Fiis> resultados = dao.buscarPorQuantidade(quantidade);
         if (resultados == null || resultados.isEmpty()) {
@@ -146,10 +146,7 @@ public class CalculadoraVariavel {
             fiiSimulado.setId_fiis(fii.getId_fiis());
             fiisSimulados.add(fiiSimulado);
         }
-        if (historico){
-            int userId = UserSession.getLoggedInUserId();
-            dao.salvarHistoricoFiis(fiisSimulados, userId, calculadoraV.getAporte(), calculadoraV.getMeses());
-        }
+
 
         return fiisSimulados;
     }
@@ -202,7 +199,7 @@ public class CalculadoraVariavel {
     }
 
 
-    public List<Acoes> simularAcaoPerfil(double capital,int prazo,boolean historico, int quantidade) {
+    public List<Acoes> simularAcaoPerfil(double capital,int prazo, int quantidade) {
         AcoesDao dao = new AcoesDao();
         List<Acoes> resultados = dao.buscarPorQuantidade(quantidade);
         List<Acoes> acoesFeitas = new ArrayList<>();
@@ -243,10 +240,7 @@ public class CalculadoraVariavel {
 
         }
 
-        if (historico){
-            int userId = UserSession.getLoggedInUserId();
-            dao.salvarHistoricoAcoes(acoesFeitas, userId, capital, prazo);
-        }
+
 
         return acoesFeitas;
     }
