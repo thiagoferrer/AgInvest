@@ -92,6 +92,9 @@ public class ResultadoChartController {
     private final NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
     private final NumberFormat percentFormatter = NumberFormat.getPercentInstance(new Locale("pt", "BR"));
 
+    @FXML
+    private Label csvStatusLabel;
+
     // --- Initialization ---
 
     public void initData(List<RendaFixa> results, BigDecimal capitalInicial, BigDecimal aporteMensal, int prazo) {
@@ -315,10 +318,7 @@ public class ResultadoChartController {
         navigateTo("/com/example/aginvest/RendaFixa.fxml", "Simulador Renda Fixa"); // Go back to simulator
     }
 
-    @FXML
-    private void onClickNovaSimulacao() {
-        navigateTo("/com/example/aginvest/RendaFixa.fxml", "Simulador Renda Fixa"); // Go back to simulator
-    }
+
 
     @FXML
     private void onClickHome() {
@@ -327,19 +327,6 @@ public class ResultadoChartController {
         System.out.println("Botão Home clicado!");
     }
 
-    @FXML
-    private void onClickFaq() {
-        // Implement FAQ navigation or action
-        System.out.println("Botão FAQ clicado!");
-        // Example: Show an alert or navigate to a new screen
-    }
-
-    @FXML
-    private void onClickConta() {
-        // Implement Account navigation or action
-        System.out.println("Botão Conta clicado!");
-        // Example: Navigate to account details screen
-    }
 
     // --- Navigation Helper ---
 
@@ -377,7 +364,9 @@ public class ResultadoChartController {
     @FXML
     private void gerarCsv() {
         if (simulationResults == null || simulationResults.isEmpty()) {
-            mostrarAlerta("Erro", "Nenhum dado para exportar. Realize uma simulação primeiro.", Alert.AlertType.WARNING);
+            csvStatusLabel.setText("Erro: Nenhum dado para exportar. Realize uma simulação primeiro.");
+            csvStatusLabel.setStyle("-fx-text-fill: #FF0000;");
+            csvStatusLabel.setVisible(true);
             return;
         }
 
@@ -390,7 +379,7 @@ public class ResultadoChartController {
 
             // Dados
             for (RendaFixa rendaFixa : simulationResults) {
-                writer.printf("%s, %.2f, %.2f, %.2f, %.2f%n",  // Note o %n no final para quebra de linha
+                writer.printf("%s, %.2f, %.2f, %.2f, %.2f%n",
                         rendaFixa.getNome(),
                         rendaFixa.getRendimentoBruto(),
                         rendaFixa.getRendimentoLiquido(),
@@ -400,10 +389,17 @@ public class ResultadoChartController {
 
             writer.close();
 
-            mostrarAlerta("Sucesso", "CSV gerado com sucesso: " + nomeArquivo, Alert.AlertType.INFORMATION);
+            csvStatusLabel.setText("CSV gerado com sucesso !! ");
+            csvStatusLabel.setStyle("-fx-text-fill: #2CC158;");
+            csvStatusLabel.setVisible(true);
+
+            // Opcional: esconder a mensagem após alguns segundos
+            new Timeline(new KeyFrame(Duration.seconds(5), e -> csvStatusLabel.setVisible(false))).play();
 
         } catch (Exception e) {
-            mostrarAlerta("Erro", "Falha ao gerar o CSV: " + e.getMessage(), Alert.AlertType.ERROR);
+            csvStatusLabel.setText("Falha ao gerar o CSV: " + e.getMessage());
+            csvStatusLabel.setStyle("-fx-text-fill: #FF0000;");
+            csvStatusLabel.setVisible(true);
             e.printStackTrace();
         }
     }
