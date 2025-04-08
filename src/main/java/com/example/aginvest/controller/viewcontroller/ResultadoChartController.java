@@ -92,6 +92,9 @@ public class ResultadoChartController {
     private final NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
     private final NumberFormat percentFormatter = NumberFormat.getPercentInstance(new Locale("pt", "BR"));
 
+    @FXML
+    private Label csvStatusLabel;
+
     // --- Initialization ---
 
     public void initData(List<RendaFixa> results, BigDecimal capitalInicial, BigDecimal aporteMensal, int prazo) {
@@ -105,7 +108,6 @@ public class ResultadoChartController {
 
         populateHeader();
         populateLineChart();
-        populateBarChart();
         populateAssetCards();
     }
 
@@ -113,7 +115,6 @@ public class ResultadoChartController {
     private void initialize() {
         // Initial setup if needed, before data is loaded
         lineChart.setAnimated(false); // Optional: Improve performance for many series
-        barChart.setAnimated(true);
 
         faqButton.setOnAction(actionEvent -> {
             try {
@@ -209,77 +210,85 @@ public class ResultadoChartController {
     }
 
 
-    private void populateBarChart() {
-        barChart.getData().clear();
+    private void populateAssetCards() {
+        assetCardsContainer.getChildren().clear(); // Clear any existing cards
+
         if (simulationResults == null || simulationResults.isEmpty()) {
             return;
         }
 
-        // Set y-axis to start at zero
-        NumberAxis yAxis = (NumberAxis) barChart.getYAxis();
-        yAxis.setAutoRanging(true);
-        yAxis.setLowerBound(0);
-
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-
         for (RendaFixa produto : simulationResults) {
-            BigDecimal netProfit = produto.getRendimentoLiquido() != null
-                    ? produto.getRendimentoLiquido()
-                    : BigDecimal.ZERO;
-            series.getData().add(new XYChart.Data<>(produto.getNome(), netProfit));
+            // Create a new card for each product
+            VBox card = createAssetCard(produto);
+            assetCardsContainer.getChildren().add(card);
+        }
+    }
+
+    private VBox createAssetCard(RendaFixa produto) {
+        // Create the card container
+        VBox card = new VBox();
+        card.setStyle("-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 12;");
+        card.setSpacing(4);
+
+        // Determine color based on product type
+        String color;
+        switch (produto.getTipoProduto().toUpperCase()) {
+            case "CDB":
+                color = "#1E88E5"; // Blue
+                break;
+            case "LCI":
+            case "LCA":
+                color = "#4CAF50"; // Green
+                break;
+            case "POUPANCA":
+                color = "#FF9800"; // Orange
+                break;
+            default:
+                color = "#9C27B0"; // Purple (default for other types)
         }
 
-        barChart.getData().add(series);
+        // Create and add product name label
+        Label nameLabel = new Label(produto.getTipoProduto() + ": " + produto.getNome());
+        nameLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: " + color + "; -fx-font-size: 16px;");
+        card.getChildren().add(nameLabel);
+
+        // Create all the data labels
+        Label totalInvestidoLabel = new Label();
+        Label grossReturnLabel = new Label();
+        Label taxLabel = new Label();
+        Label netProfitLabel = new Label();
+        Label netTotalLabel = new Label();
+        Label profitPercentLabel = new Label();
+
+        // Style the labels
+        String dataLabelStyle = "-fx-text-fill: #666666;";
+        totalInvestidoLabel.setStyle(dataLabelStyle);
+        grossReturnLabel.setStyle(dataLabelStyle);
+        taxLabel.setStyle(dataLabelStyle);
+        netProfitLabel.setStyle(dataLabelStyle);
+        netTotalLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #333333;");
+        profitPercentLabel.setStyle(dataLabelStyle);
+
+        // Add all labels to the card
+        card.getChildren().addAll(
+                totalInvestidoLabel,
+                grossReturnLabel,
+                taxLabel,
+                netProfitLabel,
+                netTotalLabel,
+                profitPercentLabel
+        );
+
+        // Set the data for the labels
+        fillCardData(card, totalInvestidoLabel, grossReturnLabel, taxLabel,
+                netProfitLabel, netTotalLabel, profitPercentLabel, produto);
+
+        return card;
     }
 
-    private void populateAssetCards() {
-        // Hide all cards initially
-        cdbCard.setVisible(false); cdbCard.setManaged(false);
-        lciLcaCard.setVisible(false); lciLcaCard.setManaged(false);
-        poupancaCard.setVisible(false); poupancaCard.setManaged(false);
-
-        if (simulationResults == null) return;
-
-        // Find the *first* representative for each category
-        Optional<RendaFixa> cdbOpt = simulationResults.stream()
-                .filter(p -> "CDB".equalsIgnoreCase(p.getTipoProduto()))
-                .findFirst();
-
-        Optional<RendaFixa> lciLcaOpt = simulationResults.stream()
-                .filter(p -> "LCI".equalsIgnoreCase(p.getTipoProduto()) || "LCA".equalsIgnoreCase(p.getTipoProduto()))
-                .findFirst();
-
-        Optional<RendaFixa> poupancaOpt = simulationResults.stream()
-                .filter(p -> "POUPANCA".equalsIgnoreCase(p.getTipoProduto()))
-                .findFirst();
-
-        // Populate CDB Card if found
-        cdbOpt.ifPresent(cdb -> {
-            fillCardData(cdbCard, cdbTotalInvestidoLabel, cdbGrossReturnLabel, cdbTaxLabel, cdbNetProfitLabel, cdbNetTotalLabel, cdbProfitPercentLabel, cdb);
-            cdbCard.setVisible(true);
-            cdbCard.setManaged(true);
-            ((Label) cdbCard.getChildren().get(0)).setText("CDB: " + cdb.getNome()); // Set specific name
-        });
-
-        // Populate LCI/LCA Card if found
-        lciLcaOpt.ifPresent(lciLca -> {
-            fillCardData(lciLcaCard, lciLcaTotalInvestidoLabel, lciLcaGrossReturnLabel, lciLcaTaxLabel, lciLcaNetProfitLabel, lciLcaNetTotalLabel, lciLcaProfitPercentLabel, lciLca);
-            lciLcaCard.setVisible(true);
-            lciLcaCard.setManaged(true);
-            ((Label) lciLcaCard.getChildren().get(0)).setText(lciLca.getTipoProduto() + ": " + lciLca.getNome()); // Set specific name
-        });
-
-        // Populate Poupança Card if found
-        poupancaOpt.ifPresent(poupanca -> {
-            fillCardData(poupancaCard, poupancaTotalInvestidoLabel, poupancaGrossReturnLabel, poupancaTaxLabel, poupancaNetProfitLabel, poupancaNetTotalLabel, poupancaProfitPercentLabel, poupanca);
-            poupancaCard.setVisible(true);
-            poupancaCard.setManaged(true);
-        });
-    }
-
+    // Modified fillCardData to work with dynamically created cards
     private void fillCardData(VBox card, Label totalInvestidoLabel, Label grossReturnLabel, Label taxLabel,
                               Label netProfitLabel, Label netTotalLabel, Label profitPercentLabel, RendaFixa produto) {
-
         BigDecimal totalInvestido = produto.getTotalInvestido() != null ? produto.getTotalInvestido() : BigDecimal.ZERO;
         BigDecimal rendimentoBruto = produto.getRendimentoBruto() != null ? produto.getRendimentoBruto() : BigDecimal.ZERO;
         BigDecimal impostoIR = produto.getImpostoIR() != null ? produto.getImpostoIR() : BigDecimal.ZERO;
@@ -287,24 +296,20 @@ public class ResultadoChartController {
         BigDecimal valorTotal = produto.getValorTotal() != null ? produto.getValorTotal() : BigDecimal.ZERO;
         String percentualLucroStr = produto.getPercentualLucro() != null ? produto.getPercentualLucro() : "0,00%";
 
-
         totalInvestidoLabel.setText("Total Investido: " + currencyFormatter.format(totalInvestido));
         grossReturnLabel.setText("Rendimento Bruto: " + currencyFormatter.format(rendimentoBruto));
         taxLabel.setText(String.format("Imposto de Renda: %s%s",
-                impostoIR.compareTo(BigDecimal.ZERO) > 0 ? "-" : "", // Add minus sign only if tax > 0
+                impostoIR.compareTo(BigDecimal.ZERO) > 0 ? "-" : "",
                 currencyFormatter.format(impostoIR.abs()) + (produto.isTaxable() ? "" : " (Isento)")));
         netProfitLabel.setText("Lucro Líquido: " + currencyFormatter.format(rendimentoLiquido));
         netTotalLabel.setText("Valor Total Líquido: " + currencyFormatter.format(valorTotal));
 
-        // Format percentage correctly
         try {
-            // Assuming percentualLucro is like "12.34%"
             double percentValue = Double.parseDouble(percentualLucroStr.replace("%", "").replace(",", ".")) / 100.0;
             profitPercentLabel.setText("Lucratividade: " + percentFormatter.format(percentValue));
         } catch (NumberFormatException | NullPointerException e) {
-            profitPercentLabel.setText("Lucratividade: " + percentualLucroStr); // Fallback to original string
+            profitPercentLabel.setText("Lucratividade: " + percentualLucroStr);
         }
-
     }
 
 
@@ -315,10 +320,7 @@ public class ResultadoChartController {
         navigateTo("/com/example/aginvest/RendaFixa.fxml", "Simulador Renda Fixa"); // Go back to simulator
     }
 
-    @FXML
-    private void onClickNovaSimulacao() {
-        navigateTo("/com/example/aginvest/RendaFixa.fxml", "Simulador Renda Fixa"); // Go back to simulator
-    }
+
 
     @FXML
     private void onClickHome() {
@@ -327,19 +329,6 @@ public class ResultadoChartController {
         System.out.println("Botão Home clicado!");
     }
 
-    @FXML
-    private void onClickFaq() {
-        // Implement FAQ navigation or action
-        System.out.println("Botão FAQ clicado!");
-        // Example: Show an alert or navigate to a new screen
-    }
-
-    @FXML
-    private void onClickConta() {
-        // Implement Account navigation or action
-        System.out.println("Botão Conta clicado!");
-        // Example: Navigate to account details screen
-    }
 
     // --- Navigation Helper ---
 
@@ -377,7 +366,9 @@ public class ResultadoChartController {
     @FXML
     private void gerarCsv() {
         if (simulationResults == null || simulationResults.isEmpty()) {
-            mostrarAlerta("Erro", "Nenhum dado para exportar. Realize uma simulação primeiro.", Alert.AlertType.WARNING);
+            csvStatusLabel.setText("Erro: Nenhum dado para exportar. Realize uma simulação primeiro.");
+            csvStatusLabel.setStyle("-fx-text-fill: #FF0000;");
+            csvStatusLabel.setVisible(true);
             return;
         }
 
@@ -390,7 +381,7 @@ public class ResultadoChartController {
 
             // Dados
             for (RendaFixa rendaFixa : simulationResults) {
-                writer.printf("%s, %.2f, %.2f, %.2f, %.2f%n",  // Note o %n no final para quebra de linha
+                writer.printf("%s, %.2f, %.2f, %.2f, %.2f%n",
                         rendaFixa.getNome(),
                         rendaFixa.getRendimentoBruto(),
                         rendaFixa.getRendimentoLiquido(),
@@ -400,10 +391,17 @@ public class ResultadoChartController {
 
             writer.close();
 
-            mostrarAlerta("Sucesso", "CSV gerado com sucesso: " + nomeArquivo, Alert.AlertType.INFORMATION);
+            csvStatusLabel.setText("CSV gerado com sucesso !! ");
+            csvStatusLabel.setStyle("-fx-text-fill: #2CC158;");
+            csvStatusLabel.setVisible(true);
+
+            // Opcional: esconder a mensagem após alguns segundos
+            new Timeline(new KeyFrame(Duration.seconds(5), e -> csvStatusLabel.setVisible(false))).play();
 
         } catch (Exception e) {
-            mostrarAlerta("Erro", "Falha ao gerar o CSV: " + e.getMessage(), Alert.AlertType.ERROR);
+            csvStatusLabel.setText("Falha ao gerar o CSV: " + e.getMessage());
+            csvStatusLabel.setStyle("-fx-text-fill: #FF0000;");
+            csvStatusLabel.setVisible(true);
             e.printStackTrace();
         }
     }

@@ -23,6 +23,9 @@ public class ResultadoGridItemController {
     @FXML private Label irLabel;
     @FXML private PieChart donutChart;
 
+    @FXML
+    private VBox assetCardsContainer;
+
     private final NumberFormat currencyFormatter;
     private final NumberFormat percentFormatter;
 
