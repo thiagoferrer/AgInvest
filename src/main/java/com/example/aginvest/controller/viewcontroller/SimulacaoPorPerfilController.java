@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 public class SimulacaoPorPerfilController {
 
@@ -100,9 +101,8 @@ public class SimulacaoPorPerfilController {
             int quantidadeCotas = Integer.parseInt(quantidadeCotasField.getText());
             double capitalInicial = Double.parseDouble(capitalInicialField.getText());
             int prazo = Integer.parseInt(prazoField.getText());
-            // Verifica se o reinvestimento está marcado
-            int reinvestirDividendos;
 
+            int reinvestirDividendos;
             if (reinvestirCheckBox != null && reinvestirCheckBox.isSelected()) {
                 reinvestirDividendos = 1; // Usuário escolheu REINVESTIR
             } else if (naoReinvestirCheckBox != null && naoReinvestirCheckBox.isSelected()) {
@@ -111,12 +111,22 @@ public class SimulacaoPorPerfilController {
                 reinvestirDividendos = 0; // Padrão (caso nenhum esteja selecionado)
             }
 
+            // Transformando o capital inicial em BigDecimal
+            BigDecimal capitalInicialBD = BigDecimal.valueOf(Double.parseDouble(capitalInicialField.getText()));
+            // Transformando o aporte mensal em BigDecimal
+            BigDecimal aporteMensalBD = BigDecimal.valueOf(Double.parseDouble(aporteMensalField.getText()));
             Fiis fiis = new Fiis(aporteMensal, quantidadeCotas, prazo, reinvestirDividendos);
 
             Acoes acoes = new Acoes(capitalInicial,prazo);
 
+
+            // DEBUG: Verifique os dados antes de enviar
+            System.out.println("Dados antes de enviar:");
+            System.out.println("Fiis: " + fiis);
+            System.out.println("Acoes: " + acoes);
+
            // RendaFixa renda = new RendaFixa(capitalInicial, aporteMensal, prazo);
-            carregarTelaResultado(acoes, fiis);
+            carregarTelaResultado(acoes, fiis, capitalInicialBD,aporteMensalBD, prazo );
         } catch (NumberFormatException e) {
             System.out.println("Erro ao converter valores numéricos: " + e.getMessage());
             // Aqui você pode mostrar um alerta para o usuário também
@@ -138,14 +148,14 @@ public class SimulacaoPorPerfilController {
         }
     }
 
-    private void carregarTelaResultado(Acoes acoes, Fiis fiis) {
+    private void carregarTelaResultado(Acoes acoes, Fiis fiis,  BigDecimal capitalInicialBD, BigDecimal aporteMensalBD, int prazo ) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/ResultadoSimulacaoPerfil.fxml"));
             Parent root = loader.load();
 
             // Obtém o controller que foi criado pelo FXMLLoader
             ResultadoSimulacaoPerfilController simulacaoPerfil = loader.getController();
-            simulacaoPerfil.CalcularAtivos(acoes, fiis);
+            simulacaoPerfil.setDadosSimulacao(acoes, fiis, capitalInicialBD,aporteMensalBD, prazo);
 
             Stage stage = (Stage) calcularButton.getScene().getWindow();
             stage.setScene(new Scene(root));

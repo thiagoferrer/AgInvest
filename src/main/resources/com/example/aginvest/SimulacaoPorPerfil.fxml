@@ -36,7 +36,7 @@
 
     <!-- Título e Descrição -->
     <VBox alignment="CENTER" spacing="16" style="-fx-padding: 16;-fx-background-color: #FFFFFF;">
-        <Label text="Simulador de Renda Fixa" styleClass="titulo-sim" />
+        <Label text="Simulador Por Perfil " styleClass="titulo-sim" />
         <VBox style="-fx-padding: 8 10">
             <VBox spacing="8" alignment="CENTER_LEFT">
                 <!-- Capital Inicial -->

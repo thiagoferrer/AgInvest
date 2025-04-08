@@ -34,7 +34,15 @@
     </HBox>
 
     <!-- Título -->
-    <Label text="Resultado Ações" styleClass="titulo-sim"/>
+    <Label text="Resultado Simulação" styleClass="titulo-sim"/>
+    <HBox alignment="CENTER_LEFT" style="-fx-padding: 8 16 4 16; -fx-font-size: 18; -fx-font-weight: bold;">
+        <Label text="Seu perfil é:  " style="-fx-text-fill: #666666;"/>
+        <Label fx:id="perfilId" style="-fx-text-fill: #3585FF;">
+            <font>
+                <Font name="Roboto Regular" />
+            </font>
+        </Label>
+    </HBox>
 
     <!-- Seção Ativos com Scroll -->
     <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">

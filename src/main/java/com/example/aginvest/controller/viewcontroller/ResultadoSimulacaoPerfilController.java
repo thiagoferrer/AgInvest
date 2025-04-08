@@ -1,5 +1,6 @@
 package com.example.aginvest.controller.viewcontroller;
 
+import com.example.aginvest.controller.CalculadoraFixa;
 import com.example.aginvest.controller.CalculadoraVariavel;
 import com.example.aginvest.controller.user.UserSession;
 import com.example.aginvest.dao.UserDAO;
@@ -20,6 +21,7 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,16 +52,52 @@ public class ResultadoSimulacaoPerfilController {
 
     @FXML
     private VBox ativosContainer;
+    @FXML private Label perfilId;
+
     private String descricao_perfil;
     private  int userId = UserSession.getLoggedInUserId();
+    private Acoes acoesRecebidas;
+    private Fiis fiisRecebidos;
+    private BigDecimal capitalInicialBD;
+    private BigDecimal aporteMensalBD;
+    private int prazo;
+    private boolean dadosCarregados = false;
+
+    public void setDadosSimulacao(Acoes acoes, Fiis fiis, BigDecimal capitalInicialBD, BigDecimal aporteMensalBD, int prazo ) {
+        this.acoesRecebidas = acoes;
+        this.fiisRecebidos = fiis;
+        this.capitalInicialBD = capitalInicialBD;
+        this.aporteMensalBD = aporteMensalBD;
+        this.prazo = prazo;
+        this.dadosCarregados = true;
+
+        // Se a UI já foi inicializada, recalcula
+        if (ativosContainer != null) {
+            CalcularAtivos(acoesRecebidas, fiisRecebidos, capitalInicialBD, aporteMensalBD, prazo);
+        } else {
+            System.out.println("Container ainda é nulo!");
+        }
+    }
 
 
-        @FXML
+
+    @FXML
         public void initialize() {
-            UserDAO userDAO= new UserDAO();
-            UserModel user = userDAO.readUser(new UserModel(userId));
 
-            this.descricao_perfil = user.getDescricao_perfil();
+        UserDAO userDAO = new UserDAO();
+        UserModel user = userDAO.readUser(new UserModel(userId));
+        this.descricao_perfil = user.getDescricao_perfil();
+        // Definir o texto do Label
+        if (user != null) {
+            perfilId.setText(user.getDescricao_perfil());
+        }
+
+        // Se os dados já foram carregados, recalcula
+        if (dadosCarregados && ativosContainer != null) {CalcularAtivos(acoesRecebidas, fiisRecebidos, capitalInicialBD, aporteMensalBD, prazo);
+        } else {
+            System.out.println("Dados não carregados ou container nulo. dadosCarregados=" + dadosCarregados + ", container=" + (ativosContainer != null));
+        }
+
 
             faqButton.setOnAction(actionEvent -> {
                 try {
@@ -99,73 +137,63 @@ public class ResultadoSimulacaoPerfilController {
         }
 
 
-    public void CalcularAtivos(Acoes acoes, Fiis fiis){
-        CalculadoraVariavel calculadora = new CalculadoraVariavel();
+    public void CalcularAtivos(Acoes acoes, Fiis fiis, BigDecimal capitalInicialBD, BigDecimal aporteMensalBD, int prazo ){
+        if(ativosContainer == null) {
+            System.out.println("ERRO: ativosContainer é nulo!");
+            return;
+        }
+
+        ativosContainer.getChildren().clear();
+        CalculadoraVariavel calculadoraV = new CalculadoraVariavel();
+        CalculadoraFixa calculadoraF = new CalculadoraFixa();
         List<Acoes> acoesSimuladas= new ArrayList<>();
         List<Fiis> fiisSimuladas = new ArrayList<>();
         List<RendaFixa> rendaSimuladas = new ArrayList<>();
 
         switch (descricao_perfil){
-            case "moderado":
-                acoesSimuladas= calculadora.simularAcaoPerfil(acoes.getValorInvestido(), acoes.getMeses(), 2);
-                fiisSimuladas = calculadora.simularFundoImobiliarioPerfil(fiis, 5);
-                //rendaSimulada;
+            case "Moderado":
+                acoesSimuladas= calculadoraV.simularAcaoPerfil(acoes.getValorInvestido(), acoes.getMeses(), 2);
+                fiisSimuladas = calculadoraV.simularFundoImobiliarioPerfil(fiis, 5);
+                rendaSimuladas = calculadoraF.simularInvestimentoPerfil(capitalInicialBD, aporteMensalBD, prazo,2 );
 
 
 
                 break;
 
-            case "arrojado":
-                acoesSimuladas = calculadora.simularAcaoPerfil(acoes.getValorInvestido(), acoes.getMeses(), 6);
-                fiisSimuladas = calculadora.simularFundoImobiliarioPerfil(fiis, 2);
-                //rendaSimulada;
+            case "Arrojado":
+                acoesSimuladas = calculadoraV.simularAcaoPerfil(acoes.getValorInvestido(), acoes.getMeses(), 6);
+                fiisSimuladas = calculadoraV.simularFundoImobiliarioPerfil(fiis, 2);
+                rendaSimuladas = calculadoraF.simularInvestimentoPerfil(capitalInicialBD, aporteMensalBD, prazo,1 );
+
+
                 break;
 
-            case "conservador":
-                acoesSimuladas = calculadora.simularAcaoPerfil(acoes.getValorInvestido(), acoes.getMeses(), 2);
-                fiisSimuladas = calculadora.simularFundoImobiliarioPerfil(fiis, 2);
-                //rendaSimulada;
+            case "Conservador":
+                acoesSimuladas = calculadoraV.simularAcaoPerfil(acoes.getValorInvestido(), acoes.getMeses(), 2);
+                fiisSimuladas = calculadoraV.simularFundoImobiliarioPerfil(fiis, 2);
+                rendaSimuladas = calculadoraF.simularInvestimentoPerfil(capitalInicialBD, aporteMensalBD, prazo,5);
 
-                // Adiciona cada ativo ao container
-                for (Fiis fii : fiisSimuladas ) {
-                    VBox ativoBox = criarFiiBox(fii);
-                    ativosContainer.getChildren().add(ativoBox);
-                }
-
-                // Adiciona cada ativo ao container
-                for (Acoes acao : acoesSimuladas ) {
-                    VBox ativoBox = criarAtivoBox(acao);
-                    ativosContainer.getChildren().add(ativoBox);
-                }
                 break;
         }
-
-    }
-
-    public void CalcularFiis(Fiis fiis) {
-        CalculadoraVariavel calculadoraVariavel = new CalculadoraVariavel();
-        List<Fiis> resultados = calculadoraVariavel.simularFundoImobiliario(fiis);
-
-
         // Adiciona cada ativo ao container
-        for (Fiis fii : resultados) {
+        for (Fiis fii : fiisSimuladas ) {
             VBox ativoBox = criarFiiBox(fii);
             ativosContainer.getChildren().add(ativoBox);
         }
-    }
-
-    public void CalcularAcoes(Acoes acoes) {
-        CalculadoraVariavel calculadoraVariavel = new CalculadoraVariavel();
-        List<Acoes> resultados = calculadoraVariavel.simularAcao(acoes);
-        // Limpa os containers antes de adicionar novos elementos
-        ativosContainer.getChildren().clear();
-
 
         // Adiciona cada ativo ao container
-        for (Acoes acao : resultados) {
+        for (Acoes acao : acoesSimuladas ) {
             VBox ativoBox = criarAtivoBox(acao);
             ativosContainer.getChildren().add(ativoBox);
         }
+
+        // Adiciona cada ativo ao container
+        for (RendaFixa rendaFixa : rendaSimuladas) {
+            VBox ativoBox = criarRendaFixaBox(rendaFixa);
+            ativosContainer.getChildren().add(ativoBox);
+        }
+
+
     }
 
 
@@ -293,6 +321,73 @@ public class ResultadoSimulacaoPerfilController {
                 linhaTotalVenda ,
                 linhaSaldoFinal,
                 linhaTroco
+        );
+
+        return box;
+    }
+
+    private VBox criarRendaFixaBox(RendaFixa rendaFixa) {
+        VBox box = new VBox();
+        box.setSpacing(4);
+        box.setAlignment(Pos.CENTER_LEFT);
+        box.setPrefWidth(300);
+        box.setStyle("-fx-border-color: #1E90FF; -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 8;");
+
+        // Nome do investimento em Renda Fixa
+        Label nomeLabel = new Label(rendaFixa.getNome());
+        nomeLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 14; -fx-font-weight: bold;");
+
+        // Total Investido
+        Label totalInvestidoLabel = new Label("Total Investido: ");
+        totalInvestidoLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label totalInvestidoColorLabel = new Label(String.format("R$ %,.2f", rendaFixa.getTotalInvestido()));
+        totalInvestidoColorLabel.setStyle("-fx-text-fill: #1E90FF; -fx-font-size: 12;");
+        TextFlow linhaTotalInvestido = new TextFlow(totalInvestidoLabel, totalInvestidoColorLabel);
+
+        // Rendimento Bruto
+        Label rendimentoBrutoLabel = new Label("Rendimento Bruto: ");
+        rendimentoBrutoLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label rendimentoBrutoColorLabel = new Label(String.format("R$ %,.2f", rendaFixa.getRendimentoBruto()));
+        rendimentoBrutoColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaRendimentoBruto = new TextFlow(rendimentoBrutoLabel, rendimentoBrutoColorLabel);
+
+        // Imposto IR
+        Label impostoIRLabel = new Label("Imposto IR: ");
+        impostoIRLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label impostoIRColorLabel = new Label(String.format("R$ %,.2f", rendaFixa.getImpostoIR()));
+        impostoIRColorLabel.setStyle("-fx-text-fill: #FF4C4C; -fx-font-size: 12;");
+        TextFlow linhaImpostoIR = new TextFlow(impostoIRLabel, impostoIRColorLabel);
+
+        // Rendimento Líquido
+        Label rendimentoLiquidoLabel = new Label("Rendimento Líquido: ");
+        rendimentoLiquidoLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label rendimentoLiquidoColorLabel = new Label(String.format("R$ %,.2f", rendaFixa.getRendimentoLiquido()));
+        rendimentoLiquidoColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaRendimentoLiquido = new TextFlow(rendimentoLiquidoLabel, rendimentoLiquidoColorLabel);
+
+        // Valor Total
+        Label valorTotalLabel = new Label("Valor Total: ");
+        valorTotalLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label valorTotalColorLabel = new Label(String.format("R$ %,.2f", rendaFixa.getValorTotal()));
+        valorTotalColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaValorTotal = new TextFlow(valorTotalLabel, valorTotalColorLabel);
+
+        // Percentual de Lucro
+        Label percentualLucroLabel = new Label("Percentual de Lucro: ");
+        percentualLucroLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label percentualLucroColorLabel = new Label(rendaFixa.getPercentualLucro());
+        percentualLucroColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaPercentualLucro = new TextFlow(percentualLucroLabel, percentualLucroColorLabel);
+
+        // Adiciona todos os labels ao VBox
+        box.getChildren().addAll(
+                nomeLabel,
+                linhaTotalInvestido,
+                linhaRendimentoBruto,
+                linhaImpostoIR,
+                linhaRendimentoLiquido,
+                linhaValorTotal,
+                linhaPercentualLucro
         );
 
         return box;
