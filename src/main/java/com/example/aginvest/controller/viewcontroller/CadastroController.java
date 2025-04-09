@@ -122,7 +122,7 @@ public class CadastroController {
             DataValidate data = new DataValidate();
             String data_nasc = data.validarData(dataNascimento);
             if (data_nasc == null) {
-                showError("Data de nascimento inválida! Use o formato aaaa/mm/dd");
+                showError("Data de nascimento inválida! Use o formato dd/mm/aaaa");
                 dataNascimentoFieldCadastro.setStyle("-fx-border-color: #FF0000; -fx-border-radius: 8;");
                 return;
             }
