@@ -12,7 +12,7 @@
       stylesheets="@styles.css"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.aginvest.controller.viewcontroller.QuestionarioPerfilController"
-      style="-fx-background-color: #F8F9FA;">
+      style="-fx-background-color: #FFFFFF;">
 
     <!-- Título Centralizado -->
     <Label text="Questionário Perfil Investidor" styleClass="titulo-sim"/>
