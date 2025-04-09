@@ -10,7 +10,7 @@
       minWidth="360" minHeight="640"
       stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.aginvest.controller.viewcontroller.QuestionarioPerfilController"
-      style="-fx-background-color: #FFFFFF;">
+      style="-fx-background-color: #F8F9FA;">
 
     <!-- Barra de Navegação Superior -->
     <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: #1E90FF; -fx-padding: 8 16 8 16;

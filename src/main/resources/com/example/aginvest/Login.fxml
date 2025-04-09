@@ -5,6 +5,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.layout.VBox?>
+
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.PasswordField?>
@@ -21,7 +23,7 @@
       style="-fx-background-color: #FFFFFF; -fx-padding: 16;">
 
     <!-- Logotipo -->
-    <VBox  alignment="TOP_CENTER" spacing="4" style="-fx-padding: 0 8 0 0">
+    <VBox  alignment="TOP_CENTER" spacing="8" style="-fx-padding: 0 8 0 0">
 
         <ImageView fx:id="logoImage" fitHeight="500" fitWidth="250" preserveRatio="true" >
             <VBox.margin>

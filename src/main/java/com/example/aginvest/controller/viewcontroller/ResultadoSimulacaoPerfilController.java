@@ -218,7 +218,7 @@ public class ResultadoSimulacaoPerfilController {
         box.setSpacing(4);
         box.setAlignment(Pos.CENTER_LEFT);
         box.setPrefWidth(300);
-        box.setStyle("-fx-border-color: #1E88E5; -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 8;");
+        box.setStyle("-fx-border-color: #1E90FF; -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 8;");
 
         // Nome do FII
         Label nomeLabel = new Label(fii.getNome());
@@ -270,7 +270,7 @@ public class ResultadoSimulacaoPerfilController {
         box.setSpacing(4);
         box.setAlignment(Pos.CENTER_LEFT);
         box.setPrefWidth(300);
-        box.setStyle("-fx-border-color: #FF9800; -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 8;");
+        box.setStyle("-fx-border-color: #1E90FF; -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 8;");
 
         Label nomeLabel = new Label(acao.getNome());
         nomeLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 14; -fx-font-weight: bold;");
@@ -331,7 +331,7 @@ public class ResultadoSimulacaoPerfilController {
         box.setSpacing(4);
         box.setAlignment(Pos.CENTER_LEFT);
         box.setPrefWidth(300);
-        box.setStyle("-fx-border-color: #9C27B0; -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 8;");
+        box.setStyle("-fx-border-color: #1E90FF; -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 8;");
 
         // Nome do investimento em Renda Fixa
         Label nomeLabel = new Label(rendaFixa.getNome());

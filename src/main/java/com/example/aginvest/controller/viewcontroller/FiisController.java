@@ -130,12 +130,13 @@ public class FiisController {
             // Verifica se o reinvestimento está marcado
             int reinvestirDividendos;
 
-            if (reinvestirCheckBox != null && reinvestirCheckBox.isSelected())
+            if (reinvestirCheckBox != null && reinvestirCheckBox.isSelected()) {
                 reinvestirDividendos = 1; // Usuário escolheu REINVESTIR
-            else if (naoReinvestirCheckBox != null && naoReinvestirCheckBox.isSelected())
+            } else if (naoReinvestirCheckBox != null && naoReinvestirCheckBox.isSelected()) {
                 reinvestirDividendos = 0; // Usuário escolheu NÃO REINVESTIR
-            else reinvestirDividendos = 0; // Padrão (caso nenhum esteja selecionado)
-
+            } else {
+                reinvestirDividendos = 0; // Padrão (caso nenhum esteja selecionado)
+            }
 
             carregarTelaResultado(new Fiis(aporteMensal, quantidadeCotas, prazo, reinvestirDividendos ));
         } catch (NumberFormatException e) {
@@ -147,16 +148,20 @@ public class FiisController {
     // Método para garantir que apenas um CheckBox seja selecionado
     @FXML
     public void onReinvestirSelected() {
-        if (reinvestirCheckBox.isSelected()) naoReinvestirCheckBox.setSelected(false);
-        else naoReinvestirCheckBox.setSelected(true);
-
+        if (reinvestirCheckBox.isSelected()) {
+            naoReinvestirCheckBox.setSelected(false);
+        } else {
+            naoReinvestirCheckBox.setSelected(true);
+        }
     }
 
     @FXML
     public void onNaoReinvestirSelected() {
-        if (naoReinvestirCheckBox.isSelected()) reinvestirCheckBox.setSelected(false);
-        else reinvestirCheckBox.setSelected(true);
-
+        if (naoReinvestirCheckBox.isSelected()) {
+            reinvestirCheckBox.setSelected(false);
+        } else {
+            reinvestirCheckBox.setSelected(true);
+        }
     }
 
     private void carregarTela(String fxmlPath, String titulo) {

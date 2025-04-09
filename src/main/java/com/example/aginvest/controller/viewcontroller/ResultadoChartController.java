@@ -8,7 +8,6 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
@@ -18,9 +17,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.util.Duration;
@@ -54,6 +51,34 @@ public class ResultadoChartController {
 
     // Asset Cards Container
     @FXML private VBox assetCardsContainer;
+
+    // CDB Card Elements
+    @FXML private VBox cdbCard;
+    @FXML private Label cdbTotalInvestidoLabel;
+    @FXML private Label cdbGrossReturnLabel;
+    @FXML private Label cdbTaxLabel;
+    @FXML private Label cdbNetProfitLabel;
+    @FXML private Label cdbNetTotalLabel;
+    @FXML private Label cdbProfitPercentLabel;
+
+    // LCI/LCA Card Elements
+    @FXML private VBox lciLcaCard;
+    @FXML private Label lciLcaTotalInvestidoLabel;
+    @FXML private Label lciLcaGrossReturnLabel;
+    @FXML private Label lciLcaTaxLabel;
+    @FXML private Label lciLcaNetProfitLabel;
+    @FXML private Label lciLcaNetTotalLabel;
+    @FXML private Label lciLcaProfitPercentLabel;
+
+    // Poupança Card Elements (Optional)
+    @FXML private VBox poupancaCard;
+    @FXML private Label poupancaTotalInvestidoLabel;
+    @FXML private Label poupancaGrossReturnLabel;
+    @FXML private Label poupancaTaxLabel;
+    @FXML private Label poupancaNetProfitLabel;
+    @FXML private Label poupancaNetTotalLabel;
+    @FXML private Label poupancaProfitPercentLabel;
+
 
     // Bottom Buttons
     @FXML private Button voltarButton;
@@ -202,11 +227,8 @@ public class ResultadoChartController {
     private VBox createAssetCard(RendaFixa produto) {
         // Create the card container
         VBox card = new VBox();
-        card.setAlignment(Pos.CENTER_LEFT);
-        card.setPrefWidth(300);
+        card.setStyle("-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 12;");
         card.setSpacing(4);
-        card.setStyle("-fx-border-color: #1E90FF; -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 8;");
-
 
         // Determine color based on product type
         String color;
@@ -230,90 +252,64 @@ public class ResultadoChartController {
         nameLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: " + color + "; -fx-font-size: 16px;");
         card.getChildren().add(nameLabel);
 
-        // Create labels for static text and dynamic values
-        Label totalInvestidoLabel = new Label("Total Investido: ");
-        Label totalInvestidoValue = new Label();
+        // Create all the data labels
+        Label totalInvestidoLabel = new Label();
+        Label grossReturnLabel = new Label();
+        Label taxLabel = new Label();
+        Label netProfitLabel = new Label();
+        Label netTotalLabel = new Label();
+        Label profitPercentLabel = new Label();
 
-        Label grossReturnLabel = new Label("Rendimento Bruto: ");
-        Label grossReturnValue = new Label();
+        // Style the labels
+        String dataLabelStyle = "-fx-text-fill: #666666;";
+        totalInvestidoLabel.setStyle(dataLabelStyle);
+        grossReturnLabel.setStyle(dataLabelStyle);
+        taxLabel.setStyle(dataLabelStyle);
+        netProfitLabel.setStyle(dataLabelStyle);
+        netTotalLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #333333;");
+        profitPercentLabel.setStyle(dataLabelStyle);
 
-        Label taxLabel = new Label("Imposto de Renda: ");
-        Label taxValue = new Label();
-
-        Label netProfitLabel = new Label("Lucro Líquido: ");
-        Label netProfitValue = new Label();
-
-        Label netTotalLabel = new Label("Valor Total Líquido: ");
-        Label netTotalValue = new Label();
-
-        Label profitPercentLabel = new Label("Lucratividade: ");
-        Label profitPercentValue = new Label();
-
-        // Style static labels
-        String staticStyle = "-fx-text-fill: #666666; -fx-font-size: 12;";
-        totalInvestidoLabel.setStyle(staticStyle);
-        grossReturnLabel.setStyle(staticStyle);
-        taxLabel.setStyle(staticStyle);
-        netProfitLabel.setStyle(staticStyle);
-        netTotalLabel.setStyle(staticStyle);
-        profitPercentLabel.setStyle(staticStyle);
-
-        // Create TextFlows
-        TextFlow totalInvest = new TextFlow(totalInvestidoLabel, totalInvestidoValue);
-        TextFlow grossReturn = new TextFlow(grossReturnLabel, grossReturnValue);
-        TextFlow tax = new TextFlow(taxLabel, taxValue);
-        TextFlow netProfit = new TextFlow(netProfitLabel, netProfitValue);
-        TextFlow netTotal = new TextFlow(netTotalLabel, netTotalValue);
-        TextFlow profitPercent = new TextFlow(profitPercentLabel, profitPercentValue);
-
-        // Add to card
+        // Add all labels to the card
         card.getChildren().addAll(
-                totalInvest, grossReturn, tax, netProfit, netTotal, profitPercent
+                totalInvestidoLabel,
+                grossReturnLabel,
+                taxLabel,
+                netProfitLabel,
+                netTotalLabel,
+                profitPercentLabel
         );
 
-        // Fill data with colors
-        fillCardData(produto, totalInvestidoValue, grossReturnValue, taxValue,
-                netProfitValue, netTotalValue, profitPercentValue);
+        // Set the data for the labels
+        fillCardData(card, totalInvestidoLabel, grossReturnLabel, taxLabel,
+                netProfitLabel, netTotalLabel, profitPercentLabel, produto);
 
         return card;
     }
 
-    private void fillCardData(RendaFixa produto, Label totalInvestidoValue,
-                              Label grossReturnValue, Label taxValue,
-                              Label netProfitValue, Label netTotalValue,
-                              Label profitPercentValue) {
-        // Total Investido (always positive, green)
-        totalInvestidoValue.setText(currencyFormatter.format(produto.getTotalInvestido()));
-        totalInvestidoValue.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+    // Modified fillCardData to work with dynamically created cards
+    private void fillCardData(VBox card, Label totalInvestidoLabel, Label grossReturnLabel, Label taxLabel,
+                              Label netProfitLabel, Label netTotalLabel, Label profitPercentLabel, RendaFixa produto) {
+        BigDecimal totalInvestido = produto.getTotalInvestido() != null ? produto.getTotalInvestido() : BigDecimal.ZERO;
+        BigDecimal rendimentoBruto = produto.getRendimentoBruto() != null ? produto.getRendimentoBruto() : BigDecimal.ZERO;
+        BigDecimal impostoIR = produto.getImpostoIR() != null ? produto.getImpostoIR() : BigDecimal.ZERO;
+        BigDecimal rendimentoLiquido = produto.getRendimentoLiquido() != null ? produto.getRendimentoLiquido() : BigDecimal.ZERO;
+        BigDecimal valorTotal = produto.getValorTotal() != null ? produto.getValorTotal() : BigDecimal.ZERO;
+        String percentualLucroStr = produto.getPercentualLucro() != null ? produto.getPercentualLucro() : "0,00%";
 
-        // Rendimento Bruto (green)
-        grossReturnValue.setText(currencyFormatter.format(produto.getRendimentoBruto()));
-        grossReturnValue.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        totalInvestidoLabel.setText("Total Investido: " + currencyFormatter.format(totalInvestido));
+        grossReturnLabel.setText("Rendimento Bruto: " + currencyFormatter.format(rendimentoBruto));
+        taxLabel.setText(String.format("Imposto de Renda: %s%s",
+                impostoIR.compareTo(BigDecimal.ZERO) > 0 ? "-" : "",
+                currencyFormatter.format(impostoIR.abs()) + (produto.isTaxable() ? "" : " (Isento)")));
+        netProfitLabel.setText("Lucro Líquido: " + currencyFormatter.format(rendimentoLiquido));
+        netTotalLabel.setText("Valor Total Líquido: " + currencyFormatter.format(valorTotal));
 
-        // Imposto (red if > 0)
-        taxValue.setText(currencyFormatter.format(produto.getImpostoIR().abs()));
-        taxValue.setStyle("-fx-text-fill: " +
-                (produto.getImpostoIR().compareTo(BigDecimal.ZERO) > 0 ? "#FF4500" : "#666666") +
-                "; -fx-font-size: 12;");
-
-        // Lucro Líquido (green/red based on value)
-        String netProfitColor = produto.getRendimentoLiquido().compareTo(BigDecimal.ZERO) >= 0
-                ? "#1FCE52" : "#FF4500";
-        netProfitValue.setText(currencyFormatter.format(produto.getRendimentoLiquido()));
-        netProfitValue.setStyle("-fx-text-fill: " + netProfitColor + "; -fx-font-size: 12;");
-
-        // Valor Total (green)
-        netTotalValue.setText(currencyFormatter.format(produto.getValorTotal()));
-        netTotalValue.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
-
-        // Lucratividade (parse percentage)
         try {
-            double percent = Double.parseDouble(produto.getPercentualLucro().replace("%", "")) / 100;
-            profitPercentValue.setText(percentFormatter.format(percent));
-        } catch (Exception e) {
-            profitPercentValue.setText(produto.getPercentualLucro());
+            double percentValue = Double.parseDouble(percentualLucroStr.replace("%", "").replace(",", ".")) / 100.0;
+            profitPercentLabel.setText("Lucratividade: " + percentFormatter.format(percentValue));
+        } catch (NumberFormatException | NullPointerException e) {
+            profitPercentLabel.setText("Lucratividade: " + percentualLucroStr);
         }
-        profitPercentValue.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
     }
 
 

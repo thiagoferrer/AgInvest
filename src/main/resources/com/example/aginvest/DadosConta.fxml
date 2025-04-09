@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
 
 <VBox alignment="CENTER" spacing="0" stylesheets="@styles.css"
       prefWidth="360" prefHeight="640"

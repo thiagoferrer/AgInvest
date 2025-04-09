@@ -97,6 +97,40 @@ public class RendaFixaController {
         });
     }
 
+    // Método para o botão "Voltar"
+    /*
+    @FXML
+    public void onClickVoltar() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+            Parent root = loader.load();
+            Scene homeScene = new Scene(root);
+            Stage stage = (Stage) voltarButton.getScene().getWindow();
+            stage.setScene(homeScene);
+            stage.setTitle("Home - Invest7");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao carregar a tela Home: " + e.getMessage());
+        }
+    }
+
+
+    // Método para o botão "Calcular"
+    @FXML
+    public void onClickCalcular() {
+        System.out.println("Botão Calcular clicado!");
+        // Adicione lógica para realizar o cálculo com base nos valores inseridos
+        String capitalInicial = capitalInicialField.getText();
+        String aporteMensal = aporteMensalField.getText();
+        String prazo = prazoField.getText();
+        System.out.println("Capital Inicial: " + capitalInicial);
+        System.out.println("Aporte Mensal: " + aporteMensal);
+        System.out.println("Prazo: " + prazo + " meses");
+    }
+
+     */
+
     private void carregarTela(String fxmlPath, String titulo) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));

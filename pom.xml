@@ -150,12 +150,9 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
+                <filtering>true</filtering>
                 <includes>
-                    <include>**/*.png</include>
-                    <include>**/*.jpg</include>
-                    <include>**/*.fxml</include>
-                    <include>**/*.css</include>
-                    <include>**/*.properties</include>
+                    <include>*/</include>
                 </includes>
             </resource>
         </resources>
