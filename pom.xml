@@ -155,6 +155,7 @@
                     <include>**/*.jpg</include>
                     <include>**/*.fxml</include>
                     <include>**/*.css</include>
+                    <include>**/*.properties</include>
                 </includes>
             </resource>
         </resources>
