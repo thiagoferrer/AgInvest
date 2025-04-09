@@ -116,10 +116,10 @@
                     </VBox>
                 </graphic>
                 <GridPane.columnIndex>1</GridPane.columnIndex>
-                <GridPane.rowIndex>1</GridPane.rowIndex>
+                <GridPane.rowIndex>2</GridPane.rowIndex>
             </Button>
 
-            <!-- Linha 3 (opcional para futuras expansões) -->
+            <!-- Linha 3 -->
             <!-- Botão 5: FAQ -->
             <Button fx:id="btnFAQ" prefWidth="120" prefHeight="120"
                     style="-fx-background-color: #AD6BD4; -fx-background-radius: 12;
@@ -133,6 +133,21 @@
                 </graphic>
                 <GridPane.columnIndex>0</GridPane.columnIndex>
                 <GridPane.rowIndex>2</GridPane.rowIndex>
+            </Button>
+
+            <!-- Botão 6: Simulação por Perfil -->
+            <Button fx:id="btnSimulacaoPerfil" prefWidth="120" prefHeight="120"
+                    style="-fx-background-color: #4EC0FF; -fx-background-radius: 12;
+                    -fx-text-fill: #FFFFFF; -fx-cursor: hand">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="8"
+                          style="-fx-cursor: hand;-fx-text-alignment: center;-fx-font-weight: bold">
+                        <Label text="📊" style="-fx-font-size: 32;-fx-text-fill: #FFFFFF;" />
+                        <Label text="Por Perfil" style="-fx-font-size: 14;-fx-text-fill: #FFFFFF; -fx-wrap-text: true;" />
+                    </VBox>
+                </graphic>
+                <GridPane.columnIndex>1</GridPane.columnIndex>
+                <GridPane.rowIndex>1</GridPane.rowIndex>
             </Button>
         </GridPane>
     </ScrollPane>

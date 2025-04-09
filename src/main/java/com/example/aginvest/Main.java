@@ -9,8 +9,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-import static javafx.application.Application.launch;
-
 public class Main extends Application {
     // Método start() modificado
     @Override

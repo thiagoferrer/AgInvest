@@ -21,7 +21,9 @@ public class ResultadoGridItemController {
     @FXML private Label totalLabel;
     @FXML private Label lucroLabel;
     @FXML private Label irLabel;
-    @FXML private PieChart donutChart;
+
+    @FXML
+    private VBox assetCardsContainer;
 
     private final NumberFormat currencyFormatter;
     private final NumberFormat percentFormatter;
@@ -43,6 +45,7 @@ public class ResultadoGridItemController {
 
         if (totalLabel != null) {
             totalLabel.setText("Total: " + currencyFormatter.format(rendaFixa.getValorTotal()));
+            totalLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
         }
 
         BigDecimal lucro = rendaFixa.getRendimentoLiquido();
@@ -52,37 +55,17 @@ public class ResultadoGridItemController {
         if (lucroLabel != null) {
             lucroLabel.setText("Lucro: " + currencyFormatter.format(lucro) +
                     " (" + percentFormatter.format(percentualLucro.divide(BigDecimal.valueOf(100))) + ")");
+            lucroLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
         }
 
         if (irLabel != null) {
             irLabel.setText(rendaFixa.isTaxable() ?
-                    "IR: " + currencyFormatter.format(rendaFixa.getImpostoIR()) :
-                    "IR: Isento");
+                    "IR: " + currencyFormatter.format(rendaFixa.getImpostoIR()) : "IR: Isento");
+            irLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
         }
 
-        if (donutChart != null) {
-            setupDonutChart(rendaFixa);
-        }
+        if (rootContainer != null) animateCard();
 
-        if (rootContainer != null) {
-            animateCard();
-        }
-    }
-
-    private void setupDonutChart(RendaFixa rendaFixa) {
-        donutChart.getData().clear();
-
-        BigDecimal aporte = rendaFixa.getTotalInvestido();
-        BigDecimal lucro = rendaFixa.getRendimentoLiquido();
-        BigDecimal taxas = rendaFixa.isTaxable() ? rendaFixa.getImpostoIR() : BigDecimal.ZERO;
-
-        PieChart.Data aporteData = new PieChart.Data("Aporte", aporte.doubleValue());
-        PieChart.Data lucroData = new PieChart.Data("Lucro", lucro.doubleValue());
-        PieChart.Data taxasData = new PieChart.Data("Taxas", taxas.doubleValue());
-
-        donutChart.getData().addAll(aporteData, lucroData, taxasData);
-        donutChart.setLegendVisible(false);
-        donutChart.setTitle("");
     }
 
     private void animateCard() {

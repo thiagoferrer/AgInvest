@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Stack;
@@ -22,7 +24,14 @@ public class LogoController {
     @FXML private Button loginButton;
     @FXML private Button simulacaoButton;
     @FXML private Button voltarButton; // Novo botão adicionado
+    @FXML private ImageView logoImage;
 
+
+    @FXML
+    public void initialize() {
+        Image logo = new Image(getClass().getResource("/image/Logo.png").toExternalForm());
+        logoImage.setImage(logo);
+    }
 
     @FXML
     private void handleCadastro() {

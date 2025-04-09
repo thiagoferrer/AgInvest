@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -20,9 +22,16 @@ public class SimuPreviaController {
     @FXML private TextField selicField;
     @FXML private TextField cdiField;
     @FXML private TextField ipcaField;
+    @FXML private ImageView logoImage;
+
 
     @FXML
     public void initialize() {
+
+        Image logo = new Image(getClass().getResource("/image/Logo.png").toExternalForm());
+        logoImage.setImage(logo);
+
+
         // Configurar ações dos botões
         voltarButton.setOnAction(e -> handleVoltar());
         calcularButton.setOnAction(e -> handleCalcular());

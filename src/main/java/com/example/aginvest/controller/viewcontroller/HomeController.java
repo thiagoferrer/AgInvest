@@ -30,6 +30,9 @@ public class HomeController {
     private Button btnFAQ;
 
     @FXML
+    private Button btnSimulacaoPerfil;
+
+    @FXML
     private Label bemVindoLabel;
 
     @FXML
@@ -86,6 +89,8 @@ public class HomeController {
             System.out.println("Botão FAQ clicado!");
         });
 
+
+
         contaButton.setOnAction(actionEvent -> {
             try {
                 // 1. Carrega o novo arquivo FXML
@@ -126,6 +131,24 @@ public class HomeController {
             try {
                 // 1. Carrega o novo arquivo FXML
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/Faq.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+                // 4. Define a nova cena no palco
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao clicar no botao de menu de FAQ");
+            }
+        });
+
+        btnSimulacaoPerfil.setOnAction(actionEvent -> {
+            try {
+                // 1. Carrega o novo arquivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/SimulacaoPorPerfil.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);

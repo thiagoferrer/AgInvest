@@ -14,6 +14,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import com.example.aginvest.controller.user.CpfValidate;
 
@@ -35,8 +37,13 @@ public class CadastroController {
 
     private UserModel user;
 
+    @FXML private ImageView logoImage;
+
     @FXML
     public void initialize() {
+        Image logo = new Image(getClass().getResource("/image/Logo.png").toExternalForm());
+        logoImage.setImage(logo);
+
         // Limpa os estilos de erro quando o usuário começa a digitar
         nomeFieldCadastro.setOnKeyPressed(e -> clearErrorStyles());
         cpfFieldCadastro.setOnKeyPressed(e -> clearErrorStyles());

@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,6 +29,13 @@ public class LoginController {
 
     @FXML
     private Label errorMessage; // Novo campo para a mensagem de erro
+
+    @FXML private ImageView logoImage;
+
+    public void initialize() {
+        Image logo = new Image(getClass().getResource("/image/Logo.png").toExternalForm());
+        logoImage.setImage(logo);
+    }
 
     public void realizarLogin() {
         try {
