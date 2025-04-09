@@ -103,13 +103,12 @@ public class SimulacaoPorPerfilController {
             int prazo = Integer.parseInt(prazoField.getText());
 
             int reinvestirDividendos;
-            if (reinvestirCheckBox != null && reinvestirCheckBox.isSelected()) {
+            if (reinvestirCheckBox != null && reinvestirCheckBox.isSelected())
                 reinvestirDividendos = 1; // Usuário escolheu REINVESTIR
-            } else if (naoReinvestirCheckBox != null && naoReinvestirCheckBox.isSelected()) {
+            else if (naoReinvestirCheckBox != null && naoReinvestirCheckBox.isSelected())
                 reinvestirDividendos = 0; // Usuário escolheu NÃO REINVESTIR
-            } else {
-                reinvestirDividendos = 0; // Padrão (caso nenhum esteja selecionado)
-            }
+            else reinvestirDividendos = 0; // Padrão (caso nenhum esteja selecionado)
+
 
             // Transformando o capital inicial em BigDecimal
             BigDecimal capitalInicialBD = BigDecimal.valueOf(Double.parseDouble(capitalInicialField.getText()));
@@ -148,7 +147,7 @@ public class SimulacaoPorPerfilController {
         }
     }
 
-    private void carregarTelaResultado(Acoes acoes, Fiis fiis,  BigDecimal capitalInicialBD, BigDecimal aporteMensalBD, int prazo ) {
+    private void carregarTelaResultado(Acoes acoes, Fiis fiis,  BigDecimal capitalInicialBD, BigDecimal aporteMensalBD,  int prazo ) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/ResultadoSimulacaoPerfil.fxml"));
             Parent root = loader.load();

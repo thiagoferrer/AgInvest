@@ -36,7 +36,9 @@
 
     <!-- Título e Descrição -->
     <VBox alignment="CENTER" spacing="16" style="-fx-padding: 16;-fx-background-color: #FFFFFF;">
+
         <Label text="Simulador Por Perfil " styleClass="titulo-sim" />
+
         <VBox style="-fx-padding: 8 10">
             <VBox spacing="8" alignment="CENTER_LEFT">
                 <!-- Capital Inicial -->
@@ -57,7 +59,7 @@
                            styleClass="input-sim"/>
             </VBox>
             <!--Qtd cotas-->
-            <VBox spacing="8" alignment="TOP_LEFT" style="-fx-padding: 4 10 8 10" >
+            <VBox spacing="8" alignment="CENTER_LEFT">
                 <Label text="Quantidade de Cotas" styleClass="label-input-sim" />
                 <TextField fx:id="quantidadeCotasField" promptText="Cotas" styleClass="input-sim" />
             </VBox>

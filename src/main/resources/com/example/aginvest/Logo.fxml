@@ -4,15 +4,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
-
 <?import javafx.scene.image.ImageView?>
+
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.aginvest.controller.viewcontroller.LogoController"
       alignment="CENTER" spacing="24" prefWidth="360" prefHeight="640"
       style="-fx-background-color: #FFFFFF; -fx-padding: 16;">
 
     <!-- Logotipo -->
-    <Label text="Invest7" style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: #1E90FF;" />
+    <ImageView fx:id="logoImage" fitHeight="500" fitWidth="250" preserveRatio="true"/>
 
     <!-- Texto de boas-vindas -->
     <Label text="Bem vindo ao Invest7!"

@@ -31,13 +31,8 @@ public class RendaFixaDAO {
             }
 
             // Add Poupança programmatically
-            produtos.add(new RendaFixa(
-                    "Poupança",
-                    6.17,
-                    "POUPANCA",
-                    false
-
-            ));
+            produtos.add(new RendaFixa("Poupança", 6.17,
+                    "POUPANCA", true));
 
         } catch (SQLException e) {
             System.err.println("Erro ao buscar produtos: " + e.getMessage());
@@ -67,7 +62,8 @@ public class RendaFixaDAO {
             }
 
             // Adiciona Poupança (se necessário)
-            produtos.add(new RendaFixa("Poupança", 6.17, "POUPANCA", false));
+            produtos.add(new RendaFixa("Poupança", 6.17,
+                    "POUPANCA", true));
 
         } catch (SQLException e) {
             System.err.println("Erro ao buscar produtos: " + e.getMessage());
