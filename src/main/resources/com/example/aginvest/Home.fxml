@@ -116,7 +116,7 @@
                     </VBox>
                 </graphic>
                 <GridPane.columnIndex>1</GridPane.columnIndex>
-                <GridPane.rowIndex>1</GridPane.rowIndex>
+                <GridPane.rowIndex>2</GridPane.rowIndex>
             </Button>
 
             <!-- Linha 3 -->
@@ -143,11 +143,11 @@
                     <VBox alignment="CENTER" spacing="8"
                           style="-fx-cursor: hand;-fx-text-alignment: center;-fx-font-weight: bold">
                         <Label text="📊" style="-fx-font-size: 32;-fx-text-fill: #FFFFFF;" />
-                        <Label text="Simulação por Perfil" style="-fx-font-size: 12;-fx-text-fill: #FFFFFF; -fx-wrap-text: true;" />
+                        <Label text="Por Perfil" style="-fx-font-size: 14;-fx-text-fill: #FFFFFF; -fx-wrap-text: true;" />
                     </VBox>
                 </graphic>
                 <GridPane.columnIndex>1</GridPane.columnIndex>
-                <GridPane.rowIndex>2</GridPane.rowIndex>
+                <GridPane.rowIndex>1</GridPane.rowIndex>
             </Button>
         </GridPane>
     </ScrollPane>

@@ -248,7 +248,7 @@ public class ResultadoChartController {
         }
 
         // Create and add product name label
-        Label nameLabel = new Label(produto.getTipoProduto() + ": " + produto.getNome());
+        Label nameLabel = new Label(produto.getNome());
         nameLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: " + color + "; -fx-font-size: 16px;");
         card.getChildren().add(nameLabel);
 
