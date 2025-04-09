@@ -54,35 +54,7 @@ public class ResultadoChartController {
 
     // Asset Cards Container
     @FXML private VBox assetCardsContainer;
-    /*
-    // CDB Card Elements
-    @FXML private VBox cdbCard;
-    @FXML private Label cdbTotalInvestidoLabel;
-    @FXML private Label cdbGrossReturnLabel;
-    @FXML private Label cdbTaxLabel;
-    @FXML private Label cdbNetProfitLabel;
-    @FXML private Label cdbNetTotalLabel;
-    @FXML private Label cdbProfitPercentLabel;
 
-    // LCI/LCA Card Elements
-    @FXML private VBox lciLcaCard;
-    @FXML private Label lciLcaTotalInvestidoLabel;
-    @FXML private Label lciLcaGrossReturnLabel;
-    @FXML private Label lciLcaTaxLabel;
-    @FXML private Label lciLcaNetProfitLabel;
-    @FXML private Label lciLcaNetTotalLabel;
-    @FXML private Label lciLcaProfitPercentLabel;
-
-    // Poupança Card Elements (Optional)
-    @FXML private VBox poupancaCard;
-    @FXML private Label poupancaTotalInvestidoLabel;
-    @FXML private Label poupancaGrossReturnLabel;
-    @FXML private Label poupancaTaxLabel;
-    @FXML private Label poupancaNetProfitLabel;
-    @FXML private Label poupancaNetTotalLabel;
-    @FXML private Label poupancaProfitPercentLabel;
-
-    */
     // Bottom Buttons
     @FXML private Button voltarButton;
     @FXML private Button novaSimulacaoButton;

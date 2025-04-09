@@ -19,6 +19,7 @@ public class DeletarContaController {
     @FXML private Label emailErroLabel;
     @FXML private Label senhaErroLabel;
     @FXML private Label erroGeralLabel;
+    @FXML private Button voltarButton;
 
     @FXML
     private void initialize() {
@@ -109,8 +110,26 @@ public class DeletarContaController {
 
     @FXML
     private void onClickVoltar() {
-        Stage stage = (Stage) emailField.getScene().getWindow();
-        stage.close();
+        //Stage stage = (Stage) emailField.getScene().getWindow();
+        //stage.close();
+        try {
+                   java.net.URL fxmlLocation = getClass().getResource("/com/example/aginvest/Conta.fxml");
+                    if (fxmlLocation == null) {
+                        throw new IOException("Não foi possível encontrar o arquivo Conta.fxml");
+                   }
+                   FXMLLoader loader = new FXMLLoader(fxmlLocation);
+                   Parent root = loader.load();
+                   Scene contaScene = new Scene(root);
+                   Stage stage = (Stage) voltarButton.getScene().getWindow();
+                   stage.setScene(contaScene);
+                   stage.setTitle("Configurações de Conta - Invest7");
+                   stage.show();
+        } catch (IOException e) {
+                   e.printStackTrace();
+                   System.out.println("Erro ao carregar a tela Configurações de Conta: " + e.getMessage());
+               }
+
+
     }
 
     private void carregarTela(String fxmlPath, String titulo) {

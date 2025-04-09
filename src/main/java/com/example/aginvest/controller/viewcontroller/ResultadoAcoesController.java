@@ -169,6 +169,8 @@ public class ResultadoAcoesController {
         box.setPrefWidth(300);
         box.setStyle("-fx-border-color: #1E90FF; -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 8;");
 
+
+
         Label nomeLabel = new Label(acao.getNome());
         nomeLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 14; -fx-font-weight: bold;");
 
