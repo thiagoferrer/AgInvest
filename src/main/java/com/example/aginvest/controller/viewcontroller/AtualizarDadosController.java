@@ -108,11 +108,9 @@ public class AtualizarDadosController {
             UserController userController = new UserController();
             boolean atualizado = userController.uptadeUser(nome, genero, endereco, dataValidada);
 
-            if (atualizado) {
-                carregarTela("/com/example/aginvest/Conta.fxml", "Conta - Invest7");
-            } else {
-                showError("Erro ao atualizar dados. Tente novamente.");
-            }
+            if (atualizado) carregarTela("/com/example/aginvest/Conta.fxml", "Conta - Invest7");
+            else showError("Erro ao atualizar dados. Tente novamente.");
+
 
         } catch (Exception e) {
             e.printStackTrace();

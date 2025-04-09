@@ -192,6 +192,10 @@ public class ResultadoFiisController {
         divColorMensaisLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
         TextFlow linhaDivsMensais = new TextFlow(dividendosMensaisLabel, divColorMensaisLabel);
 
+
+
+
+
         // Adiciona todos os labels ao VBox
         box.getChildren().addAll(
                 nomeLabel,
