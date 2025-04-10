@@ -1,15 +1,22 @@
 package com.example.aginvest.controller.viewcontroller;
 
+import com.example.aginvest.model.produtos.Acoes;
+import com.example.aginvest.model.produtos.Previa;
+import com.example.aginvest.model.produtos.RendaFixa;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.List;
 
 public class SimuPreviaController {
 
@@ -19,9 +26,6 @@ public class SimuPreviaController {
     @FXML private TextField capitalInicialField;
     @FXML private TextField aporteMensalField;
     @FXML private TextField prazoField;
-    @FXML private TextField selicField;
-    @FXML private TextField cdiField;
-    @FXML private TextField ipcaField;
     @FXML private ImageView logoImage;
 
 
@@ -37,10 +41,6 @@ public class SimuPreviaController {
         calcularButton.setOnAction(e -> handleCalcular());
     }
 
-    @FXML
-    private void handleCalcular() {
-
-    }
 
     @FXML
     private void handleVoltar() {
@@ -57,15 +57,16 @@ public class SimuPreviaController {
         }
     }
 
-    private void calcularRendimento() {
+    @FXML
+    private void handleCalcular() {
         try {
             // Obter valores dos campos de texto
             double capitalInicial = parseCurrency(capitalInicialField.getText());
             double aporteMensal = parseCurrency(aporteMensalField.getText());
             int prazoMeses = Integer.parseInt(prazoField.getText().trim());
-            double selicAnual = parsePercentage(selicField.getText());
-            double cdiAnual = parsePercentage(cdiField.getText());
-            double ipcaAnual = parsePercentage(ipcaField.getText());
+            double selicAnual = 0.1315;
+            double cdiAnual = 0.1415;
+            double ipcaAnual = 0.0519;
 
             // Converter taxas anuais para mensais
             double selicMensal = Math.pow(1 + selicAnual, 1.0 / 12) - 1;
@@ -76,16 +77,33 @@ public class SimuPreviaController {
             double rendimentoSelic = calcularInvestimento(capitalInicial, aporteMensal, selicMensal, prazoMeses);
             double rendimentoCdi = calcularInvestimento(capitalInicial, aporteMensal, cdiMensal, prazoMeses);
             double rendimentoIpca = calcularInvestimento(capitalInicial, aporteMensal, ipcaMensal, prazoMeses);
+            carregarTelaResultado(capitalInicial, aporteMensal, prazoMeses);
 
-            // Exibir resultados (pode ser adaptado para uma nova tela ou diálogo)
-            System.out.printf("Rendimento Selic: R$ %.2f%n", rendimentoSelic);
-            System.out.printf("Rendimento CDI: R$ %.2f%n", rendimentoCdi);
-            System.out.printf("Rendimento IPCA+: R$ %.2f%n", rendimentoIpca);
 
         } catch (NumberFormatException e) {
             System.out.println("Erro: Insira valores válidos nos campos.");
         }
     }
+
+    private void carregarTelaResultado(double capitalInicial, double aporteMensal, int prazo) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/aginvest/ResultadosSimuPrev.fxml"));
+            Parent root = loader.load();
+
+            // Obtém o controller que foi criado pelo FXMLLoader
+            ResultadosSimuPreviaController simsPrev = loader.getController();
+            simsPrev.setDados(capitalInicial, aporteMensal, prazo);
+
+            Stage stage = (Stage) calcularButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao carregar próxima tela: " + e.getMessage());
+        }
+    }
+
 
     // Método para calcular o investimento com aportes mensais
     private double calcularInvestimento(double capitalInicial, double aporteMensal, double taxaMensal, int prazoMeses) {
