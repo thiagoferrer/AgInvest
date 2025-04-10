@@ -1,4 +1,3 @@
-// src/main/java/com/invest7/model/produtos/RendaFixa.java
 package com.example.aginvest.model.produtos;
 
 import java.math.BigDecimal;
