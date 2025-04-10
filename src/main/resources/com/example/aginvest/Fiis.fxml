@@ -56,7 +56,7 @@
 
         <!--Qtd cotas-->
         <VBox spacing="8" alignment="TOP_LEFT" style="-fx-padding: 4 10 8 10" >
-            <Label text="Quantidade de Cotas" styleClass="label-input-sim" />
+            <Label text="Quantidade Inicial de Cotas" styleClass="label-input-sim" />
             <TextField fx:id="quantidadeCotasField" promptText="Cotas" styleClass="input-sim" />
         </VBox>
         <!--Prazo-->

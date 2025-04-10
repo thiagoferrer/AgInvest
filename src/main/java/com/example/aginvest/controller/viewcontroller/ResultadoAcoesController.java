@@ -170,11 +170,23 @@ public class ResultadoAcoesController {
         Label nomeLabel = new Label(acao.getNome());
         nomeLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 14; -fx-font-weight: bold;");
 
-        Label qtdLabel = new Label("Quantidade Total Cotas: ");
+        Label qtdLabel = new Label("Quantidade Total de Ações: ");
         qtdLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
         Label qtdColorLabel = new Label(String.valueOf(acao.getQtdAcoes()));
         qtdColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
         TextFlow linhaQtd = new TextFlow(qtdLabel, qtdColorLabel);
+
+        Label precoCompraLabel = new Label("Valor da ação na Compra: ");
+        precoCompraLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label preCompraColorLabel = new Label("R$ "+ String.format("%,.2f", acao.getPrecoAcao()));
+        preCompraColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaPrecoCompra = new TextFlow(precoCompraLabel, preCompraColorLabel);
+
+        Label precoVendaLabel = new Label("Valor da ação na Venda: ");
+        precoVendaLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label precoVendaColorLabel = new Label("R$ "+ String.format("%,.2f", acao.getPrecoVenda()));
+        precoVendaColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaPrecoVenda = new TextFlow(precoVendaLabel, precoVendaColorLabel);
 
         Label valorInvestidoLabel = new Label("Valor Investido: ");
         valorInvestidoLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
@@ -211,6 +223,8 @@ public class ResultadoAcoesController {
         box.getChildren().addAll(
                 nomeLabel,
                 linhaQtd ,
+                linhaPrecoCompra,
+                linhaPrecoVenda,
                 linhaVlrInvest ,
                 linhaTotalCompra,
                 linhaTotalVenda ,
