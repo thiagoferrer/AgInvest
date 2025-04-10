@@ -139,7 +139,7 @@ public class ResultadoFiisController {
         barChart.getData().add(series);
 
 
-        Label titulo = new Label("Dividendos Mensais por Fundo");
+        Label titulo = new Label("Dividendos Mensais por Fundo Imobiliário");
         titulo.setStyle("-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #666666;");
 
 
@@ -163,15 +163,23 @@ public class ResultadoFiisController {
         Label nomeLabel = new Label(fii.getNome());
         nomeLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 14; -fx-font-weight: bold;");
 
+
+        // Preço Cota
+        Label precoLabel = new Label("Preço Cota: ");
+        precoLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label precoColorLabel = new Label("R$" + String.format("%,.2f",fii.getPrecoFiis()));
+        precoColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaPreco = new TextFlow(precoLabel, precoColorLabel);
+
         // Quantidade de cotas
-        Label qtdLabel = new Label("Quantidade Total Cotas: ");
+        Label qtdLabel = new Label("Quantidade Final de Cotas: ");
         qtdLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
         Label qtdColorLabel = new Label(String.valueOf(fii.getQtdCotas()));
         qtdColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
         TextFlow linhaQtd = new TextFlow(qtdLabel, qtdColorLabel);
 
         // Saldo cotas
-        Label saldoCotasLabel = new Label("Saldo Cotas: ");
+        Label saldoCotasLabel = new Label("Total Investido: ");
         saldoCotasLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
         Label saldoCotasColorLabel = new Label(String.format("R$ %,.2f", fii.getSaldoCotas()));
         saldoCotasColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
@@ -179,7 +187,7 @@ public class ResultadoFiisController {
 
 
         // Saldo dividendos
-        Label saldoDividendosLabel = new Label("Saldo Dividendos: ");
+        Label saldoDividendosLabel = new Label("Saldo de Dividendos: ");
         saldoDividendosLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
         Label saldoDividendosColorLabel = new Label(String.format("R$ %,.2f", fii.getSaldoDividendos()));
         saldoDividendosColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
@@ -195,6 +203,7 @@ public class ResultadoFiisController {
         // Adiciona todos os labels ao VBox
         box.getChildren().addAll(
                 nomeLabel,
+                linhaPreco,
                 linhaQtd,
                 linhaSaldoCotas,
                 linhaSaldoDivs,

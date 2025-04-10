@@ -82,6 +82,7 @@ public class CalculadoraVariavel {
             fiiSimulado.setId_fiis(fii.getId_fiis());
             fiiSimulado.setQtdCotas(quantidadeCotas);
             fiiSimulado.setDividendosMensais(dividendosMensais);
+            fiiSimulado.setPrecoFiis(precoCota);
             fiisSimulados.add(fiiSimulado);
         }
 
@@ -132,6 +133,7 @@ public class CalculadoraVariavel {
                     saldoAporte -= novasCotasAporte * precoCota;
                 }
             }
+            double dividendosMensais = quantidadeCotas * dividendoPorCota;
 
             Fiis fiiSimulado = new Fiis(
                     fii.getNome(),
@@ -144,6 +146,9 @@ public class CalculadoraVariavel {
             fiiSimulado.setSaldoCotas((quantidadeCotas*precoCota));
             fiiSimulado.setSaldoDividendos(saldoDividendos);
             fiiSimulado.setId_fiis(fii.getId_fiis());
+            fiiSimulado.setQtdCotas(quantidadeCotas);
+            fiiSimulado.setDividendosMensais(dividendosMensais);
+            fiiSimulado.setPrecoFiis(precoCota);
             fiisSimulados.add(fiiSimulado);
         }
 
@@ -191,6 +196,8 @@ public class CalculadoraVariavel {
             acoesFinal.setValorTotalVenda(valorTotalVenda);
             acoesFinal.setTroco(troco);
             acoesFinal.setPrecoAcao(acaoSimulada.getPrecoAcao());
+            acoesFinal.setPrecoAcao(precoCompra);
+            acoesFinal.setPrecoVenda(valorAcaoVenda);
             acoesFeitas.add(acoesFinal);
 
         }
@@ -236,6 +243,8 @@ public class CalculadoraVariavel {
             acoesFinal.setValorTotalVenda(valorTotalVenda);
             acoesFinal.setTroco(troco);
             acoesFinal.setPrecoAcao(acaoSimulada.getPrecoAcao());
+            acoesFinal.setPrecoAcao(precoCompra);
+            acoesFinal.setPrecoVenda(valorAcaoVenda);
             acoesFeitas.add(acoesFinal);
 
         }

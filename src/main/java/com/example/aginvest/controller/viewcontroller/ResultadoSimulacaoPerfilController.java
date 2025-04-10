@@ -224,15 +224,22 @@ public class ResultadoSimulacaoPerfilController {
         Label nomeLabel = new Label(fii.getNome());
         nomeLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 14; -fx-font-weight: bold;");
 
+        // Preço Cota
+        Label precoLabel = new Label("Preço Cota: ");
+        precoLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label precoColorLabel = new Label("R$" + String.format("%,.2f",fii.getPrecoFiis()));
+        precoColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaPreco = new TextFlow(precoLabel, precoColorLabel);
+
         // Quantidade de cotas
-        Label qtdLabel = new Label("Quantidade Total Cotas: ");
+        Label qtdLabel = new Label("Quantidade Final de Cotas: ");
         qtdLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
         Label qtdColorLabel = new Label(String.valueOf(fii.getQtdCotas()));
         qtdColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
         TextFlow linhaQtd = new TextFlow(qtdLabel, qtdColorLabel);
 
         // Saldo cotas
-        Label saldoCotasLabel = new Label("Saldo Cotas: ");
+        Label saldoCotasLabel = new Label("Total Investido: ");
         saldoCotasLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
         Label saldoCotasColorLabel = new Label(String.format("R$ %,.2f", fii.getSaldoCotas()));
         saldoCotasColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
@@ -256,6 +263,7 @@ public class ResultadoSimulacaoPerfilController {
         // Adiciona todos os labels ao VBox
         box.getChildren().addAll(
                 nomeLabel,
+                linhaPreco,
                 linhaQtd,
                 linhaSaldoCotas,
                 linhaSaldoDivs,
@@ -275,11 +283,24 @@ public class ResultadoSimulacaoPerfilController {
         Label nomeLabel = new Label(acao.getNome());
         nomeLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 14; -fx-font-weight: bold;");
 
-        Label qtdLabel = new Label("Quantidade Total Cotas: ");
+
+        Label qtdLabel = new Label("Quantidade Total de Ações: ");
         qtdLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
         Label qtdColorLabel = new Label(String.valueOf(acao.getQtdAcoes()));
         qtdColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
         TextFlow linhaQtd = new TextFlow(qtdLabel, qtdColorLabel);
+
+        Label precoCompraLabel = new Label("Valor da ação na Compra: ");
+        precoCompraLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label preCompraColorLabel = new Label("R$ "+ String.format("%,.2f", acao.getPrecoAcao()));
+        preCompraColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaPrecoCompra = new TextFlow(precoCompraLabel, preCompraColorLabel);
+
+        Label precoVendaLabel = new Label("Valor da ação na Venda: ");
+        precoVendaLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
+        Label precoVendaColorLabel = new Label("R$ "+ String.format("%,.2f", acao.getPrecoVenda()));
+        precoVendaColorLabel.setStyle("-fx-text-fill: #1FCE52; -fx-font-size: 12;");
+        TextFlow linhaPrecoVenda = new TextFlow(precoVendaLabel, precoVendaColorLabel);
 
         Label valorInvestidoLabel = new Label("Valor Investido: ");
         valorInvestidoLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
@@ -316,6 +337,8 @@ public class ResultadoSimulacaoPerfilController {
         box.getChildren().addAll(
                 nomeLabel,
                 linhaQtd ,
+                linhaPrecoCompra,
+                linhaPrecoVenda,
                 linhaVlrInvest ,
                 linhaTotalCompra,
                 linhaTotalVenda ,
