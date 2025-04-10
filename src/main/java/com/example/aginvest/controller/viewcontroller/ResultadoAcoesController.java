@@ -1,7 +1,6 @@
 package com.example.aginvest.controller.viewcontroller;
 
 import com.example.aginvest.controller.CalculadoraVariavel;
-import com.example.aginvest.controller.user.UserController;
 import com.example.aginvest.model.produtos.Acoes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,24 +16,19 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
-import javafx.geometry.Insets;
-import javafx.scene.paint.Color;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Optional;
 
 public class ResultadoAcoesController {
     @FXML
     private VBox ativosContainer;
-    @FXML
+   @FXML
     private VBox ativosSection;
     @FXML
     private VBox graficosContainer;
@@ -45,7 +39,7 @@ public class ResultadoAcoesController {
     @FXML private Button contaButton;
 
     // Botões de ação
-    @FXML private Button backButton;
+   @FXML private Button backButton;
     @FXML private Button newSimulationButton;
 
 
@@ -54,7 +48,11 @@ public class ResultadoAcoesController {
         carregarTela("/com/example/aginvest/home.fxml", "Home - Invest7");
     }
 
-    @FXML private void onClickVoltar(){carregarTela("/com/example/aginvest/Acoes.fxml", "Acoes- Invest7"); }
+
+
+    @FXML private void onClickVoltar(){
+        carregarTela("/com/example/aginvest/Acoes.fxml", "Acoes- Invest7");
+    }
 
     @FXML
     public void initialize() {
@@ -169,8 +167,6 @@ public class ResultadoAcoesController {
         box.setPrefWidth(300);
         box.setStyle("-fx-border-color: #1E90FF; -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 8;");
 
-
-
         Label nomeLabel = new Label(acao.getNome());
         nomeLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 14; -fx-font-weight: bold;");
 
@@ -189,7 +185,7 @@ public class ResultadoAcoesController {
         Label totalCompraLabel = new Label("Total compra: ");
         totalCompraLabel.setStyle("-fx-text-fill: #666666; -fx-font-size: 12;");
         Label totalCompraColor = new Label("R$" + String.format("%,.2f", acao.getCustoTotalCompra()));
-        totalCompraColor.setStyle("-fx-text-fill: #EA7A5D; -fx-font-size: 12;");
+        totalCompraColor.setStyle("-fx-text-fill: #FF4C4C; -fx-font-size: 12;");
         TextFlow linhaTotalCompra = new TextFlow(totalCompraLabel, totalCompraColor);
 
         Label totalVendaLabel = new Label("Total venda: ");
